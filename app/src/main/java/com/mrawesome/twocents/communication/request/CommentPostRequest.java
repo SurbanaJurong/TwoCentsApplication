@@ -1,6 +1,7 @@
 package com.mrawesome.twocents.communication.request;
 
 import com.mrawesome.twocents.Profile;
+import com.mrawesome.twocents.util.Reader;
 
 /**
  * Created by mrawesome on 14/5/17.
@@ -13,9 +14,9 @@ public class CommentPostRequest implements Request {
     private String comment;
 
     public CommentPostRequest(String eventId, String comment) {
-        this.username = Profile.getInstance().getUsername();
         this.eventId = eventId;
-        comment.replace(" ", "|");
+        this.username = Profile.getInstance().getUsername();
+        Reader.collapse(comment);
         this.comment = comment;
 
     }

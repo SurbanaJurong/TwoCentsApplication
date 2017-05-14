@@ -9,12 +9,12 @@ import com.mrawesome.twocents.communication.response.NotificationType;
 public class Notification {
 
     private NotificationType notificationType;
-    private User sender;
-    private Event event;
+    private String sender;
+    private String eventId;
 
-    public Notification(NotificationType notificationType, User sender, Event event) {
+    public Notification(NotificationType notificationType, String sender, String eventId) {
         this.notificationType = notificationType;
         this.sender = sender;
-        this.event = event;
+        this.eventId = eventId;
     }
 }
