@@ -5,6 +5,6 @@ package com.mrawesome.twocents.communication.request;
  */
 
 public interface Request {
-    public RequestType type();
-    public String getRequestParams();
+    RequestType type();
+    String getRequestParams();
 }

@@ -99,4 +99,64 @@ public class Event {
         this.startTime.setTimeInMillis(startTime);
         this.duration = duration;
     }
+
+    public String getEventId() {
+        return this.eventId;
+    }
+
+    public String getHost() {
+        return this.host;
+    }
+
+    public String getProfilePic() {
+        return this.profilePic;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public EventMode getIsRecurring() {
+        return this.isRecurring;
+    }
+
+    public Calendar getDateCreated() {
+        return this.dateCreated;
+    }
+
+    public String getVenueId() {
+        return this.venueId;
+    }
+
+    public VenueStatus getVenueStatus() {
+        return this.venueStatus;
+    }
+
+    public Calendar getStartTime() {
+        return this.startTime;
+    }
+
+    public int getMinCapacity() {
+        return this.minCapacity;
+    }
+
+    public int getMaxCapacity() {
+        return this.maxCapacity;
+    }
+
+    public int getDuration() {
+        return this.duration;
+    }
+
+    public Set<String> getUserRegistered() {
+        return this.userRegistered;
+    }
+
+    public Set<String> getParticipants() {
+        return this.participants;
+    }
+
+    public List<Comment> getChat() {
+        return this.chat;
+    }
 }

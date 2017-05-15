@@ -11,7 +11,7 @@ import java.util.Map;
  */
 
 public enum ResponseType {
-    Profile(0), Calendar(1), Event(2), User(3), Notification(4), Null(5);
+    Profile(0), Event(1), User(2), Notification(3), Null(4);
 
     private int code;
     private static final Map<Integer, ResponseType> index = new HashMap<>();

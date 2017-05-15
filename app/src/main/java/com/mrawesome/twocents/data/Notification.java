@@ -17,4 +17,16 @@ public class Notification {
         this.sender = sender;
         this.eventId = eventId;
     }
+
+    public NotificationType getNotificationType() {
+        return this.notificationType;
+    }
+
+    public String getSender() {
+        return this.sender;
+    }
+
+    public String getEventId() {
+        return this.eventId;
+    }
 }

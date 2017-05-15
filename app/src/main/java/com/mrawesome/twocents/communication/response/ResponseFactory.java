@@ -7,8 +7,10 @@ import com.mrawesome.twocents.data.Notification;
 import com.mrawesome.twocents.util.Reader;
 
 import java.io.InputStream;
+import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  * Created by mrawesome on 14/5/17.
@@ -26,8 +28,6 @@ public class ResponseFactory {
             switch (responseType) {
                 case Profile:
                     return newProfileResponse(scanner);
-                case Calendar:
-                    return newCalendarResponse(scanner);
                 case Event:
                     return newEventResponse(scanner);
                 case User:
@@ -52,14 +52,16 @@ public class ResponseFactory {
         int nSize = scanner.nextInt();
         Notification[] notifications = Reader.readNotification(nSize, scanner);
         int eSize = scanner.nextInt();
-        Event[] events = Reader.readEvent(eSize, scanner);
+        Set<String> events = new HashSet<>();
+        for (int i = 0; i < eSize; i++) {
+            events.add(scanner.next());
+        }
         int uSize = scanner.nextInt();
-        User[] users = Reader.readUser(uSize, scanner);
+        Set<String> users = new HashSet<>();
+        for (int i = 0; i < uSize; i++) {
+            users.add(scanner.next());
+        }
         return new ProfileResponse(profilePic, phoneNumber, nric, postalCode, year, dateCreated, interests, notifications, events, users);
-    }
-
-    private static CalendarResponse newCalendarResponse(Scanner scanner) {
-        return null;
     }
 
     private static EventResponse newEventResponse(Scanner scanner) {
@@ -76,10 +78,8 @@ public class ResponseFactory {
     }
 
     private static NotificationResponse newNotificationResponse(Scanner scanner) {
-        int type = scanner.nextInt();
-        NotificationType notificationType = NotificationType.valueOf(type);
-        User guestUser = Reader.readSingleUser(scanner);
-        Event event = Reader.readSingleEvent(scanner);
-        return new NotificationResponse(notificationType, guestUser, event);
+        int size = scanner.nextInt();
+        Notification[] notifications = Reader.readNotification(size, scanner);
+        return new NotificationResponse(notifications);
     }
 }

@@ -6,6 +6,8 @@ import com.mrawesome.twocents.data.Notification;
 import com.mrawesome.twocents.data.User;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by mrawesome on 14/5/17.
@@ -20,10 +22,12 @@ public class ProfileResponse implements Response {
     private Date dateCreated;
     private Interest[] interests;
     private Notification[] notifications;
-    private Event[] eventRegistered;
-    private User[] userBookmarked;
+    private Set<String> eventRegistered;
+    private Set<String> userBookmarked;
+    private Set<String> users = new HashSet<>();
+    private Set<String> events = new HashSet<>();
 
-    ProfileResponse(String profilePic, String phoneNumber, String nric, String postalCode, int year, long dateCreated, Interest[] interests, Notification[] notifications, Event[] events, User[] users) {
+    ProfileResponse(String profilePic, String phoneNumber, String nric, String postalCode, int year, long dateCreated, Interest[] interests, Notification[] notifications, Set<String> eventRegistered, Set<String> userBookmarked) {
         this.profilePic = profilePic;
         this.phoneNumber = phoneNumber;
         this.nric = nric;
@@ -32,12 +36,24 @@ public class ProfileResponse implements Response {
         this.dateCreated = new Date(dateCreated);
         this.interests = interests;
         this.notifications = notifications;
-        this.eventRegistered = events;
-        this.userBookmarked = users;
+        this.eventRegistered = eventRegistered;
+        events.addAll(eventRegistered);
+        this.userBookmarked = userBookmarked;
+        users.addAll(userBookmarked);
     }
 
     @Override
     public ResponseType type() {
         return ResponseType.Profile;
+    }
+
+    @Override
+    public Set<String> getUserIds() {
+        return null;
+    }
+
+    @Override
+    public Set<String> getEventIds() {
+        return null;
     }
 }

@@ -27,7 +27,7 @@ public class Profile {
     private Set<Interest> interests;
     private List<Notification> notifications;
     private Map<Interest, Integer> attendances;
-    private List<Event> events;
+    private Set<Event> events;
     private Set<User> users;
 
     private static Profile instances = null;
@@ -76,5 +76,23 @@ public class Profile {
         return this.dateCreated;
     }
 
+    public Set<Interest> getInterests() {
+        return this.interests;
+    }
 
+    public List<Notification> getNotifications() {
+        return this.notifications;
+    }
+
+    public Map<Interest, Integer> getAttendances() {
+        return this.attendances;
+    }
+
+    public Set<Event> getEvents() {
+        return this.events;
+    }
+
+    public Set<User> getUsers() {
+        return this.users;
+    }
 }
