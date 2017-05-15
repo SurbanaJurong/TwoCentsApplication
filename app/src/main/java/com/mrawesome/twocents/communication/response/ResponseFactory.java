@@ -4,7 +4,7 @@ import com.mrawesome.twocents.data.Event;
 import com.mrawesome.twocents.data.User;
 import com.mrawesome.twocents.data.Interest;
 import com.mrawesome.twocents.data.Notification;
-import com.mrawesome.twocents.util.Reader;
+import com.mrawesome.twocents.util.StreamReader;
 
 import java.io.InputStream;
 import java.util.HashSet;
@@ -48,9 +48,9 @@ public class ResponseFactory {
         int year = scanner.nextInt();
         long dateCreated = scanner.nextLong();
         int iSize = scanner.nextInt();
-        Interest[] interests = Reader.readInterest(iSize, scanner);
+        Interest[] interests = StreamReader.readInterest(iSize, scanner);
         int nSize = scanner.nextInt();
-        Notification[] notifications = Reader.readNotification(nSize, scanner);
+        Notification[] notifications = StreamReader.readNotification(nSize, scanner);
         int eSize = scanner.nextInt();
         Set<String> events = new HashSet<>();
         for (int i = 0; i < eSize; i++) {
@@ -66,20 +66,20 @@ public class ResponseFactory {
 
     private static EventResponse newEventResponse(Scanner scanner) {
         int size = scanner.nextInt();
-        Event[] events = Reader.readEvent(size, scanner);
+        Event[] events = StreamReader.readEvent(size, scanner);
         return new EventResponse(events);
 
     }
 
     private static UserResponse newUserResponse(Scanner scanner) {
         int size = scanner.nextInt();
-        User[] users = Reader.readUser(size, scanner);
+        User[] users = StreamReader.readUser(size, scanner);
         return new UserResponse(users);
     }
 
     private static NotificationResponse newNotificationResponse(Scanner scanner) {
         int size = scanner.nextInt();
-        Notification[] notifications = Reader.readNotification(size, scanner);
+        Notification[] notifications = StreamReader.readNotification(size, scanner);
         return new NotificationResponse(notifications);
     }
 }

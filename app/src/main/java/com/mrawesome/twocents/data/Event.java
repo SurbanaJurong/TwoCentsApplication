@@ -1,6 +1,6 @@
 package com.mrawesome.twocents.data;
 
-import com.mrawesome.twocents.util.Reader;
+import com.mrawesome.twocents.util.StreamReader;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -83,7 +83,7 @@ public class Event {
         this.eventId = eventId;
         this.host = host;
         this.profilePic = profilePic;
-        Reader.expand(description);
+        StreamReader.expand(description);
         this.description = description;
         this.isRecurring = isRecurring;
         this.dateCreated = Calendar.getInstance();

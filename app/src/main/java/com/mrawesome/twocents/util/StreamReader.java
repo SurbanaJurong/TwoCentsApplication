@@ -17,9 +17,11 @@ import java.util.Set;
  * Created by mrawesome on 14/5/17.
  */
 
-public class Reader {
+public class StreamReader {
 
-    private Reader() {};
+    public static String DELIM = "|";
+
+    private StreamReader() {};
 
     public static User readSingleUser(Scanner scanner) {
         User[] arr = readUser(1, scanner);
@@ -113,11 +115,11 @@ public class Reader {
     }
 
     public static void collapse(String str) {
-        str.replace(" ", "|");
+        str.replace(" ", DELIM);
     }
 
     public static void expand(String str) {
-        str.replace("|", " ");
+        str.replace(DELIM, " ");
     }
 
 }

@@ -2,7 +2,7 @@ package com.mrawesome.twocents.communication.request;
 
 import com.mrawesome.twocents.Profile;
 import com.mrawesome.twocents.data.Event;
-import com.mrawesome.twocents.util.Reader;
+import com.mrawesome.twocents.util.StreamReader;
 
 import java.util.Calendar;
 
@@ -23,7 +23,7 @@ public class EventCreateRequest implements Request {
 
     EventCreateRequest(String description, Event.EventMode isRecurring, String venueId, int minCapacity, int maxCapacity, long startTime, int duration) {
         this.host = Profile.getInstance().getUsername();
-        Reader.collapse(description);
+        StreamReader.collapse(description);
         this.description = description;
         this.isRecurring = isRecurring;
         this.venueId = venueId;

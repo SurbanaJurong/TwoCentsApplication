@@ -16,9 +16,9 @@ import java.util.Set;
  * Created by mrawesome on 14/5/17.
  */
 
-public class Writer {
+public class BundleWriter {
 
-    private Writer() {};
+    private BundleWriter() {};
 
     public static Bundle packAttendanceMark(String eventId) {
         Bundle bundle = new Bundle();
