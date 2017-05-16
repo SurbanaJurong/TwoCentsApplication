@@ -30,13 +30,17 @@ public class Profile {
     private Set<Event> events;
     private Set<User> users;
 
-    private static Profile instances = null;
+    private static volatile Profile instance = null;
 
     public static Profile getInstance() {
-        if (instances == null) {
-            instances = new Profile();
+        if (instance == null) {
+            synchronized (Profile.class) {
+                if (instance == null) {
+                    instance = new Profile();
+                }
+            }
         }
-        return instances;
+        return instance;
     }
 
     private Profile() {
