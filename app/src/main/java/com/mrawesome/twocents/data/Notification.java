@@ -2,12 +2,15 @@ package com.mrawesome.twocents.data;
 
 import com.mrawesome.twocents.communication.response.NotificationType;
 
+import io.realm.RealmObject;
+
 /**
  * Created by mrawesome on 14/5/17.
  */
 
-public class Notification {
+public class Notification extends RealmObject {
 
+    private int seqNum;
     private NotificationType notificationType;
     private String sender;
     private String eventId;

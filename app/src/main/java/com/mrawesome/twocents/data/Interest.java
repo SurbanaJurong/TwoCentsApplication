@@ -1,11 +1,15 @@
 package com.mrawesome.twocents.data;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
 /**
  * Created by mrawesome on 14/5/17.
  */
 
-public class Interest implements Flattenable {
+public class Interest extends RealmObject implements Flattenable {
 
+    @PrimaryKey
     private String subject;
 
     public Interest(String subject) {

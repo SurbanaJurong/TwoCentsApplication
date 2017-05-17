@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mrawesome.twocents.ui.EventTestActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="324dp"
+        android:layout_height="95dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:onClick="testAttendanceMark"
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Attendance Mark"
+        android:textSize="15px"
+        app:layout_constraintRight_toLeftOf="@+id/button8"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button6" />
+
+    <Button
+        android:onClick="testCalendarRefresh"
+        android:textSize="15px"
+        android:id="@+id/button6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calendar Request"
+        app:layout_constraintRight_toLeftOf="@+id/button10"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button12"
+        app:layout_constraintTop_toBottomOf="@+id/button5" />
+
+    <Button
+        android:onClick="testCommentPost"
+        android:textSize="15px"
+        android:id="@+id/button7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comment Post"
+        app:layout_constraintRight_toLeftOf="@+id/button13"
+        app:layout_constraintLeft_toRightOf="@+id/button12"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/button10" />
+
+    <Button
+        android:onClick="testEventCreate"
+        android:textSize="15px"
+        android:id="@+id/button13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Event Create"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/button7"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/button11" />
+
+    <Button
+        android:onClick="testEventEdit"
+        android:textSize="15px"
+        android:id="@+id/button12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Event Edit"
+        app:layout_constraintRight_toLeftOf="@+id/button7"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/button6" />
+
+    <Button
+        android:onClick="testEventRegister"
+        android:textSize="15px"
+        android:id="@+id/button8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Event Register"
+        app:layout_constraintRight_toLeftOf="@+id/button9"
+        app:layout_constraintLeft_toRightOf="@+id/button5"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button10" />
+
+    <Button
+        android:onClick="testEventTimeEdit"
+        android:textSize="15px"
+        android:id="@+id/button9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Event Time Edit"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/button8"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button11" />
+
+    <Button
+        android:onClick="testEventVenueEdit"
+        android:textSize="15px"
+        android:id="@+id/button10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Event Venue Edit"
+        app:layout_constraintRight_toLeftOf="@+id/button11"
+        app:layout_constraintLeft_toRightOf="@+id/button6"
+        app:layout_constraintBottom_toTopOf="@+id/button7"
+        app:layout_constraintTop_toBottomOf="@+id/button8" />
+
+    <Button
+        android:onClick="testSwitchRecur"
+        android:textSize="15px"
+        android:id="@+id/button11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Switch Recur"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/button10"
+        app:layout_constraintBottom_toTopOf="@+id/button13"
+        app:layout_constraintTop_toBottomOf="@+id/button9" />
+
+</android.support.constraint.ConstraintLayout>

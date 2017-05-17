@@ -5,6 +5,6 @@ package com.mrawesome.twocents.data;
  */
 
 public interface Flattenable {
-    String DELIM = "|";
+    String DELIM = " ";
     StringBuilder flatten();
 }

@@ -41,6 +41,7 @@ public class ResponseFactory {
     }
 
     private static ProfileResponse newProfileResponse(Scanner scanner) {
+        String username = scanner.next();
         String profilePic = scanner.next();
         String phoneNumber = scanner.next();
         String nric = scanner.next();
@@ -61,7 +62,7 @@ public class ResponseFactory {
         for (int i = 0; i < uSize; i++) {
             users.add(scanner.next());
         }
-        return new ProfileResponse(profilePic, phoneNumber, nric, postalCode, year, dateCreated, interests, notifications, events, users);
+        return new ProfileResponse(username, profilePic, phoneNumber, nric, postalCode, year, dateCreated, interests, notifications, events, users);
     }
 
     private static EventResponse newEventResponse(Scanner scanner) {

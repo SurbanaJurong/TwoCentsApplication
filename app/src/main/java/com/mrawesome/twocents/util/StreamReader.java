@@ -58,6 +58,8 @@ public class StreamReader {
         Event[] arr = new Event[size];
         for (int i = 0; i < size; i++) {
             String eventId = scanner.next();
+            String eventName = scanner.next();
+            String subject = scanner.next();
             String host = scanner.next();
             String profilePic = scanner.next();
             String description = scanner.next();
@@ -89,7 +91,7 @@ public class StreamReader {
             int venueStatus = scanner.nextInt();
             long startTime = scanner.nextLong();
             int duration = scanner.nextInt();
-            arr[i] = new Event(eventId, host, profilePic, description, Event.EventMode.valueOf(isRecurring), dateCreated, venueId, minCapacity, maxCapacity, userRegistered, participants, chat, Event.VenueStatus.valueOf(venueStatus), startTime, duration);
+            arr[i] = new Event(eventId, eventName, subject, host, profilePic, description, Event.EventMode.valueOf(isRecurring), dateCreated, venueId, minCapacity, maxCapacity, userRegistered, participants, chat, Event.VenueStatus.valueOf(venueStatus), startTime, duration);
         }
         return arr;
     }

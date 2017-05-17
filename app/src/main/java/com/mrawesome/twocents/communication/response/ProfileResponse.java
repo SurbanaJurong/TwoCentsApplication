@@ -14,6 +14,7 @@ import java.util.Set;
  */
 
 public class ProfileResponse implements Response {
+    private String username;
     private String profilePic;
     private String phoneNumber;
     private String nric;
@@ -27,7 +28,8 @@ public class ProfileResponse implements Response {
     private Set<String> users = new HashSet<>();
     private Set<String> events = new HashSet<>();
 
-    ProfileResponse(String profilePic, String phoneNumber, String nric, String postalCode, int year, long dateCreated, Interest[] interests, Notification[] notifications, Set<String> eventRegistered, Set<String> userBookmarked) {
+    ProfileResponse(String username, String profilePic, String phoneNumber, String nric, String postalCode, int year, long dateCreated, Interest[] interests, Notification[] notifications, Set<String> eventRegistered, Set<String> userBookmarked) {
+        this.username = username;
         this.profilePic = profilePic;
         this.phoneNumber = phoneNumber;
         this.nric = nric;

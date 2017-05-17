@@ -2,12 +2,15 @@ package com.mrawesome.twocents.data;
 
 import com.mrawesome.twocents.util.StreamReader;
 
+import io.realm.RealmObject;
+
 /**
  * Created by mrawesome on 14/5/17.
  */
 
-public class Comment implements Flattenable {
+public class Comment extends RealmObject implements Flattenable {
 
+    private int seqNum;
     private String sender;
     private String comment;
 

@@ -1,11 +1,15 @@
 package com.mrawesome.twocents.data;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
 /**
  * Created by mrawesome on 14/5/17.
  */
 
-public class Venue {
+public class Venue extends RealmObject {
 
+    @PrimaryKey
     private String venueId;
     private String venueName;
     private Interest category;

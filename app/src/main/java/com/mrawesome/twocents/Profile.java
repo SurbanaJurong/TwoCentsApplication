@@ -11,12 +11,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
 /**
  * Created by mrawesome on 14/5/17.
  */
 
-public class Profile {
+public class Profile extends RealmObject {
 
+    @PrimaryKey
     private String username;
     private String profilePic;
     private String phoneNumber;
@@ -98,5 +102,57 @@ public class Profile {
 
     public Set<User> getUsers() {
         return this.users;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setNric(String nric) {
+        this.nric = nric;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public void setInterests(Set<Interest> interests) {
+        this.interests = interests;
+    }
+
+    public void setNotifications(List<Notification> notifications) {
+        this.notifications = notifications;
+    }
+
+    public void setAttendances(Map<Interest, Integer> attendances) {
+        this.attendances = attendances;
+    }
+
+    public void setEvents(Set<Event> events) {
+        this.events = events;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
+    public static void setInstance(Profile instance) {
+        Profile.instance = instance;
     }
 }
