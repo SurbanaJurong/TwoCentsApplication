@@ -1,13 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TwoCentsDB" Class="LocalDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=localhost\SQLEXPRESS;Initial Catalog=TwoCentsDB;Integrated Security=True;Pooling=False" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="TwoCentsDBConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Venue" Member="Venues">
-    <Type Name="Venue">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="InterestId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Location" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Comment" Member="Comments">
     <Type Name="Comment">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -103,6 +95,14 @@
       <Column Name="SenderId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ReceiverId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Event" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Venue" Member="Venues">
+    <Type Name="Venue">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="InterestId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>
