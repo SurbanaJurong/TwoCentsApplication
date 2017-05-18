@@ -12,7 +12,7 @@ import java.util.Set;
  * Created by mrawesome on 14/5/17.
  */
 
-public class InterestEditRequest implements Request {
+public class InterestEditRequest extends Request {
 
     private String username;
     private Set<String> interests = new HashSet<>();
@@ -29,6 +29,8 @@ public class InterestEditRequest implements Request {
 
     @Override
     public String getRequestParams() {
-        return null;
+        append(RequestFactory.p_username, username);
+        append(RequestFactory.p_interests, interests);
+        return stringBuilder.toString();
     }
 }

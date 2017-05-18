@@ -26,10 +26,11 @@ public class BundleWriter {
         return bundle;
     }
 
-    public static Bundle packEventCreate(String description, Event.EventMode isRecurring, String venueId, int minCapacity, int maxCapacity, Calendar startTime, int duration) {
+    public static Bundle packEventCreate(String eventName, String category, String description, String venueId, int minCapacity, int maxCapacity, Calendar startTime, int duration) {
         Bundle bundle = new Bundle();
+        bundle.putString(RequestFactory.e_eventName, eventName);
+        bundle.putString(RequestFactory.e_category, category);
         bundle.putString(RequestFactory.e_description, description);
-        bundle.putInt(RequestFactory.e_isRecurring, isRecurring.getCode());
         bundle.putString(RequestFactory.e_venueId, venueId);
         bundle.putInt(RequestFactory.e_minCapacity, minCapacity);
         bundle.putInt(RequestFactory.e_maxCapacity, maxCapacity);
@@ -42,7 +43,7 @@ public class BundleWriter {
         Bundle bundle = new Bundle();
         bundle.putString(RequestFactory.e_eventId, eventId);
         bundle.putString(RequestFactory.e_description, description);
-        bundle.putString(RequestFactory.e_profilePic, profilePic);
+        bundle.putString(RequestFactory.p_profilePic, profilePic);
         bundle.putInt(RequestFactory.e_minCapacity, minCapacity);
         bundle.putInt(RequestFactory.e_maxCapacity, maxCapacity);
         return bundle;

@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import io.realm.Realm;
 import io.realm.RealmObject;
@@ -88,6 +89,7 @@ public class Event extends RealmObject {
 
     public Event(String eventId, String eventName, String category, String host, String profilePic, String description, EventMode isRecurring, long dateCreated, String venueId, int minCapacity, int maxCapacity, Set<String> userRegistered, Set<String> participants, List<Comment> chat, VenueStatus venueStatus, long startTime, int duration) {
         this.eventId = eventId;
+        StreamReader.expand(eventName);
         this.eventName = eventName;
         this.category = new Interest(category);
         this.host = host;

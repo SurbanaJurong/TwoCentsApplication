@@ -1,12 +1,14 @@
 package com.mrawesome.twocents.communication.request;
 
+import android.graphics.RectF;
+
 import com.mrawesome.twocents.Profile;
 
 /**
  * Created by mrawesome on 14/5/17.
  */
 
-public class AttendanceMarkRequest implements Request {
+public class AttendanceMarkRequest extends Request {
 
     private String username;
     private String eventId;
@@ -23,6 +25,8 @@ public class AttendanceMarkRequest implements Request {
 
     @Override
     public String getRequestParams() {
-        return null;
+        append(RequestFactory.p_username, username);
+        append(RequestFactory.e_eventId, eventId);
+        return stringBuilder.toString();
     }
 }

@@ -11,7 +11,7 @@ import java.util.List;
  * Created by mrawesome on 14/5/17.
  */
 
-public class ProfileEditRequest implements Request {
+public class ProfileEditRequest extends Request {
 
     private String username;
     private String profilePic = null;
@@ -41,6 +41,10 @@ public class ProfileEditRequest implements Request {
 
     @Override
     public String getRequestParams() {
-        return null;
+        append(RequestFactory.p_username, username);
+        append(RequestFactory.p_profilePic, profilePic);
+        append(RequestFactory.p_phoneNumber, phoneNumber);
+        append(RequestFactory.p_postalCode, postalCode);
+        return stringBuilder.toString();
     }
 }

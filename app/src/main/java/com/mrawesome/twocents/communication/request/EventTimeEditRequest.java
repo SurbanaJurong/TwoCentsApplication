@@ -6,7 +6,7 @@ import java.util.Calendar;
  * Created by mrawesome on 14/5/17.
  */
 
-public class EventTimeEditRequest implements Request {
+public class EventTimeEditRequest extends Request {
 
     private String eventId;
     private Long startTime = null;
@@ -31,6 +31,9 @@ public class EventTimeEditRequest implements Request {
 
     @Override
     public String getRequestParams() {
-        return null;
+        append(RequestFactory.e_eventId, eventId);
+        append(RequestFactory.e_startTime, startTime);
+        append(RequestFactory.e_duration, duration);
+        return stringBuilder.toString();
     }
 }

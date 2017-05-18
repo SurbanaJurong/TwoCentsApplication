@@ -1,10 +1,12 @@
 package com.mrawesome.twocents.communication.request;
 
+import com.mrawesome.twocents.util.StreamReader;
+
 /**
  * Created by mrawesome on 14/5/17.
  */
 
-public class EventEditRequest implements Request {
+public class EventEditRequest extends Request {
 
     private String eventId;
     private String profilePic = null;
@@ -21,6 +23,7 @@ public class EventEditRequest implements Request {
     }
 
     void setDescription(String description) {
+        StreamReader.collapse(description);
         this.description = description;
     }
 
@@ -39,6 +42,11 @@ public class EventEditRequest implements Request {
 
     @Override
     public String getRequestParams() {
-        return null;
+        append(RequestFactory.e_eventId, eventId);
+        append(RequestFactory.p_profilePic, profilePic);
+        append(RequestFactory.e_description, description);
+        append(RequestFactory.e_minCapacity, minCapacity);
+        append(RequestFactory.e_maxCapacity, maxCapacity);
+        return stringBuilder.toString();
     }
 }

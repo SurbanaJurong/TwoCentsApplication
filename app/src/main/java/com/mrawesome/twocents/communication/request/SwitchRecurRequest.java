@@ -6,7 +6,7 @@ import com.mrawesome.twocents.data.Event;
  * Created by mrawesome on 14/5/17.
  */
 
-public class SwitchRecurRequest implements Request {
+public class SwitchRecurRequest extends Request {
 
     private String eventId;
     private Event.EventMode mode;
@@ -23,6 +23,8 @@ public class SwitchRecurRequest implements Request {
 
     @Override
     public String getRequestParams() {
-        return null;
+        append(RequestFactory.e_eventId, eventId);
+        append(RequestFactory.e_isRecurring, mode.getCode());
+        return stringBuilder.toString();
     }
 }

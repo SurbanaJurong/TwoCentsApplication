@@ -4,7 +4,7 @@ package com.mrawesome.twocents.communication.request;
  * Created by mrawesome on 14/5/17.
  */
 
-public class ProfileCreateRequest implements Request {
+public class ProfileCreateRequest extends Request {
 
     private String username;
     private String phoneNumber;
@@ -27,6 +27,11 @@ public class ProfileCreateRequest implements Request {
 
     @Override
     public String getRequestParams() {
-        return null;
+        append(RequestFactory.p_username, username);
+        append(RequestFactory.p_phoneNumber, phoneNumber);
+        append(RequestFactory.p_nric, nric);
+        append(RequestFactory.p_postalCode, postalCode);
+        append(RequestFactory.p_year, year);
+        return stringBuilder.toString();
     }
 }

@@ -25,7 +25,8 @@ public class RequestFactory {
     public static final String p_userBookmark = "userBookmark";
 
     public static final String e_eventId = "eventId";
-    public static final String e_profilePic = "profilePic";
+    public static final String e_eventName = "eventName";
+    public static final String e_category = "category";
     public static final String e_description = "description";
     public static final String e_isRecurring = "isRecurring";
     public static final String e_venueId = "venueId";
@@ -80,6 +81,8 @@ public class RequestFactory {
     }
 
     private static EventCreateRequest newEventCreateRequest(Bundle payload) {
+        String eventName = payload.getString(e_eventName);
+        String category = payload.getString(e_category);
         String description = payload.getString(e_description);
         int isRecurring = payload.getInt(e_isRecurring);
         String venueId = payload.getString(e_venueId);
@@ -87,14 +90,14 @@ public class RequestFactory {
         int maxCapacity = payload.getInt(e_maxCapacity);
         long startTime = payload.getLong(e_startTime);
         int duration = payload.getInt(e_duration);
-        return new EventCreateRequest(description, Event.EventMode.valueOf(isRecurring), venueId, minCapacity, maxCapacity, startTime, duration);
+        return new EventCreateRequest(eventName, category, description, venueId, minCapacity, maxCapacity, startTime, duration);
     }
 
     private static EventEditRequest newEventEditRequest(Bundle payload) {
         String eventId = payload.getString(e_eventId);
         EventEditRequest request = new EventEditRequest(eventId);
         request.setDescription(payload.getString(e_description));
-        request.setProfilePic(payload.getString(e_profilePic));
+        request.setProfilePic(payload.getString(p_profilePic));
         request.setMinCapacity(payload.getInt(e_minCapacity));
         request.setMaxCapacity(payload.getInt(e_maxCapacity));
         return request;

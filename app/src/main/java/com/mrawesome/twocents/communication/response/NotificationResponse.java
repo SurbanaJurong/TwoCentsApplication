@@ -11,7 +11,7 @@ import java.util.Set;
  * Created by mrawesome on 14/5/17.
  */
 
-public class NotificationResponse implements Response {
+public class NotificationResponse extends Response {
 
     private Notification[] notifications;
     private Set<String> users = new HashSet<>();

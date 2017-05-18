@@ -8,7 +8,7 @@ import com.mrawesome.twocents.communication.request.RequestType;
  * Created by mrawesome on 14/5/17.
  */
 
-public class EventRegisterRequest implements Request {
+public class EventRegisterRequest extends Request {
 
     private String username;
     private String eventId;
@@ -25,6 +25,8 @@ public class EventRegisterRequest implements Request {
 
     @Override
     public String getRequestParams() {
-        return null;
+        append(RequestFactory.p_username, username);
+        append(RequestFactory.e_eventId, eventId);
+        return stringBuilder.toString();
     }
 }

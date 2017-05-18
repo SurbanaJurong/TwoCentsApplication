@@ -8,7 +8,7 @@ import com.mrawesome.twocents.communication.request.RequestType;
  * Created by mrawesome on 14/5/17.
  */
 
-public class UserBookmarkRequest implements Request {
+public class UserBookmarkRequest extends Request {
 
     private String username;
     private String targetUsername;
@@ -25,6 +25,8 @@ public class UserBookmarkRequest implements Request {
 
     @Override
     public String getRequestParams() {
-        return null;
+        append(RequestFactory.p_username, username);
+        append(RequestFactory.p_username, targetUsername);
+        return stringBuilder.toString();
     }
 }

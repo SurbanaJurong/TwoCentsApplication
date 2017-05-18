@@ -23,24 +23,29 @@ public class ResponseFactory {
     public static Response newResponse(InputStream inputStream) {
         Scanner scanner = new Scanner(inputStream);
         int type = scanner.nextInt();
+        String payload = scanner.nextLine();
         ResponseType responseType = ResponseType.valueOf(type);
+        Response response;
         try {
             switch (responseType) {
                 case Profile:
-                    return newProfileResponse(scanner);
+                    response = newProfileResponse(payload);
                 case Event:
-                    return newEventResponse(scanner);
+                    response = newEventResponse(payload);
                 case User:
-                    return newUserResponse(scanner);
+                    response = newUserResponse(payload);
                 default:
-                    return newNotificationResponse(scanner);
+                    response = newNotificationResponse(payload);
             }
+            response.payload = payload;
+            return response;
         } catch (InputMismatchException e) {
             return new NullResponse();
         }
     }
 
-    private static ProfileResponse newProfileResponse(Scanner scanner) {
+    private static ProfileResponse newProfileResponse(String payload) {
+        Scanner scanner = new Scanner(payload);
         String username = scanner.next();
         String profilePic = scanner.next();
         String phoneNumber = scanner.next();
@@ -65,20 +70,23 @@ public class ResponseFactory {
         return new ProfileResponse(username, profilePic, phoneNumber, nric, postalCode, year, dateCreated, interests, notifications, events, users);
     }
 
-    private static EventResponse newEventResponse(Scanner scanner) {
+    private static EventResponse newEventResponse(String payload) {
+        Scanner scanner = new Scanner(payload);
         int size = scanner.nextInt();
         Event[] events = StreamReader.readEvent(size, scanner);
         return new EventResponse(events);
 
     }
 
-    private static UserResponse newUserResponse(Scanner scanner) {
+    private static UserResponse newUserResponse(String payload) {
+        Scanner scanner = new Scanner(payload);
         int size = scanner.nextInt();
         User[] users = StreamReader.readUser(size, scanner);
         return new UserResponse(users);
     }
 
-    private static NotificationResponse newNotificationResponse(Scanner scanner) {
+    private static NotificationResponse newNotificationResponse(String payload) {
+        Scanner scanner = new Scanner(payload);
         int size = scanner.nextInt();
         Notification[] notifications = StreamReader.readNotification(size, scanner);
         return new NotificationResponse(notifications);

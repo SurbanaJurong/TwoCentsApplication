@@ -7,7 +7,7 @@ import com.mrawesome.twocents.util.StreamReader;
  * Created by mrawesome on 14/5/17.
  */
 
-public class CommentPostRequest implements Request {
+public class CommentPostRequest extends Request {
 
     private String username;
     private String eventId;
@@ -27,6 +27,9 @@ public class CommentPostRequest implements Request {
 
     @Override
     public String getRequestParams() {
-        return null;
+        append(RequestFactory.p_username, username);
+        append(RequestFactory.e_eventId, eventId);
+        append(RequestFactory.e_comment, comment);
+        return stringBuilder.toString();
     }
 }

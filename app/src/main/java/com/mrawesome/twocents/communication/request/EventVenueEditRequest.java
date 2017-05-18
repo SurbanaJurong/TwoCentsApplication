@@ -4,7 +4,7 @@ package com.mrawesome.twocents.communication.request;
  * Created by mrawesome on 14/5/17.
  */
 
-public class EventVenueEditRequest implements Request {
+public class EventVenueEditRequest extends Request {
 
     private String eventId;
     private String venueId;
@@ -21,6 +21,8 @@ public class EventVenueEditRequest implements Request {
 
     @Override
     public String getRequestParams() {
-        return null;
+        append(RequestFactory.e_eventId, eventId);
+        append(RequestFactory.e_venueId, venueId);
+        return stringBuilder.toString();
     }
 }

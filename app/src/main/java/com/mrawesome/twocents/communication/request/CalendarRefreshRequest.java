@@ -6,7 +6,7 @@ import com.mrawesome.twocents.Profile;
  * Created by mrawesome on 14/5/17.
  */
 
-public class CalendarRefreshRequest implements Request {
+public class CalendarRefreshRequest extends Request {
 
     private String username;
 
@@ -21,6 +21,7 @@ public class CalendarRefreshRequest implements Request {
 
     @Override
     public String getRequestParams() {
-        return null;
+        append(RequestFactory.p_username, username);
+        return stringBuilder.toString();
     }
 }

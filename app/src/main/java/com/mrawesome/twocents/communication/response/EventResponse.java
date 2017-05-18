@@ -9,7 +9,7 @@ import java.util.Set;
  * Created by mrawesome on 14/5/17.
  */
 
-public class EventResponse implements Response {
+public class EventResponse extends Response {
 
     private Event[] events;
     private Set<String> users = new HashSet<>();
