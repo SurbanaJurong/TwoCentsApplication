@@ -1,10 +1,6 @@
 package com.mrawesome.twocents.communication.request;
 
-import android.content.res.Resources;
 import android.os.Bundle;
-
-import com.mrawesome.twocents.R;
-import com.mrawesome.twocents.data.Event;
 
 import java.util.ArrayList;
 
@@ -147,7 +143,7 @@ public class RequestFactory {
     private static SwitchRecurRequest newSwitchRecurRequest(Bundle payload) {
         String eventId = payload.getString(e_eventId);
         int isRecurring = payload.getInt(e_isRecurring);
-        return new SwitchRecurRequest(eventId, Event.EventMode.valueOf(isRecurring));
+        return new SwitchRecurRequest(eventId, isRecurring);
     }
 
     private static UserBookmarkRequest newUserBookmarkRequest(Bundle payload) {

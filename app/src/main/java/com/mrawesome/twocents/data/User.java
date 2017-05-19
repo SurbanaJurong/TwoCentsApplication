@@ -14,6 +14,8 @@ public class User extends RealmObject {
     private String profilePic;
     private String phoneNumber;
 
+    public User() {};
+
     public User(String username, String profilePic, String phoneNumber) {
         this.username = username;
         this.profilePic = profilePic;

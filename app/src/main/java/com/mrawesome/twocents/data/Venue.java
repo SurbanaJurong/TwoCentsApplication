@@ -15,7 +15,9 @@ public class Venue extends RealmObject {
     private Interest category;
     private String postalCode;
 
-    Venue(String venueId, String venueName, Interest category, String postalCode) {
+    public Venue() {};
+
+    public Venue(String venueId, String venueName, Interest category, String postalCode) {
         this.venueId = venueId;
         this.venueName = venueName;
         this.category = category;

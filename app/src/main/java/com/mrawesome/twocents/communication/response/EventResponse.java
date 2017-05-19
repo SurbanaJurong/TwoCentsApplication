@@ -1,6 +1,7 @@
 package com.mrawesome.twocents.communication.response;
 
 import com.mrawesome.twocents.data.Event;
+import com.mrawesome.twocents.data.User;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,7 +13,7 @@ import java.util.Set;
 public class EventResponse extends Response {
 
     private Event[] events;
-    private Set<String> users = new HashSet<>();
+    private Set<User> users = new HashSet<>();
 
     EventResponse(Event[] events) {
         this.events = events;

@@ -1,6 +1,7 @@
 package com.mrawesome.twocents.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +26,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         responseView = (TextView) findViewById(R.id.textView2);
+        SharedPreferences preferences =  getSharedPreferences("my_preferences", MODE_PRIVATE);
+
+        if (!preferences.getBoolean("onboarding_complete",false)) {
+            Intent onboarding = new Intent(this, OnboardingActivity.class);
+            startActivity(onboarding);
+            finish();
+            return;
+        }
     }
 
     public void toProfileTest(View view) {

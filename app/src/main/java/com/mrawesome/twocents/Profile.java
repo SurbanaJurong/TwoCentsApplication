@@ -1,17 +1,23 @@
 package com.mrawesome.twocents;
 
+import com.mrawesome.twocents.data.Document;
 import com.mrawesome.twocents.data.Event;
 import com.mrawesome.twocents.data.Interest;
 import com.mrawesome.twocents.data.Notification;
 import com.mrawesome.twocents.data.User;
 
 import java.util.Calendar;
-import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import io.realm.Realm;
+import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
 import io.realm.annotations.PrimaryKey;
 
 /**
@@ -27,12 +33,12 @@ public class Profile extends RealmObject {
     private String nric;
     private String postalCode;
     private int year;
-    private Date dateCreated;
-    private Set<Interest> interests;
-    private List<Notification> notifications;
-    private Map<Interest, Integer> attendances;
-    private Set<Event> events;
-    private Set<User> users;
+    private long dateCreated;
+    private RealmList<Interest> interests;
+    private RealmList<Notification> notifications;
+    private RealmList<Document> attendances;
+    private RealmList<Event> events;
+    private RealmList<User> users;
 
     private static volatile Profile instance = null;
 
@@ -47,13 +53,9 @@ public class Profile extends RealmObject {
         return instance;
     }
 
-    private Profile() {
-        importProfileData();
+    public Profile() {
     }
 
-    private static void importProfileData() {
-
-    }
 
     public String getUsername() {
         return this.username;
@@ -80,28 +82,40 @@ public class Profile extends RealmObject {
         return currentYear - this.year;
     }
 
-    public Date getDateCreated() {
+    public long getDateCreated() {
         return this.dateCreated;
     }
 
     public Set<Interest> getInterests() {
-        return this.interests;
+        Set<Interest> interests = new HashSet<>();
+        interests.addAll(this.interests);
+        return interests;
     }
 
-    public List<Notification> getNotifications() {
-        return this.notifications;
+    public Set<Notification> getNotifications() {
+        Set<Notification> notifications = new HashSet<>();
+        notifications.addAll(this.notifications);
+        return notifications;
     }
 
     public Map<Interest, Integer> getAttendances() {
-        return this.attendances;
+        Map<Interest, Integer> attendances = new HashMap<>();
+        for (Document document : this.attendances) {
+            attendances.put(new Interest(document.key), document.value);
+        }
+        return attendances;
     }
 
     public Set<Event> getEvents() {
-        return this.events;
+        Set<Event> events = new HashSet<>();
+        events.addAll(this.events);
+        return events;
     }
 
     public Set<User> getUsers() {
-        return this.users;
+        Set<User> users = new HashSet<>();
+        users.addAll(this.users);
+        return users;
     }
 
     public void setUsername(String username) {
@@ -128,28 +142,46 @@ public class Profile extends RealmObject {
         this.year = year;
     }
 
-    public void setDateCreated(Date dateCreated) {
+    public void setDateCreated(long dateCreated) {
         this.dateCreated = dateCreated;
     }
 
-    public void setInterests(Set<Interest> interests) {
-        this.interests = interests;
+    public void addToInterests(Set<Interest> interests) {
+        this.interests.addAll(interests);
+    }
+
+    public void removeFromInterests(Set<Interest> interests) {
+        for (Interest interest : interests) {
+            if (this.interests.indexOf(interest) != -1) {
+                this.interests.remove(interest);
+            }
+        }
     }
 
     public void setNotifications(List<Notification> notifications) {
-        this.notifications = notifications;
+        this.notifications.addAll(notifications);
     }
 
-    public void setAttendances(Map<Interest, Integer> attendances) {
-        this.attendances = attendances;
+    public void incrementAttendances(Interest interest) {
+        RealmQuery<Document> query = Realm.getDefaultInstance().where(Document.class).contains("key", interest.getSubject());
+        Document document = query.findFirst();
+        document.value++;
     }
 
     public void setEvents(Set<Event> events) {
-        this.events = events;
+        for (Event event : events) {
+            if (this.events.indexOf(event) != -1) {
+                this.events.add(event);
+            }
+        }
     }
 
     public void setUsers(Set<User> users) {
-        this.users = users;
+        for (User user : users) {
+            if (this.users.indexOf(user) != -1) {
+                this.users.add(user);
+            }
+        }
     }
 
     public static void setInstance(Profile instance) {

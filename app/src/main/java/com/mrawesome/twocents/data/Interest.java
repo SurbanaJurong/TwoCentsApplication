@@ -12,6 +12,8 @@ public class Interest extends RealmObject implements Flattenable {
     @PrimaryKey
     private String subject;
 
+    public Interest() {};
+
     public Interest(String subject) {
         this.subject = subject;
     }

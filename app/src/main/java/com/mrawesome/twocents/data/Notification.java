@@ -11,17 +11,19 @@ import io.realm.RealmObject;
 public class Notification extends RealmObject {
 
     private int seqNum;
-    private NotificationType notificationType;
+    private int notificationType;
     private String sender;
     private String eventId;
 
+    public Notification() {};
+
     public Notification(NotificationType notificationType, String sender, String eventId) {
-        this.notificationType = notificationType;
+        this.notificationType = notificationType.getCode();
         this.sender = sender;
         this.eventId = eventId;
     }
 
-    public NotificationType getNotificationType() {
+    public int getNotificationType() {
         return this.notificationType;
     }
 

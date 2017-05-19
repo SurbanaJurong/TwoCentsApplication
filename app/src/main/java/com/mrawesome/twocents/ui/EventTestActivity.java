@@ -1,6 +1,5 @@
 package com.mrawesome.twocents.ui;
 
-import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,7 +7,6 @@ import android.widget.TextView;
 
 import com.mrawesome.twocents.R;
 import com.mrawesome.twocents.communication.CommModule;
-import com.mrawesome.twocents.communication.request.RequestFactory;
 import com.mrawesome.twocents.communication.request.RequestType;
 import com.mrawesome.twocents.communication.response.Response;
 import com.mrawesome.twocents.data.Event;
@@ -107,7 +105,7 @@ public class EventTestActivity extends AppCompatActivity {
     }
 
     public void testSwitchRecur(View view) {
-        Bundle payload = BundleWriter.packSwitchRecur("e123123", Event.EventMode.OneTime);
+        Bundle payload = BundleWriter.packSwitchRecur("e123123", Event.MODE_ONE_TIME);
         try {
             Response response = CommModule.sendRequest(RequestType.SwitchRecur, payload);
             responseView.setText(response.payload);

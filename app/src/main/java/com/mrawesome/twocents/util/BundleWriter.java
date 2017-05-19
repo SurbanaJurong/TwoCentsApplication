@@ -2,14 +2,10 @@ package com.mrawesome.twocents.util;
 
 import android.os.Bundle;
 import com.mrawesome.twocents.communication.request.RequestFactory;
-import com.mrawesome.twocents.data.Event;
 import com.mrawesome.twocents.data.Interest;
 
-import java.sql.Ref;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -98,7 +94,7 @@ public class BundleWriter {
         return bundle;
     }
 
-    public static Bundle packSwitchRecur(String eventId, Event.EventMode isRecurring) {
+    public static Bundle packSwitchRecur(String eventId, int isRecurring) {
         Bundle bundle = new Bundle();
         bundle.putString(RequestFactory.e_eventId, eventId);
         bundle.putInt(RequestFactory.e_isRecurring, isRecurring.getCode());

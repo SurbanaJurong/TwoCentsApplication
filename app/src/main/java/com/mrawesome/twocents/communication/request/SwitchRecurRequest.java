@@ -1,7 +1,5 @@
 package com.mrawesome.twocents.communication.request;
 
-import com.mrawesome.twocents.data.Event;
-
 /**
  * Created by mrawesome on 14/5/17.
  */
@@ -9,9 +7,9 @@ import com.mrawesome.twocents.data.Event;
 public class SwitchRecurRequest extends Request {
 
     private String eventId;
-    private Event.EventMode mode;
+    private int mode;
 
-    SwitchRecurRequest(String eventId, Event.EventMode mode) {
+    SwitchRecurRequest(String eventId, int mode) {
         this.eventId = eventId;
         this.mode = mode;
     }
@@ -24,7 +22,7 @@ public class SwitchRecurRequest extends Request {
     @Override
     public String getRequestParams() {
         append(RequestFactory.e_eventId, eventId);
-        append(RequestFactory.e_isRecurring, mode.getCode());
+        append(RequestFactory.e_isRecurring, mode);
         return stringBuilder.toString();
     }
 }

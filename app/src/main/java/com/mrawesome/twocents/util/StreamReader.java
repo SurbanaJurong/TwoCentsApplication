@@ -91,7 +91,7 @@ public class StreamReader {
             int venueStatus = scanner.nextInt();
             long startTime = scanner.nextLong();
             int duration = scanner.nextInt();
-            arr[i] = new Event(eventId, eventName, subject, host, profilePic, description, Event.EventMode.valueOf(isRecurring), dateCreated, venueId, minCapacity, maxCapacity, userRegistered, participants, chat, Event.VenueStatus.valueOf(venueStatus), startTime, duration);
+            arr[i] = new Event(eventId, eventName, subject, host, profilePic, description, isRecurring, dateCreated, venueId, minCapacity, maxCapacity, userRegistered, participants, chat, venueStatus, startTime, duration);
         }
         return arr;
     }

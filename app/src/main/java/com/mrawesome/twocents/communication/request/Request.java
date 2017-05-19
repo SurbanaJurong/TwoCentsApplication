@@ -9,7 +9,7 @@ public abstract class Request {
     String QUESTION = "?";
     String EQUAL = "=";
     abstract RequestType type();
-    abstract String getRequestParams();
+    public abstract String getRequestParams();
 
     protected StringBuilder stringBuilder = new StringBuilder().append(SLASH).append(type().getCode()).append(SLASH);
 

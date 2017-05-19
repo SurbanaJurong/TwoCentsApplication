@@ -10,9 +10,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Stream;
 
 import io.realm.Realm;
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -25,48 +25,12 @@ public class Event extends RealmObject {
      * Created by mrawesome on 14/5/17.
      */
 
-    public enum EventMode {
-        Recurring(0), OneTime(1);
+    public static int MODE_RECURRING = 0;
+    public static int MODE_ONE_TIME = 1;
 
-        private int code;
-
-        EventMode(int code) {
-            this.code = code;
-        }
-
-        public int getCode() {
-            return this.code;
-        }
-
-        public static EventMode valueOf(int code) {
-            return code == 0 ? Recurring : OneTime;
-        }
-    }
-
-    public enum VenueStatus {
-        Cancelled(0), Pending(1), Booked(2);
-
-        private int code;
-        private static Map<Integer, VenueStatus> index = new HashMap<>();
-
-        VenueStatus(int code) {
-            this.code = code;
-        }
-
-        static {
-            for (VenueStatus v : EnumSet.allOf(VenueStatus.class)) {
-                index.put(v.code, v);
-            }
-        }
-
-        public int getCode() {
-            return this.code;
-        }
-
-        public static VenueStatus valueOf(int code) {
-            return index.get(code);
-        }
-    }
+    public static int STATUS_CANCELLED = 0;
+    public static int STATUS_PENDING = 1;
+    public static int STATUS_BOOKDED = 2;
 
     @PrimaryKey
     private String eventId;
@@ -75,19 +39,22 @@ public class Event extends RealmObject {
     private String host;
     private String profilePic;
     private String description;
-    private EventMode isRecurring;
-    private Calendar dateCreated;
+    private int isRecurring;
+    private long dateCreated;
     private String venueId;
     private int minCapacity;
     private int maxCapacity;
-    private Set<String> userRegistered = new HashSet<>();
-    private Set<String> participants = new HashSet<>();
-    private List<Comment> chat = new ArrayList<>();
-    private VenueStatus venueStatus;
-    private Calendar startTime;
+    private RealmList<User> userRegistered = new RealmList<>();
+    private RealmList<User> participants = new RealmList<>();
+    private RealmList<Comment> chat = new RealmList<>();
+    private int venueStatus;
+    private long startTime;
     private int duration;
 
-    public Event(String eventId, String eventName, String category, String host, String profilePic, String description, EventMode isRecurring, long dateCreated, String venueId, int minCapacity, int maxCapacity, Set<String> userRegistered, Set<String> participants, List<Comment> chat, VenueStatus venueStatus, long startTime, int duration) {
+    public Event() {
+    };
+
+    public Event(String eventId, String eventName, String category, String host, String profilePic, String description, int isRecurring, long dateCreated, String venueId, int minCapacity, int maxCapacity, Set<User> userRegistered, Set<User> participants, List<Comment> chat, int venueStatus, long startTime, int duration) {
         this.eventId = eventId;
         StreamReader.expand(eventName);
         this.eventName = eventName;
@@ -97,17 +64,16 @@ public class Event extends RealmObject {
         StreamReader.expand(description);
         this.description = description;
         this.isRecurring = isRecurring;
-        this.dateCreated = Calendar.getInstance();
-        this.dateCreated.setTimeInMillis(dateCreated);
+        this.dateCreated = dateCreated;
         this.venueId = venueId;
         this.minCapacity = minCapacity;
         this.maxCapacity = maxCapacity;
+        this.userRegistered = new RealmList<>();
         this.userRegistered.addAll(userRegistered);
         this.participants.addAll(participants);
         this.chat.addAll(chat);
         this.venueStatus = venueStatus;
-        this.startTime = Calendar.getInstance();
-        this.startTime.setTimeInMillis(startTime);
+        this.startTime = startTime;
         this.duration = duration;
     }
 
@@ -127,11 +93,11 @@ public class Event extends RealmObject {
         return this.description;
     }
 
-    public EventMode getIsRecurring() {
+    public int getIsRecurring() {
         return this.isRecurring;
     }
 
-    public Calendar getDateCreated() {
+    public long getDateCreated() {
         return this.dateCreated;
     }
 
@@ -139,11 +105,11 @@ public class Event extends RealmObject {
         return this.venueId;
     }
 
-    public VenueStatus getVenueStatus() {
+    public int getVenueStatus() {
         return this.venueStatus;
     }
 
-    public Calendar getStartTime() {
+    public long getStartTime() {
         return this.startTime;
     }
 
@@ -159,12 +125,16 @@ public class Event extends RealmObject {
         return this.duration;
     }
 
-    public Set<String> getUserRegistered() {
-        return this.userRegistered;
+    public Set<User> getUserRegistered() {
+        Set<User> userRegistered = new HashSet<>();
+        userRegistered.addAll(this.userRegistered);
+        return userRegistered;
     }
 
-    public Set<String> getParticipants() {
-        return this.participants;
+    public Set<User> getParticipants() {
+        Set<User> participants = new HashSet<>();
+        participants.addAll(this.participants);
+        return participants;
     }
 
     public List<Comment> getChat() {
@@ -203,11 +173,11 @@ public class Event extends RealmObject {
         this.description = description;
     }
 
-    public void setIsRecurring(EventMode isRecurring) {
+    public void setIsRecurring(int isRecurring) {
         this.isRecurring = isRecurring;
     }
 
-    public void setDateCreated(Calendar dateCreated) {
+    public void setDateCreated(long dateCreated) {
         this.dateCreated = dateCreated;
     }
 
@@ -223,23 +193,37 @@ public class Event extends RealmObject {
         this.maxCapacity = maxCapacity;
     }
 
-    public void setUserRegistered(Set<String> userRegistered) {
-        this.userRegistered = userRegistered;
+    public void addToUserRegistered(Set<User> users) {
+        this.userRegistered.addAll(users);
     }
 
-    public void setParticipants(Set<String> participants) {
-        this.participants = participants;
+    public void removeFromUserRegistered(Set<User> users) {
+        for (User user : users) {
+            if (this.userRegistered.indexOf(user) != -1) {
+                this.userRegistered.remove(user);
+            }
+        }
     }
 
-    public void setChat(List<Comment> chat) {
-        this.chat = chat;
+    public void addToParticipants(User user) {
+        this.participants.add(user);
     }
 
-    public void setVenueStatus(VenueStatus venueStatus) {
+    public void removeFromParticipants(User user) {
+        if (this.userRegistered.indexOf(user) != -1) {
+            this.userRegistered.remove(user);
+        }
+    }
+
+    public void addToChat(List<Comment> chat) {
+        this.chat.addAll(chat);
+    }
+
+    public void setVenueStatus(int venueStatus) {
         this.venueStatus = venueStatus;
     }
 
-    public void setStartTime(Calendar startTime) {
+    public void setStartTime(long startTime) {
         this.startTime = startTime;
     }
 
