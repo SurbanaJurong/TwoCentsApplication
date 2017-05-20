@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -38,10 +39,10 @@
         android:layout_height="wrap_content"
         app:layout_editor_absoluteY="200dp"
         android:id="@+id/username_wrapper"
-        app:layout_constraintBottom_toTopOf="@+id/phoneNumber_wrapper"
         app:layout_constraintTop_toBottomOf="@+id/get_started"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent">
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/phoneNumber_wrapper">
 
         <TextView
             android:id="@+id/username_label"
@@ -77,69 +78,28 @@
     <RelativeLayout
         android:layout_width="344dp"
         android:layout_height="wrap_content"
-        app:layout_editor_absoluteY="300dp"
-        app:layout_constraintBottom_toTopOf="@+id/year_wrapper"
-        app:layout_constraintTop_toBottomOf="@+id/username_wrapper"
-        android:id="@+id/phoneNumber_wrapper"
+        app:layout_editor_absoluteY="500dp"
+        android:id="@+id/nric_wrapper"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent">
-
-        <TextView
-            android:id="@+id/phoneNumber_label"
-            android:layout_width="120dp"
-            android:layout_height="25dp"
-            android:text="Phone Number"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="30dp"/>
-
-        <EditText
-            android:id="@+id/phoneNumber_field"
-            android:layout_width="160dp"
-            android:layout_height="25dp"
-            android:ems="10"
-            android:imeOptions="actionNext"
-            android:textColor="@color/colorPrimary"
-            android:inputType="phone"
-            android:textAlignment="center"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="30dp"/>
-
-        <TextView
-            android:id="@+id/phoneNumber_message"
-            android:layout_width="160dp"
-            android:layout_height="15dp"
-            android:text=""
-            android:layout_alignStart="@id/phoneNumber_field"
-            android:layout_marginTop="5dp"
-            android:layout_below="@id/phoneNumber_label"/>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="344dp"
-        android:layout_height="wrap_content"
-        app:layout_editor_absoluteY="400dp"
-        android:id="@+id/year_wrapper"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNumber_wrapper"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/postalCode_wrapper">
 
         <TextView
-            android:id="@+id/year_label"
+            android:id="@+id/nric_label"
             android:layout_width="120dp"
             android:layout_height="25dp"
-            android:text="Year of Birth"
+            android:text="NRIC"
             android:layout_alignParentStart="true"
             android:layout_marginStart="30dp"/>
 
         <EditText
-            android:id="@+id/year_field"
+            android:id="@+id/nric_field"
             android:layout_width="160dp"
             android:layout_height="25dp"
             android:ems="10"
             android:textColor="@color/colorPrimary"
-            android:inputType="numberDecimal"
+            android:inputType="text"
             android:imeOptions="actionDone"
             android:text=""
             android:textAlignment="center"
@@ -147,13 +107,138 @@
             android:layout_marginEnd="30dp"/>
 
         <TextView
-            android:id="@+id/year_message"
+            android:id="@+id/nric_message"
             android:layout_width="160dp"
             android:layout_height="15dp"
             android:text=""
-            android:layout_alignStart="@id/year_field"
+            android:layout_alignStart="@id/nric_field"
             android:layout_marginTop="5dp"
-            android:layout_below="@id/year_label"/>
+            android:layout_below="@id/nric_label"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/phoneNumber_wrapper"
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_editor_absoluteY="300dp"
+        app:layout_constraintBottom_toTopOf="@+id/year_wrapper"
+        app:layout_constraintTop_toBottomOf="@+id/username_wrapper">
+
+        <TextView
+            android:id="@+id/phoneNumber_label"
+            android:layout_width="120dp"
+            android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="30dp"
+            android:text="Phone Number" />
+
+        <EditText
+            android:id="@+id/phoneNumber_field"
+            android:layout_width="160dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="30dp"
+            android:ems="10"
+            android:imeOptions="actionNext"
+            android:inputType="phone"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/phoneNumber_message"
+            android:layout_width="160dp"
+            android:layout_height="15dp"
+            android:layout_alignStart="@id/phoneNumber_field"
+            android:layout_below="@id/phoneNumber_label"
+            android:layout_marginTop="5dp"
+            android:text="" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/year_wrapper"
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/postalCode_wrapper"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_editor_absoluteY="400dp"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumber_wrapper">
+
+        <TextView
+            android:id="@+id/year_label"
+            android:layout_width="120dp"
+            android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="30dp"
+            android:text="Year of Birth" />
+
+        <EditText
+            android:id="@+id/year_field"
+            android:layout_width="160dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="30dp"
+            android:ems="10"
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/year_message"
+            android:layout_width="160dp"
+            android:layout_height="15dp"
+            android:layout_alignStart="@id/year_field"
+            android:layout_below="@id/year_label"
+            android:layout_marginTop="5dp"
+            android:text="" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/postalCode_wrapper"
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_editor_absoluteY="400dp"
+        app:layout_constraintBottom_toTopOf="@+id/nric_wrapper"
+        app:layout_constraintTop_toBottomOf="@+id/year_wrapper">
+
+        <TextView
+            android:id="@+id/postalCode_label"
+            android:layout_width="120dp"
+            android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="30dp"
+            android:text="Postal Code" />
+
+        <EditText
+            android:id="@+id/postalCode_field"
+            android:layout_width="160dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="30dp"
+            android:ems="10"
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/postalCode_message"
+            android:layout_width="160dp"
+            android:layout_height="15dp"
+            android:layout_alignStart="@id/postalCode_field"
+            android:layout_below="@id/postalCode_label"
+            android:layout_marginTop="5dp"
+            android:text="" />
 
     </RelativeLayout>
 

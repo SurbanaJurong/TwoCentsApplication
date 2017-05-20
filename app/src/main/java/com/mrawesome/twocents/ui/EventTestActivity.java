@@ -5,110 +5,165 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.mrawesome.twocents.Configuration;
 import com.mrawesome.twocents.R;
-import com.mrawesome.twocents.communication.request.RequestType;
-import com.mrawesome.twocents.communication.response.Response;
+import com.mrawesome.twocents.communication.ApiEndpointInterface;
 import com.mrawesome.twocents.data.enumerate.EventMode;
-import com.mrawesome.twocents.util.BundleWriter;
+import com.mrawesome.twocents.data.persistent.Comment;
+import com.mrawesome.twocents.data.persistent.Event;
+import com.mrawesome.twocents.data.persistent.Profile;
 
 import java.io.IOException;
+import java.util.Set;
+
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class EventTestActivity extends AppCompatActivity {
 
     private TextView responseView;
+    private Gson gson = new GsonBuilder().create();
+    private OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
+    private ApiEndpointInterface apiEndpointInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_test);
         responseView = (TextView) findViewById(R.id.textView3);
+        apiEndpointInterface = new Retrofit.Builder().baseUrl(Configuration.SERVER_DOMAIN).addConverterFactory(GsonConverterFactory.create(gson)).callFactory(httpClientBuilder.build()).build().create(ApiEndpointInterface.class);
+
     }
 
     public void testAttendanceMark(View view) {
-        Bundle payload = BundleWriter.packAttendanceMark("e123123");
-        try {
-            Response response = CommModule.sendRequest(RequestType.AttendanceMark, payload);
-            responseView.setText(response.payload);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        apiEndpointInterface.markAttendance("e123123", new Event()).enqueue(new Callback<Event>() {
+            @Override
+            public void onResponse(Call<Event> call, Response<Event> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Event> call, Throwable t) {
+
+            }
+        });
     }
 
     public void testCalendarRefresh(View view) {
-        try {
-            Response response = CommModule.sendRequest(RequestType.CalendarRefresh, null);
-            responseView.setText(response.payload);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        apiEndpointInterface.getEventByUser(Profile.getInstance().getUsername()).enqueue(new Callback<Set<Event>>() {
+            @Override
+            public void onResponse(Call<Set<Event>> call, Response<Set<Event>> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Set<Event>> call, Throwable t) {
+
+            }
+        });
     }
 
     public void testCommentPost(View view) {
-        Bundle payload = BundleWriter.packCommentPost("e123123", "What is this?");
-        try {
-            Response response = CommModule.sendRequest(RequestType.CommentPost, payload);
-            responseView.setText(response.payload);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        apiEndpointInterface.postComment("e123123", new Comment()).enqueue(new Callback<Event>() {
+            @Override
+            public void onResponse(Call<Event> call, Response<Event> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Event> call, Throwable t) {
+
+            }
+        });
     }
 
     public void testEventCreate(View view) {
-        Bundle payload = BundleWriter.packEventCreate("Football for life", "football", "A place to gather", "v123123", 10, 20, java.util.Calendar.getInstance(), 1);
-        try {
-            Response response = CommModule.sendRequest(RequestType.EventCreate, payload);
-            responseView.setText(response.payload);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        apiEndpointInterface.insertEvent(new Event()).enqueue(new Callback<Event>() {
+            @Override
+            public void onResponse(Call<Event> call, Response<Event> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Event> call, Throwable t) {
+
+            }
+        });
     }
 
     public void testEventEdit(View view) {
-        Bundle payload = BundleWriter.packEventEdit("e123123", "Not a place to gather", "fasawdvdawv", 11, 19);
-        try {
-            Response response = CommModule.sendRequest(RequestType.EventEdit, payload);
-            responseView.setText(response.payload);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        apiEndpointInterface.insertEvent(new Event()).enqueue(new Callback<Event>() {
+            @Override
+            public void onResponse(Call<Event> call, Response<Event> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Event> call, Throwable t) {
+
+            }
+        });
     }
 
     public void testEventRegister(View view) {
-        Bundle payload = BundleWriter.packEventRegister("e123123");
-        try {
-            Response response = CommModule.sendRequest(RequestType.EventRegister, payload);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        apiEndpointInterface.registerEvent("u123123", new Event()).enqueue(new Callback<Event>() {
+            @Override
+            public void onResponse(Call<Event> call, Response<Event> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Event> call, Throwable t) {
+
+            }
+        });
     }
 
     public void testEventTimeEdit(View view) {
-        Bundle payload = BundleWriter.packEventTimeEdit("e123123", java.util.Calendar.getInstance(), 2);
-        try {
-            Response response = CommModule.sendRequest(RequestType.EventTimeEdit, payload);
-            responseView.setText(response.payload);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        apiEndpointInterface.insertEvent(new Event()).enqueue(new Callback<Event>() {
+            @Override
+            public void onResponse(Call<Event> call, Response<Event> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Event> call, Throwable t) {
+
+            }
+        });
     }
 
     public void testEventVenueEdit(View view) {
-        Bundle payload = BundleWriter.packEventVenueEdit("e123123", "v234234");
-        try {
-            Response response = CommModule.sendRequest(RequestType.EventVenueEdit, payload);
-            responseView.setText(response.payload);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        apiEndpointInterface.insertEvent(new Event()).enqueue(new Callback<Event>() {
+            @Override
+            public void onResponse(Call<Event> call, Response<Event> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Event> call, Throwable t) {
+
+            }
+        });
     }
 
     public void testSwitchRecur(View view) {
-        Bundle payload = BundleWriter.packSwitchRecur("e123123", EventMode.OneTime.getCode());
-        try {
-            Response response = CommModule.sendRequest(RequestType.SwitchRecur, payload);
-            responseView.setText(response.payload);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        apiEndpointInterface.insertEvent(new Event()).enqueue(new Callback<Event>() {
+            @Override
+            public void onResponse(Call<Event> call, Response<Event> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Event> call, Throwable t) {
+
+            }
+        });
     }
 }

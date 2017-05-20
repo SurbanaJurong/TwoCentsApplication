@@ -1,5 +1,6 @@
 package com.mrawesome.twocents.communication;
 
+import com.mrawesome.twocents.data.persistent.Comment;
 import com.mrawesome.twocents.data.persistent.Event;
 import com.mrawesome.twocents.data.persistent.Interest;
 import com.mrawesome.twocents.data.persistent.Profile;
@@ -28,7 +29,7 @@ public interface ApiEndpointInterface {
     Call<Set<Interest>> getInterestByUser(@Path("username") String username);
 
     @POST("interest/{username}")
-    Call<Set<Interest>> addInterest(@Path("username") String username);
+    Call<Set<Interest>> setUserInterests(@Path("username") String username, @Body Set<Interest> interests);
 
     @GET("event")
     Call<Set<Event>> getAllEvents();
@@ -37,7 +38,7 @@ public interface ApiEndpointInterface {
     Call<Set<Event>> getEventByUser(@Path("username") String username);
 
     @POST("event")
-    Call<Event> createEvent(@Body Event event);
+    Call<Event> insertEvent(@Body Event event);
 
     @GET("user")
     Call<Set<User>> getAllUsers();
@@ -49,7 +50,7 @@ public interface ApiEndpointInterface {
     Call<Set<User>> getUserByQuery(@Query("query") String query);
 
     @POST("user")
-    Call<Profile> createUserProfile(@Body Profile profile);
+    Call<Profile> insertUserProfile(@Body Profile profile);
 
     @GET("venue")
     Call<Set<Venue>> getAllVenues();
@@ -62,4 +63,13 @@ public interface ApiEndpointInterface {
 
     @GET("http://graph.facebook.com/me/photos")
     Call<String> testGetApi();
+
+    @POST("event/attend/{username}")
+    Call<Event> markAttendance(@Path("username") String username, @Body Event event);
+
+    @POST("event/{eventId}")
+    Call<Event> postComment(@Path("eventId") String eventId, @Body Comment comment);
+
+    @POST("event/join/{username}")
+    Call<Event> registerEvent(@Path("username") String username, @Body Event event);
 }

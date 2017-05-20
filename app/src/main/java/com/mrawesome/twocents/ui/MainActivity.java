@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences preferences =  getSharedPreferences("my_preferences", MODE_PRIVATE);
         apiEndpointInterface = new Retrofit.Builder().baseUrl(Configuration.SERVER_DOMAIN).addConverterFactory(GsonConverterFactory.create(gson)).callFactory(httpClientBuilder.build()).build().create(ApiEndpointInterface.class);
 
-//        if (true) {
-        if (!preferences.getBoolean("onboarding_complete",false)) {
+        if (true) {
+//        if (!preferences.getBoolean("onboarding_complete",false)) {
             Intent onboarding = new Intent(this, OnboardingActivity.class);
             startActivity(onboarding);
             finish();
