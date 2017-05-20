@@ -1,4 +1,4 @@
-package com.mrawesome.twocents.data;
+package com.mrawesome.twocents.data.enumerate;
 
 import java.util.EnumSet;
 import java.util.HashMap;

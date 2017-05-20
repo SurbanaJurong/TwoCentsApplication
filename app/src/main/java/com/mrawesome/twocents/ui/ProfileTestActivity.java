@@ -6,17 +6,13 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.mrawesome.twocents.R;
-import com.mrawesome.twocents.communication.CommModule;
-import com.mrawesome.twocents.communication.request.RequestFactory;
 import com.mrawesome.twocents.communication.request.RequestType;
 import com.mrawesome.twocents.communication.response.Response;
-import com.mrawesome.twocents.data.Interest;
+import com.mrawesome.twocents.data.persistent.Interest;
 import com.mrawesome.twocents.util.BundleWriter;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class ProfileTestActivity extends AppCompatActivity {

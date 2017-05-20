@@ -5,10 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,15 +15,7 @@ import com.google.gson.GsonBuilder;
 import com.mrawesome.twocents.Configuration;
 import com.mrawesome.twocents.R;
 import com.mrawesome.twocents.communication.ApiEndpointInterface;
-import com.mrawesome.twocents.communication.CommModule;
-import com.mrawesome.twocents.communication.request.Request;
-import com.mrawesome.twocents.communication.request.RequestFactory;
-import com.mrawesome.twocents.communication.request.RequestType;
 import com.mrawesome.twocents.communication.response.Response;
-import com.mrawesome.twocents.data.Interest;
-
-import java.io.IOException;
-import java.util.Set;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Call;

@@ -1,6 +1,4 @@
-package com.mrawesome.twocents.data;
-
-import com.mrawesome.twocents.util.StreamReader;
+package com.mrawesome.twocents.data.persistent;
 
 import io.realm.RealmObject;
 
@@ -18,7 +16,6 @@ public class Comment extends RealmObject implements Flattenable {
 
     public Comment(String sender, String comment) {
         this.sender = sender;
-        StreamReader.expand(comment);
         this.comment = comment;
     }
 

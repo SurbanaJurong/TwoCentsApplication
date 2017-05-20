@@ -1,4 +1,4 @@
-package com.mrawesome.twocents.data;
+package com.mrawesome.twocents.data.enumerate;
 
 /**
  * Created by mrawesome on 20/5/17.

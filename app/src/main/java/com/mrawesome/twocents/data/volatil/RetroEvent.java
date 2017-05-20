@@ -1,20 +1,17 @@
-package com.mrawesome.twocents.data;
+package com.mrawesome.twocents.data.volatil;
 
-import com.mrawesome.twocents.util.StreamReader;
+import com.mrawesome.twocents.data.persistent.Comment;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import io.realm.RealmList;
-import io.realm.annotations.PrimaryKey;
-
 /**
  * Created by mrawesome on 20/5/17.
  */
 
-public class VolatileEvent {
+public class RetroEvent {
 
     private String eventId;
     private String eventName;
@@ -34,14 +31,12 @@ public class VolatileEvent {
     private long startTime;
     private int duration;
 
-    public VolatileEvent(String eventId, String eventName, String category, String host, String profilePic, String description, int isRecurring, long dateCreated, String venueId, int minCapacity, int maxCapacity, Set<String> userRegistered, Set<String> participants, List<Comment> chat, int venueStatus, long startTime, int duration) {
+    public RetroEvent(String eventId, String eventName, String category, String host, String profilePic, String description, int isRecurring, long dateCreated, String venueId, int minCapacity, int maxCapacity, Set<String> userRegistered, Set<String> participants, List<Comment> chat, int venueStatus, long startTime, int duration) {
         this.eventId = eventId;
-        StreamReader.expand(eventName);
         this.eventName = eventName;
         this.category = category;
         this.host = host;
         this.profilePic = profilePic;
-        StreamReader.expand(description);
         this.description = description;
         this.isRecurring = isRecurring;
         this.dateCreated = dateCreated;

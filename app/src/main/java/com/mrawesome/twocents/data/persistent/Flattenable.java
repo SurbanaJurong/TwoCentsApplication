@@ -1,4 +1,4 @@
-package com.mrawesome.twocents.data;
+package com.mrawesome.twocents.data.persistent;
 
 /**
  * Created by mrawesome on 16/5/17.

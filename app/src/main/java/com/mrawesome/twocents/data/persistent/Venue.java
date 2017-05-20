@@ -1,4 +1,4 @@
-package com.mrawesome.twocents.data;
+package com.mrawesome.twocents.data.persistent;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;

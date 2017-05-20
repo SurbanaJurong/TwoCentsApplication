@@ -1,7 +1,4 @@
-package com.mrawesome.twocents.communication.response;
-
-import com.mrawesome.twocents.communication.request.RequestType;
-import com.mrawesome.twocents.data.Notification;
+package com.mrawesome.twocents.data.enumerate;
 
 import java.util.EnumSet;
 import java.util.HashMap;

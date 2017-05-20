@@ -1,10 +1,10 @@
 package com.mrawesome.twocents.communication;
 
-import com.mrawesome.twocents.data.Event;
-import com.mrawesome.twocents.data.Interest;
-import com.mrawesome.twocents.data.Profile;
-import com.mrawesome.twocents.data.User;
-import com.mrawesome.twocents.data.Venue;
+import com.mrawesome.twocents.data.persistent.Event;
+import com.mrawesome.twocents.data.persistent.Interest;
+import com.mrawesome.twocents.data.persistent.Profile;
+import com.mrawesome.twocents.data.persistent.User;
+import com.mrawesome.twocents.data.persistent.Venue;
 
 import java.util.Set;
 

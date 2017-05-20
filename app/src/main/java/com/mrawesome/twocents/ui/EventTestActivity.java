@@ -5,12 +5,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.mrawesome.twocents.data.Event;
 import com.mrawesome.twocents.R;
-import com.mrawesome.twocents.communication.CommModule;
 import com.mrawesome.twocents.communication.request.RequestType;
 import com.mrawesome.twocents.communication.response.Response;
-import com.mrawesome.twocents.data.EventMode;
+import com.mrawesome.twocents.data.enumerate.EventMode;
 import com.mrawesome.twocents.util.BundleWriter;
 
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package com.mrawesome.twocents.data;
+package com.mrawesome.twocents.data.persistent;
 
 import java.util.HashMap;
 import java.util.HashSet;

@@ -1,6 +1,6 @@
-package com.mrawesome.twocents.data;
+package com.mrawesome.twocents.data.persistent;
 
-import com.mrawesome.twocents.communication.response.NotificationType;
+import com.mrawesome.twocents.data.enumerate.NotificationType;
 
 import io.realm.RealmObject;
 

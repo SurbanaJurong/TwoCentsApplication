@@ -1,20 +1,9 @@
-package com.mrawesome.twocents.data;
+package com.mrawesome.twocents.data.persistent;
 
-import com.mrawesome.twocents.data.Comment;
-import com.mrawesome.twocents.data.Interest;
-import com.mrawesome.twocents.data.User;
-import com.mrawesome.twocents.util.StreamReader;
-
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.EnumSet;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
-import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -52,12 +41,10 @@ public class Event extends RealmObject {
 
     public Event(String eventId, String eventName, String category, String host, String profilePic, String description, int isRecurring, long dateCreated, String venueId, int minCapacity, int maxCapacity, Set<User> userRegistered, Set<User> participants, List<Comment> chat, int venueStatus, long startTime, int duration) {
         this.eventId = eventId;
-        StreamReader.expand(eventName);
         this.eventName = eventName;
         this.category = new Interest(category);
         this.host = host;
         this.profilePic = profilePic;
-        StreamReader.expand(description);
         this.description = description;
         this.isRecurring = isRecurring;
         this.dateCreated = dateCreated;
