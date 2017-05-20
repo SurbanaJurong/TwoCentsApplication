@@ -30,6 +30,15 @@ namespace TwoCentsServer.Models
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void InsertAttendance(Attendance instance);
+    partial void UpdateAttendance(Attendance instance);
+    partial void DeleteAttendance(Attendance instance);
+    partial void InsertVenue(Venue instance);
+    partial void UpdateVenue(Venue instance);
+    partial void DeleteVenue(Venue instance);
+    partial void InsertBookmark(Bookmark instance);
+    partial void UpdateBookmark(Bookmark instance);
+    partial void DeleteBookmark(Bookmark instance);
     partial void InsertComment(Comment instance);
     partial void UpdateComment(Comment instance);
     partial void DeleteComment(Comment instance);
@@ -39,37 +48,28 @@ namespace TwoCentsServer.Models
     partial void InsertInterest(Interest instance);
     partial void UpdateInterest(Interest instance);
     partial void DeleteInterest(Interest instance);
+    partial void InsertNotification(Notification instance);
+    partial void UpdateNotification(Notification instance);
+    partial void DeleteNotification(Notification instance);
     partial void InsertParticipation(Participation instance);
     partial void UpdateParticipation(Participation instance);
     partial void DeleteParticipation(Participation instance);
     partial void InsertRegistration(Registration instance);
     partial void UpdateRegistration(Registration instance);
     partial void DeleteRegistration(Registration instance);
+    partial void InsertSlot(Slot instance);
+    partial void UpdateSlot(Slot instance);
+    partial void DeleteSlot(Slot instance);
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
     partial void InsertUserInterest(UserInterest instance);
     partial void UpdateUserInterest(UserInterest instance);
     partial void DeleteUserInterest(UserInterest instance);
-    partial void InsertAttendance(Attendance instance);
-    partial void UpdateAttendance(Attendance instance);
-    partial void DeleteAttendance(Attendance instance);
-    partial void InsertBookmark(Bookmark instance);
-    partial void UpdateBookmark(Bookmark instance);
-    partial void DeleteBookmark(Bookmark instance);
-    partial void InsertSlot(Slot instance);
-    partial void UpdateSlot(Slot instance);
-    partial void DeleteSlot(Slot instance);
-    partial void InsertNotification(Notification instance);
-    partial void UpdateNotification(Notification instance);
-    partial void DeleteNotification(Notification instance);
-    partial void InsertVenue(Venue instance);
-    partial void UpdateVenue(Venue instance);
-    partial void DeleteVenue(Venue instance);
     #endregion
 		
 		public LocalDBDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["TwoCentsDBConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["TwoCentsDBConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -98,6 +98,30 @@ namespace TwoCentsServer.Models
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<Attendance> Attendances
+		{
+			get
+			{
+				return this.GetTable<Attendance>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Venue> Venues
+		{
+			get
+			{
+				return this.GetTable<Venue>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Bookmark> Bookmarks
+		{
+			get
+			{
+				return this.GetTable<Bookmark>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Comment> Comments
 		{
 			get
@@ -122,6 +146,14 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
+		public System.Data.Linq.Table<Notification> Notifications
+		{
+			get
+			{
+				return this.GetTable<Notification>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Participation> Participations
 		{
 			get
@@ -135,6 +167,14 @@ namespace TwoCentsServer.Models
 			get
 			{
 				return this.GetTable<Registration>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Slot> Slots
+		{
+			get
+			{
+				return this.GetTable<Slot>();
 			}
 		}
 		
@@ -153,44 +193,382 @@ namespace TwoCentsServer.Models
 				return this.GetTable<UserInterest>();
 			}
 		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Attendance")]
+	public partial class Attendance : INotifyPropertyChanging, INotifyPropertyChanged
+	{
 		
-		public System.Data.Linq.Table<Attendance> Attendances
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Nullable<int> _Interest;
+		
+		private System.Nullable<int> _Count;
+		
+		private System.Nullable<int> _UserId;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnInterestChanging(System.Nullable<int> value);
+    partial void OnInterestChanged();
+    partial void OnCountChanging(System.Nullable<int> value);
+    partial void OnCountChanged();
+    partial void OnUserIdChanging(System.Nullable<int> value);
+    partial void OnUserIdChanged();
+    #endregion
+		
+		public Attendance()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
 		{
 			get
 			{
-				return this.GetTable<Attendance>();
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
 			}
 		}
 		
-		public System.Data.Linq.Table<Bookmark> Bookmarks
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Interest", DbType="Int")]
+		public System.Nullable<int> Interest
 		{
 			get
 			{
-				return this.GetTable<Bookmark>();
+				return this._Interest;
+			}
+			set
+			{
+				if ((this._Interest != value))
+				{
+					this.OnInterestChanging(value);
+					this.SendPropertyChanging();
+					this._Interest = value;
+					this.SendPropertyChanged("Interest");
+					this.OnInterestChanged();
+				}
 			}
 		}
 		
-		public System.Data.Linq.Table<Slot> Slots
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Count", DbType="Int")]
+		public System.Nullable<int> Count
 		{
 			get
 			{
-				return this.GetTable<Slot>();
+				return this._Count;
+			}
+			set
+			{
+				if ((this._Count != value))
+				{
+					this.OnCountChanging(value);
+					this.SendPropertyChanging();
+					this._Count = value;
+					this.SendPropertyChanged("Count");
+					this.OnCountChanged();
+				}
 			}
 		}
 		
-		public System.Data.Linq.Table<Notification> Notifications
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int")]
+		public System.Nullable<int> UserId
 		{
 			get
 			{
-				return this.GetTable<Notification>();
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
 			}
 		}
 		
-		public System.Data.Linq.Table<Venue> Venues
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Venue")]
+	public partial class Venue : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Name;
+		
+		private System.Nullable<int> _InterestId;
+		
+		private string _Location;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnInterestIdChanging(System.Nullable<int> value);
+    partial void OnInterestIdChanged();
+    partial void OnLocationChanging(string value);
+    partial void OnLocationChanged();
+    #endregion
+		
+		public Venue()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
 		{
 			get
 			{
-				return this.GetTable<Venue>();
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InterestId", DbType="Int")]
+		public System.Nullable<int> InterestId
+		{
+			get
+			{
+				return this._InterestId;
+			}
+			set
+			{
+				if ((this._InterestId != value))
+				{
+					this.OnInterestIdChanging(value);
+					this.SendPropertyChanging();
+					this._InterestId = value;
+					this.SendPropertyChanged("InterestId");
+					this.OnInterestIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Location", DbType="VarChar(MAX)")]
+		public string Location
+		{
+			get
+			{
+				return this._Location;
+			}
+			set
+			{
+				if ((this._Location != value))
+				{
+					this.OnLocationChanging(value);
+					this.SendPropertyChanging();
+					this._Location = value;
+					this.SendPropertyChanged("Location");
+					this.OnLocationChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Bookmark")]
+	public partial class Bookmark : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Nullable<int> _UserId;
+		
+		private System.Nullable<int> _TargetId;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnUserIdChanging(System.Nullable<int> value);
+    partial void OnUserIdChanged();
+    partial void OnTargetIdChanging(System.Nullable<int> value);
+    partial void OnTargetIdChanged();
+    #endregion
+		
+		public Bookmark()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int")]
+		public System.Nullable<int> UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TargetId", DbType="Int")]
+		public System.Nullable<int> TargetId
+		{
+			get
+			{
+				return this._TargetId;
+			}
+			set
+			{
+				if ((this._TargetId != value))
+				{
+					this.OnTargetIdChanging(value);
+					this.SendPropertyChanging();
+					this._TargetId = value;
+					this.SendPropertyChanged("TargetId");
+					this.OnTargetIdChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -383,6 +761,10 @@ namespace TwoCentsServer.Models
 		
 		private System.Nullable<System.TimeSpan> _Duration;
 		
+		private string _Name;
+		
+		private System.Nullable<int> _Category;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -411,6 +793,10 @@ namespace TwoCentsServer.Models
     partial void OnStartTimeChanged();
     partial void OnDurationChanging(System.Nullable<System.TimeSpan> value);
     partial void OnDurationChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnCategoryChanging(System.Nullable<int> value);
+    partial void OnCategoryChanged();
     #endregion
 		
 		public Event()
@@ -658,6 +1044,46 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(MAX)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Category", DbType="Int")]
+		public System.Nullable<int> Category
+		{
+			get
+			{
+				return this._Category;
+			}
+			set
+			{
+				if ((this._Category != value))
+				{
+					this.OnCategoryChanging(value);
+					this.SendPropertyChanging();
+					this._Category = value;
+					this.SendPropertyChanged("Category");
+					this.OnCategoryChanged();
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -740,6 +1166,164 @@ namespace TwoCentsServer.Models
 					this._Name = value;
 					this.SendPropertyChanged("Name");
 					this.OnNameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Notification")]
+	public partial class Notification : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Type;
+		
+		private System.Nullable<int> _SenderId;
+		
+		private int _ReceiverId;
+		
+		private System.Nullable<int> _Event;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnTypeChanging(string value);
+    partial void OnTypeChanged();
+    partial void OnSenderIdChanging(System.Nullable<int> value);
+    partial void OnSenderIdChanged();
+    partial void OnReceiverIdChanging(int value);
+    partial void OnReceiverIdChanged();
+    partial void OnEventChanging(System.Nullable<int> value);
+    partial void OnEventChanged();
+    #endregion
+		
+		public Notification()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="VarChar(20)")]
+		public string Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this.OnTypeChanging(value);
+					this.SendPropertyChanging();
+					this._Type = value;
+					this.SendPropertyChanged("Type");
+					this.OnTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SenderId", DbType="Int")]
+		public System.Nullable<int> SenderId
+		{
+			get
+			{
+				return this._SenderId;
+			}
+			set
+			{
+				if ((this._SenderId != value))
+				{
+					this.OnSenderIdChanging(value);
+					this.SendPropertyChanging();
+					this._SenderId = value;
+					this.SendPropertyChanged("SenderId");
+					this.OnSenderIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReceiverId", DbType="Int NOT NULL")]
+		public int ReceiverId
+		{
+			get
+			{
+				return this._ReceiverId;
+			}
+			set
+			{
+				if ((this._ReceiverId != value))
+				{
+					this.OnReceiverIdChanging(value);
+					this.SendPropertyChanging();
+					this._ReceiverId = value;
+					this.SendPropertyChanged("ReceiverId");
+					this.OnReceiverIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Event", DbType="Int")]
+		public System.Nullable<int> Event
+		{
+			get
+			{
+				return this._Event;
+			}
+			set
+			{
+				if ((this._Event != value))
+				{
+					this.OnEventChanging(value);
+					this.SendPropertyChanging();
+					this._Event = value;
+					this.SendPropertyChanged("Event");
+					this.OnEventChanged();
 				}
 			}
 		}
@@ -960,6 +1544,140 @@ namespace TwoCentsServer.Models
 					this._UserId = value;
 					this.SendPropertyChanged("UserId");
 					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Slot")]
+	public partial class Slot : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Nullable<System.TimeSpan> _StartTime;
+		
+		private System.Nullable<System.TimeSpan> _EndTime;
+		
+		private int _VenueId;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnStartTimeChanging(System.Nullable<System.TimeSpan> value);
+    partial void OnStartTimeChanged();
+    partial void OnEndTimeChanging(System.Nullable<System.TimeSpan> value);
+    partial void OnEndTimeChanged();
+    partial void OnVenueIdChanging(int value);
+    partial void OnVenueIdChanged();
+    #endregion
+		
+		public Slot()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartTime", DbType="Time")]
+		public System.Nullable<System.TimeSpan> StartTime
+		{
+			get
+			{
+				return this._StartTime;
+			}
+			set
+			{
+				if ((this._StartTime != value))
+				{
+					this.OnStartTimeChanging(value);
+					this.SendPropertyChanging();
+					this._StartTime = value;
+					this.SendPropertyChanged("StartTime");
+					this.OnStartTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndTime", DbType="Time")]
+		public System.Nullable<System.TimeSpan> EndTime
+		{
+			get
+			{
+				return this._EndTime;
+			}
+			set
+			{
+				if ((this._EndTime != value))
+				{
+					this.OnEndTimeChanging(value);
+					this.SendPropertyChanging();
+					this._EndTime = value;
+					this.SendPropertyChanged("EndTime");
+					this.OnEndTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VenueId", DbType="Int NOT NULL")]
+		public int VenueId
+		{
+			get
+			{
+				return this._VenueId;
+			}
+			set
+			{
+				if ((this._VenueId != value))
+				{
+					this.OnVenueIdChanging(value);
+					this.SendPropertyChanging();
+					this._VenueId = value;
+					this.SendPropertyChanged("VenueId");
+					this.OnVenueIdChanged();
 				}
 			}
 		}
@@ -1324,676 +2042,6 @@ namespace TwoCentsServer.Models
 					this._InterestId = value;
 					this.SendPropertyChanged("InterestId");
 					this.OnInterestIdChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Attendance")]
-	public partial class Attendance : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private System.Nullable<int> _Interest;
-		
-		private System.Nullable<int> _Count;
-		
-		private System.Nullable<int> _UserId;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnInterestChanging(System.Nullable<int> value);
-    partial void OnInterestChanged();
-    partial void OnCountChanging(System.Nullable<int> value);
-    partial void OnCountChanged();
-    partial void OnUserIdChanging(System.Nullable<int> value);
-    partial void OnUserIdChanged();
-    #endregion
-		
-		public Attendance()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Interest", DbType="Int")]
-		public System.Nullable<int> Interest
-		{
-			get
-			{
-				return this._Interest;
-			}
-			set
-			{
-				if ((this._Interest != value))
-				{
-					this.OnInterestChanging(value);
-					this.SendPropertyChanging();
-					this._Interest = value;
-					this.SendPropertyChanged("Interest");
-					this.OnInterestChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Count", DbType="Int")]
-		public System.Nullable<int> Count
-		{
-			get
-			{
-				return this._Count;
-			}
-			set
-			{
-				if ((this._Count != value))
-				{
-					this.OnCountChanging(value);
-					this.SendPropertyChanging();
-					this._Count = value;
-					this.SendPropertyChanged("Count");
-					this.OnCountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int")]
-		public System.Nullable<int> UserId
-		{
-			get
-			{
-				return this._UserId;
-			}
-			set
-			{
-				if ((this._UserId != value))
-				{
-					this.OnUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._UserId = value;
-					this.SendPropertyChanged("UserId");
-					this.OnUserIdChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Bookmark")]
-	public partial class Bookmark : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private System.Nullable<int> _UserId;
-		
-		private System.Nullable<int> _TargetId;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnUserIdChanging(System.Nullable<int> value);
-    partial void OnUserIdChanged();
-    partial void OnTargetIdChanging(System.Nullable<int> value);
-    partial void OnTargetIdChanged();
-    #endregion
-		
-		public Bookmark()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int")]
-		public System.Nullable<int> UserId
-		{
-			get
-			{
-				return this._UserId;
-			}
-			set
-			{
-				if ((this._UserId != value))
-				{
-					this.OnUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._UserId = value;
-					this.SendPropertyChanged("UserId");
-					this.OnUserIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TargetId", DbType="Int")]
-		public System.Nullable<int> TargetId
-		{
-			get
-			{
-				return this._TargetId;
-			}
-			set
-			{
-				if ((this._TargetId != value))
-				{
-					this.OnTargetIdChanging(value);
-					this.SendPropertyChanging();
-					this._TargetId = value;
-					this.SendPropertyChanged("TargetId");
-					this.OnTargetIdChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Slot")]
-	public partial class Slot : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private System.Nullable<System.TimeSpan> _StartTime;
-		
-		private System.Nullable<System.TimeSpan> _EndTime;
-		
-		private int _VenueId;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnStartTimeChanging(System.Nullable<System.TimeSpan> value);
-    partial void OnStartTimeChanged();
-    partial void OnEndTimeChanging(System.Nullable<System.TimeSpan> value);
-    partial void OnEndTimeChanged();
-    partial void OnVenueIdChanging(int value);
-    partial void OnVenueIdChanged();
-    #endregion
-		
-		public Slot()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartTime", DbType="Time")]
-		public System.Nullable<System.TimeSpan> StartTime
-		{
-			get
-			{
-				return this._StartTime;
-			}
-			set
-			{
-				if ((this._StartTime != value))
-				{
-					this.OnStartTimeChanging(value);
-					this.SendPropertyChanging();
-					this._StartTime = value;
-					this.SendPropertyChanged("StartTime");
-					this.OnStartTimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndTime", DbType="Time")]
-		public System.Nullable<System.TimeSpan> EndTime
-		{
-			get
-			{
-				return this._EndTime;
-			}
-			set
-			{
-				if ((this._EndTime != value))
-				{
-					this.OnEndTimeChanging(value);
-					this.SendPropertyChanging();
-					this._EndTime = value;
-					this.SendPropertyChanged("EndTime");
-					this.OnEndTimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VenueId", DbType="Int NOT NULL")]
-		public int VenueId
-		{
-			get
-			{
-				return this._VenueId;
-			}
-			set
-			{
-				if ((this._VenueId != value))
-				{
-					this.OnVenueIdChanging(value);
-					this.SendPropertyChanging();
-					this._VenueId = value;
-					this.SendPropertyChanged("VenueId");
-					this.OnVenueIdChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Notification")]
-	public partial class Notification : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _Type;
-		
-		private System.Nullable<int> _SenderId;
-		
-		private int _ReceiverId;
-		
-		private System.Nullable<int> _Event;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnTypeChanging(string value);
-    partial void OnTypeChanged();
-    partial void OnSenderIdChanging(System.Nullable<int> value);
-    partial void OnSenderIdChanged();
-    partial void OnReceiverIdChanging(int value);
-    partial void OnReceiverIdChanged();
-    partial void OnEventChanging(System.Nullable<int> value);
-    partial void OnEventChanged();
-    #endregion
-		
-		public Notification()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="VarChar(20)")]
-		public string Type
-		{
-			get
-			{
-				return this._Type;
-			}
-			set
-			{
-				if ((this._Type != value))
-				{
-					this.OnTypeChanging(value);
-					this.SendPropertyChanging();
-					this._Type = value;
-					this.SendPropertyChanged("Type");
-					this.OnTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SenderId", DbType="Int")]
-		public System.Nullable<int> SenderId
-		{
-			get
-			{
-				return this._SenderId;
-			}
-			set
-			{
-				if ((this._SenderId != value))
-				{
-					this.OnSenderIdChanging(value);
-					this.SendPropertyChanging();
-					this._SenderId = value;
-					this.SendPropertyChanged("SenderId");
-					this.OnSenderIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReceiverId", DbType="Int NOT NULL")]
-		public int ReceiverId
-		{
-			get
-			{
-				return this._ReceiverId;
-			}
-			set
-			{
-				if ((this._ReceiverId != value))
-				{
-					this.OnReceiverIdChanging(value);
-					this.SendPropertyChanging();
-					this._ReceiverId = value;
-					this.SendPropertyChanged("ReceiverId");
-					this.OnReceiverIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Event", DbType="Int")]
-		public System.Nullable<int> Event
-		{
-			get
-			{
-				return this._Event;
-			}
-			set
-			{
-				if ((this._Event != value))
-				{
-					this.OnEventChanging(value);
-					this.SendPropertyChanging();
-					this._Event = value;
-					this.SendPropertyChanged("Event");
-					this.OnEventChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Venue")]
-	public partial class Venue : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _Name;
-		
-		private System.Nullable<int> _InterestId;
-		
-		private string _Location;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnInterestIdChanging(System.Nullable<int> value);
-    partial void OnInterestIdChanged();
-    partial void OnLocationChanging(string value);
-    partial void OnLocationChanged();
-    #endregion
-		
-		public Venue()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50)")]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InterestId", DbType="Int")]
-		public System.Nullable<int> InterestId
-		{
-			get
-			{
-				return this._InterestId;
-			}
-			set
-			{
-				if ((this._InterestId != value))
-				{
-					this.OnInterestIdChanging(value);
-					this.SendPropertyChanging();
-					this._InterestId = value;
-					this.SendPropertyChanged("InterestId");
-					this.OnInterestIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Location", DbType="VarChar(MAX)")]
-		public string Location
-		{
-			get
-			{
-				return this._Location;
-			}
-			set
-			{
-				if ((this._Location != value))
-				{
-					this.OnLocationChanging(value);
-					this.SendPropertyChanging();
-					this._Location = value;
-					this.SendPropertyChanged("Location");
-					this.OnLocationChanged();
 				}
 			}
 		}
