@@ -1,11 +1,9 @@
 package com.mrawesome.twocents.communication.request;
 
-import com.mrawesome.twocents.Profile;
-import com.mrawesome.twocents.data.Interest;
+import com.mrawesome.twocents.data.Profile;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**

@@ -21,7 +21,7 @@ public class OnboardingActivity extends FragmentActivity {
 
     private ViewPager viewPager;
     private SmartTabLayout smartTabLayout;
-    private ButtonFlat skip;
+    private ButtonFlat back;
     private ButtonFlat next;
 
     @Override
@@ -30,7 +30,8 @@ public class OnboardingActivity extends FragmentActivity {
         setContentView(R.layout.activity_onboarding);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         smartTabLayout = (SmartTabLayout) findViewById(R.id.indicator);
-        skip = (ButtonFlat) findViewById(R.id.skip);
+        back = (ButtonFlat) findViewById(R.id.back);
+        back.setVisibility(View.GONE);
         next = (ButtonFlat) findViewById(R.id.next);
         FragmentStatePagerAdapter adapter = new FragmentStatePagerAdapter(getSupportFragmentManager()) {
             @Override
@@ -54,10 +55,15 @@ public class OnboardingActivity extends FragmentActivity {
         };
         viewPager.setAdapter(adapter);
         smartTabLayout.setViewPager(viewPager);
-        skip.setOnClickListener(new View.OnClickListener() {
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finishOnboarding();
+                if(viewPager.getCurrentItem() > 0) { // The last screen
+                    viewPager.setCurrentItem(
+                            viewPager.getCurrentItem() - 1,
+                            true
+                    );
+                }
             }
         });
 
@@ -77,11 +83,13 @@ public class OnboardingActivity extends FragmentActivity {
         smartTabLayout.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
-                if(position == 2){
-                    skip.setVisibility(View.GONE);
+                if (position == 0) {
+                    back.setVisibility(View.GONE);
+                } else if (position == 2) {
+                    back.setVisibility(View.GONE);
                     next.setText("Done");
                 } else {
-                    skip.setVisibility(View.VISIBLE);
+                    back.setVisibility(View.VISIBLE);
                     next.setText("Next");
                 }
             }

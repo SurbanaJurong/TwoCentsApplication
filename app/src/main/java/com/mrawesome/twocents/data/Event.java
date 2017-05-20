@@ -1,5 +1,8 @@
 package com.mrawesome.twocents.data;
 
+import com.mrawesome.twocents.data.Comment;
+import com.mrawesome.twocents.data.Interest;
+import com.mrawesome.twocents.data.User;
 import com.mrawesome.twocents.util.StreamReader;
 
 import java.util.ArrayList;
@@ -24,13 +27,6 @@ public class Event extends RealmObject {
     /**
      * Created by mrawesome on 14/5/17.
      */
-
-    public static int MODE_RECURRING = 0;
-    public static int MODE_ONE_TIME = 1;
-
-    public static int STATUS_CANCELLED = 0;
-    public static int STATUS_PENDING = 1;
-    public static int STATUS_BOOKDED = 2;
 
     @PrimaryKey
     private String eventId;

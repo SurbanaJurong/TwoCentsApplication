@@ -1,6 +1,6 @@
 package com.mrawesome.twocents.communication.request;
 
-import com.mrawesome.twocents.Profile;
+import com.mrawesome.twocents.data.Profile;
 import com.mrawesome.twocents.util.StreamReader;
 
 /**

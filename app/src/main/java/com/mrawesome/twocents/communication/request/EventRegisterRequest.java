@@ -1,8 +1,6 @@
 package com.mrawesome.twocents.communication.request;
 
-import com.mrawesome.twocents.Profile;
-import com.mrawesome.twocents.communication.request.Request;
-import com.mrawesome.twocents.communication.request.RequestType;
+import com.mrawesome.twocents.data.Profile;
 
 /**
  * Created by mrawesome on 14/5/17.

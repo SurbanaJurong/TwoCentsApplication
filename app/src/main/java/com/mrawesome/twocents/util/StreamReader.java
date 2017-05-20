@@ -1,11 +1,12 @@
 package com.mrawesome.twocents.util;
 
+import com.mrawesome.twocents.data.Event;
 import com.mrawesome.twocents.communication.response.NotificationType;
 import com.mrawesome.twocents.data.Comment;
-import com.mrawesome.twocents.data.Event;
 import com.mrawesome.twocents.data.User;
 import com.mrawesome.twocents.data.Interest;
 import com.mrawesome.twocents.data.Notification;
+import com.mrawesome.twocents.data.VolatileEvent;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -21,15 +22,15 @@ public class StreamReader {
 
     public static String DELIM = "|";
 
-    private StreamReader() {};
+    private StreamReader() {}
 
     public static User readSingleUser(Scanner scanner) {
         User[] arr = readUser(1, scanner);
         return arr[0];
     }
 
-    public static Event readSingleEvent(Scanner scanner) {
-        Event[] arr = readEvent(1, scanner);
+    public static VolatileEvent readSingleEvent(Scanner scanner) {
+        VolatileEvent[] arr = readEvent(1, scanner);
         return arr[0];
     }
 
@@ -54,8 +55,8 @@ public class StreamReader {
         return arr;
     }
 
-    public static Event[] readEvent(int size, Scanner scanner) {
-        Event[] arr = new Event[size];
+    public static VolatileEvent[] readEvent(int size, Scanner scanner) {
+        VolatileEvent[] arr = new VolatileEvent[size];
         for (int i = 0; i < size; i++) {
             String eventId = scanner.next();
             String eventName = scanner.next();
@@ -91,7 +92,7 @@ public class StreamReader {
             int venueStatus = scanner.nextInt();
             long startTime = scanner.nextLong();
             int duration = scanner.nextInt();
-            arr[i] = new Event(eventId, eventName, subject, host, profilePic, description, isRecurring, dateCreated, venueId, minCapacity, maxCapacity, userRegistered, participants, chat, venueStatus, startTime, duration);
+            arr[i] = new VolatileEvent(eventId, eventName, subject, host, profilePic, description, isRecurring, dateCreated, venueId, minCapacity, maxCapacity, userRegistered, participants, chat, venueStatus, startTime, duration);
         }
         return arr;
     }

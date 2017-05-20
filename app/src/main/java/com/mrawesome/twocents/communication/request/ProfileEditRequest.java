@@ -1,11 +1,6 @@
 package com.mrawesome.twocents.communication.request;
 
-import com.mrawesome.twocents.Profile;
-import com.mrawesome.twocents.data.Interest;
-import com.mrawesome.twocents.data.Notification;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.mrawesome.twocents.data.Profile;
 
 /**
  * Created by mrawesome on 14/5/17.

@@ -1,12 +1,5 @@
-package com.mrawesome.twocents;
+package com.mrawesome.twocents.data;
 
-import com.mrawesome.twocents.data.Document;
-import com.mrawesome.twocents.data.Event;
-import com.mrawesome.twocents.data.Interest;
-import com.mrawesome.twocents.data.Notification;
-import com.mrawesome.twocents.data.User;
-
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -17,8 +10,8 @@ import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.RealmQuery;
-import io.realm.RealmResults;
 import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.Required;
 
 /**
  * Created by mrawesome on 14/5/17.
@@ -27,6 +20,7 @@ import io.realm.annotations.PrimaryKey;
 public class Profile extends RealmObject {
 
     @PrimaryKey
+    @Required
     private String username;
     private String profilePic;
     private String phoneNumber;
@@ -34,11 +28,11 @@ public class Profile extends RealmObject {
     private String postalCode;
     private int year;
     private long dateCreated;
-    private RealmList<Interest> interests;
-    private RealmList<Notification> notifications;
-    private RealmList<Document> attendances;
-    private RealmList<Event> events;
-    private RealmList<User> users;
+    private RealmList<Interest> interests = new RealmList<>();
+    private RealmList<Notification> notifications = new RealmList<>();
+    private RealmList<Attendance> attendances = new RealmList<>();
+    private RealmList<Event> events = new RealmList<>();
+    private RealmList<User> users = new RealmList<>();
 
     private static volatile Profile instance = null;
 
@@ -78,7 +72,7 @@ public class Profile extends RealmObject {
     }
 
     public int getAge() {
-        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        int currentYear = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
         return currentYear - this.year;
     }
 
@@ -100,7 +94,7 @@ public class Profile extends RealmObject {
 
     public Map<Interest, Integer> getAttendances() {
         Map<Interest, Integer> attendances = new HashMap<>();
-        for (Document document : this.attendances) {
+        for (Attendance document : this.attendances) {
             attendances.put(new Interest(document.key), document.value);
         }
         return attendances;
@@ -163,8 +157,8 @@ public class Profile extends RealmObject {
     }
 
     public void incrementAttendances(Interest interest) {
-        RealmQuery<Document> query = Realm.getDefaultInstance().where(Document.class).contains("key", interest.getSubject());
-        Document document = query.findFirst();
+        RealmQuery<Attendance> query = Realm.getDefaultInstance().where(Attendance.class).contains("key", interest.getSubject());
+        Attendance document = query.findFirst();
         document.value++;
     }
 

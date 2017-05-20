@@ -15,7 +15,7 @@ public class Notification extends RealmObject {
     private String sender;
     private String eventId;
 
-    public Notification() {};
+    public Notification() {}
 
     public Notification(NotificationType notificationType, String sender, String eventId) {
         this.notificationType = notificationType.getCode();

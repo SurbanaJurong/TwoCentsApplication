@@ -1,8 +1,6 @@
 package com.mrawesome.twocents.communication.request;
 
-import android.graphics.RectF;
-
-import com.mrawesome.twocents.Profile;
+import com.mrawesome.twocents.data.Profile;
 
 /**
  * Created by mrawesome on 14/5/17.

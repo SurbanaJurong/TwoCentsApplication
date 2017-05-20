@@ -4,6 +4,7 @@ import com.mrawesome.twocents.data.Event;
 import com.mrawesome.twocents.data.User;
 import com.mrawesome.twocents.data.Interest;
 import com.mrawesome.twocents.data.Notification;
+import com.mrawesome.twocents.data.VolatileEvent;
 import com.mrawesome.twocents.util.StreamReader;
 
 import java.io.InputStream;
@@ -18,7 +19,7 @@ import java.util.Set;
 
 public class ResponseFactory {
 
-    private ResponseFactory() {};
+    private ResponseFactory() {}
 
     public static Response newResponse(InputStream inputStream) {
         Scanner scanner = new Scanner(inputStream);
@@ -73,7 +74,7 @@ public class ResponseFactory {
     private static EventResponse newEventResponse(String payload) {
         Scanner scanner = new Scanner(payload);
         int size = scanner.nextInt();
-        Event[] events = StreamReader.readEvent(size, scanner);
+        VolatileEvent[] events = StreamReader.readEvent(size, scanner);
         return new EventResponse(events);
 
     }

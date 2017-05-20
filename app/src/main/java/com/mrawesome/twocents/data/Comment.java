@@ -14,7 +14,7 @@ public class Comment extends RealmObject implements Flattenable {
     private String sender;
     private String comment;
 
-    public Comment() {};
+    public Comment() {}
 
     public Comment(String sender, String comment) {
         this.sender = sender;

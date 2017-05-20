@@ -1,20 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hi!!"
-        android:textSize="60sp"
-        android:layout_marginTop="50dp"/>
+        android:text="TwoCents"
+        android:textSize="50dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:id="@+id/app_label_2"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="0.06999999"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/almost_there"
+        android:layout_width="172dp"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:layout_marginTop="20dp"
-        android:text="Step 1. asdfasdf"/>
+        android:text="Almost there..."
+        android:textAlignment="center"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="350dp" />
 
-</LinearLayout>
+    <RelativeLayout
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        app:layout_editor_absoluteY="200dp"
+        android:id="@+id/username_wrapper"
+        app:layout_constraintBottom_toTopOf="@+id/phoneNumber_wrapper"
+        app:layout_constraintTop_toBottomOf="@+id/get_started"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <TextView
+            android:id="@+id/username_label"
+            android:layout_width="120dp"
+            android:layout_height="25dp"
+            android:text="Username"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="30dp"/>
+
+        <EditText
+            android:id="@+id/username_field"
+            android:layout_width="160dp"
+            android:layout_height="25dp"
+            android:textSize="25dp"
+            android:inputType="text"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
+            android:textColor="@color/colorPrimary"
+            android:textAlignment="center"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="30dp"/>
+
+        <TextView
+            android:id="@+id/username_message"
+            android:layout_width="160dp"
+            android:layout_height="15dp"
+            android:layout_below="@id/username_label"
+            android:layout_marginTop="5dp"
+            android:text=""
+            android:layout_alignStart="@id/username_field"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        app:layout_editor_absoluteY="300dp"
+        app:layout_constraintBottom_toTopOf="@+id/year_wrapper"
+        app:layout_constraintTop_toBottomOf="@+id/username_wrapper"
+        android:id="@+id/phoneNumber_wrapper"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <TextView
+            android:id="@+id/phoneNumber_label"
+            android:layout_width="120dp"
+            android:layout_height="25dp"
+            android:text="Phone Number"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="30dp"/>
+
+        <EditText
+            android:id="@+id/phoneNumber_field"
+            android:layout_width="160dp"
+            android:layout_height="25dp"
+            android:ems="10"
+            android:imeOptions="actionNext"
+            android:textColor="@color/colorPrimary"
+            android:inputType="phone"
+            android:textAlignment="center"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="30dp"/>
+
+        <TextView
+            android:id="@+id/phoneNumber_message"
+            android:layout_width="160dp"
+            android:layout_height="15dp"
+            android:text=""
+            android:layout_alignStart="@id/phoneNumber_field"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/phoneNumber_label"/>
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

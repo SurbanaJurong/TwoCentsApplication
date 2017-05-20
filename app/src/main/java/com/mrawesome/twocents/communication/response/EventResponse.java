@@ -1,6 +1,6 @@
 package com.mrawesome.twocents.communication.response;
 
-import com.mrawesome.twocents.data.Event;
+import com.mrawesome.twocents.data.VolatileEvent;
 import com.mrawesome.twocents.data.User;
 
 import java.util.HashSet;
@@ -12,15 +12,19 @@ import java.util.Set;
 
 public class EventResponse extends Response {
 
-    private Event[] events;
-    private Set<User> users = new HashSet<>();
+    private VolatileEvent[] events;
+    private Set<String> users = new HashSet<>();
 
-    EventResponse(Event[] events) {
+    EventResponse(VolatileEvent[] events) {
         this.events = events;
-        for (Event event : events) {
+        for (VolatileEvent event : events) {
             users.add(event.getHost());
-            users.addAll(event.getUserRegistered());
-            users.addAll(event.getParticipants());
+            for (String username : event.getUserRegistered()) {
+                users.add(username);
+            }
+            for (String username : event.getParticipants()) {
+                users.add(username);
+            }
         }
     }
 

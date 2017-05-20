@@ -5,15 +5,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.mrawesome.twocents.data.Event;
 import com.mrawesome.twocents.R;
 import com.mrawesome.twocents.communication.CommModule;
 import com.mrawesome.twocents.communication.request.RequestType;
 import com.mrawesome.twocents.communication.response.Response;
-import com.mrawesome.twocents.data.Event;
+import com.mrawesome.twocents.data.EventMode;
 import com.mrawesome.twocents.util.BundleWriter;
 
 import java.io.IOException;
-import java.util.Calendar;
 
 public class EventTestActivity extends AppCompatActivity {
 
@@ -56,7 +56,7 @@ public class EventTestActivity extends AppCompatActivity {
     }
 
     public void testEventCreate(View view) {
-        Bundle payload = BundleWriter.packEventCreate("Football for life", "football", "A place to gather", "v123123", 10, 20, Calendar.getInstance(), 1);
+        Bundle payload = BundleWriter.packEventCreate("Football for life", "football", "A place to gather", "v123123", 10, 20, java.util.Calendar.getInstance(), 1);
         try {
             Response response = CommModule.sendRequest(RequestType.EventCreate, payload);
             responseView.setText(response.payload);
@@ -85,7 +85,7 @@ public class EventTestActivity extends AppCompatActivity {
     }
 
     public void testEventTimeEdit(View view) {
-        Bundle payload = BundleWriter.packEventTimeEdit("e123123", Calendar.getInstance(), 2);
+        Bundle payload = BundleWriter.packEventTimeEdit("e123123", java.util.Calendar.getInstance(), 2);
         try {
             Response response = CommModule.sendRequest(RequestType.EventTimeEdit, payload);
             responseView.setText(response.payload);
@@ -105,7 +105,7 @@ public class EventTestActivity extends AppCompatActivity {
     }
 
     public void testSwitchRecur(View view) {
-        Bundle payload = BundleWriter.packSwitchRecur("e123123", Event.MODE_ONE_TIME);
+        Bundle payload = BundleWriter.packSwitchRecur("e123123", EventMode.OneTime.getCode());
         try {
             Response response = CommModule.sendRequest(RequestType.SwitchRecur, payload);
             responseView.setText(response.payload);

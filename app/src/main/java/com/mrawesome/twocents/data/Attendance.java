@@ -8,7 +8,7 @@ import io.realm.annotations.Required;
  * Created by mrawesome on 20/5/17.
  */
 
-public class Document extends RealmObject {
+public class Attendance extends RealmObject {
 
     @PrimaryKey
     @Required

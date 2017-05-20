@@ -14,7 +14,7 @@ import java.util.Set;
 
 public class BundleWriter {
 
-    private BundleWriter() {};
+    private BundleWriter() {}
 
     public static Bundle packAttendanceMark(String eventId) {
         Bundle bundle = new Bundle();
@@ -97,7 +97,7 @@ public class BundleWriter {
     public static Bundle packSwitchRecur(String eventId, int isRecurring) {
         Bundle bundle = new Bundle();
         bundle.putString(RequestFactory.e_eventId, eventId);
-        bundle.putInt(RequestFactory.e_isRecurring, isRecurring.getCode());
+        bundle.putInt(RequestFactory.e_isRecurring, isRecurring);
         return bundle;
     }
 

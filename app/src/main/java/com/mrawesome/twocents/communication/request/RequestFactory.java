@@ -32,7 +32,7 @@ public class RequestFactory {
     public static final String e_startTime = "startTime";
     public static final String e_duration = "duration";
 
-    private RequestFactory() {};
+    private RequestFactory() {}
 
     public static Request newRequest(RequestType requestType, Bundle payload) {
         switch (requestType) {
