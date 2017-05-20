@@ -15,7 +15,6 @@ import com.google.gson.GsonBuilder;
 import com.mrawesome.twocents.Configuration;
 import com.mrawesome.twocents.R;
 import com.mrawesome.twocents.communication.ApiEndpointInterface;
-import com.mrawesome.twocents.communication.response.Response;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -23,7 +22,7 @@ import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity implements NetworkCallback {
+public class MainActivity extends AppCompatActivity {
 
     private TextView responseView;
     private Gson gson = new GsonBuilder().create();
@@ -73,46 +72,6 @@ public class MainActivity extends AppCompatActivity implements NetworkCallback {
                 responseView.setText(t.getMessage());
             }
         });
-//        try {
-////            Response response = CommModule.sendRequest(RequestType.UserSuggestion, null);
-//            Response response = CommModule.sendRequest(Configuration.SERVER_DOMAIN + "api/interest/");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
     }
 
-    @Override
-    public void onSuccessCompleted(Response response) {
-        responseView.setText(response.payload);
-    }
-
-    @Override
-    public NetworkInfo getActiveNetworkInfo() {
-        ConnectivityManager connectivityManager =
-                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-        return networkInfo;
-    }
-
-    @Override
-    public void onProgressUpdate(int progressCode, int percentComplete) {
-        switch(progressCode) {
-            // You can add UI behavior for progress updates here.
-            case Progress.ERROR:
-                break;
-            case Progress.CONNECT_SUCCESS:
-                break;
-            case Progress.GET_INPUT_STREAM_SUCCESS:
-                break;
-            case Progress.PROCESS_INPUT_STREAM_IN_PROGRESS:
-                break;
-            case Progress.PROCESS_INPUT_STREAM_SUCCESS:
-                break;
-        }
-    }
-
-    @Override
-    public void onFinished() {
-
-    }
 }

@@ -1,5 +1,7 @@
 package com.mrawesome.twocents.data.persistent;
 
+import com.google.gson.annotations.Expose;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -21,11 +23,16 @@ public class Profile extends RealmObject {
 
     @PrimaryKey
     @Required
+    @Expose
     private String username;
     private String profilePic;
+    @Expose
     private String phoneNumber;
+    @Expose
     private String nric;
+    @Expose
     private String postalCode;
+    @Expose
     private int year;
     private long dateCreated;
     private RealmList<Interest> interests = new RealmList<>();

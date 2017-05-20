@@ -1,5 +1,7 @@
 package com.mrawesome.twocents.data.persistent;
 
+import com.google.gson.annotations.Expose;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -7,6 +9,7 @@ import java.util.Set;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.Required;
 
 /**
  * Created by mrawesome on 14/5/17.
@@ -18,22 +21,33 @@ public class Event extends RealmObject {
      */
 
     @PrimaryKey
+    @Required
     private String eventId;
+    @Expose
     private String eventName;
+    @Expose
     private Interest category;
+    @Expose
     private String host;
     private String profilePic;
+    @Expose
     private String description;
+    @Expose
     private int isRecurring;
     private long dateCreated;
+    @Expose
     private String venueId;
+    @Expose
     private int minCapacity;
+    @Expose
     private int maxCapacity;
     private RealmList<User> userRegistered = new RealmList<>();
     private RealmList<User> participants = new RealmList<>();
     private RealmList<Comment> chat = new RealmList<>();
     private int venueStatus;
+    @Expose
     private long startTime;
+    @Expose
     private int duration;
 
     public Event() {
