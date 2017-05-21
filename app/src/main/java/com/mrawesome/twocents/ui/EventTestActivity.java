@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 import com.mrawesome.twocents.Configuration;
 import com.mrawesome.twocents.R;
 import com.mrawesome.twocents.communication.ApiEndpointInterface;
@@ -42,7 +43,10 @@ public class EventTestActivity extends AppCompatActivity {
     }
 
     public void testAttendanceMark(View view) {
-        apiEndpointInterface.markAttendance("e123123", new Event()).enqueue(new Callback<Event>() {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("userId", "u123123");
+        jsonObject.addProperty("eventId", "e123123");
+        apiEndpointInterface.markParticipation(jsonObject).enqueue(new Callback<Event>() {
             @Override
             public void onResponse(Call<Event> call, Response<Event> response) {
 
@@ -70,14 +74,14 @@ public class EventTestActivity extends AppCompatActivity {
     }
 
     public void testCommentPost(View view) {
-        apiEndpointInterface.postComment("e123123", new Comment()).enqueue(new Callback<Event>() {
+        apiEndpointInterface.postComment(new Comment()).enqueue(new Callback<Set<Comment>>() {
             @Override
-            public void onResponse(Call<Event> call, Response<Event> response) {
+            public void onResponse(Call<Set<Comment>> call, Response<Set<Comment>> response) {
 
             }
 
             @Override
-            public void onFailure(Call<Event> call, Throwable t) {
+            public void onFailure(Call<Set<Comment>> call, Throwable t) {
 
             }
         });
@@ -111,15 +115,18 @@ public class EventTestActivity extends AppCompatActivity {
         });
     }
 
-    public void testEventRegister(View view) {
-        apiEndpointInterface.registerEvent("u123123", new Event()).enqueue(new Callback<Event>() {
+    public void testEventBookmark(View view) {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("userId", "u123123");
+        jsonObject.addProperty("eventId", "e123123");
+        apiEndpointInterface.bookmarkEvent(jsonObject).enqueue(new Callback<JsonObject>() {
             @Override
-            public void onResponse(Call<Event> call, Response<Event> response) {
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
 
             }
 
             @Override
-            public void onFailure(Call<Event> call, Throwable t) {
+            public void onFailure(Call<JsonObject> call, Throwable t) {
 
             }
         });

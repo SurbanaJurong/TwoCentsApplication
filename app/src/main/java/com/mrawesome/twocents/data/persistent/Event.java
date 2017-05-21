@@ -1,6 +1,8 @@
 package com.mrawesome.twocents.data.persistent;
 
 import com.google.gson.annotations.Expose;
+import com.mrawesome.twocents.fragment.addInterest.AddInterestFragment1;
+import com.mrawesome.twocents.ui.AddInterestActivity;
 
 import java.util.HashSet;
 import java.util.List;
@@ -29,7 +31,6 @@ public class Event extends RealmObject {
     private Interest category;
     @Expose
     private String host;
-    private String profilePic;
     @Expose
     private String description;
     @Expose
@@ -53,23 +54,16 @@ public class Event extends RealmObject {
     public Event() {
     };
 
-    public Event(String eventId, String eventName, String category, String host, String profilePic, String description, int isRecurring, long dateCreated, String venueId, int minCapacity, int maxCapacity, Set<User> userRegistered, Set<User> participants, List<Comment> chat, int venueStatus, long startTime, int duration) {
-        this.eventId = eventId;
+    public Event(String eventName, String category, String host, String description, int isRecurring, String venueId, int minCapacity, int maxCapacity, long startTime, int duration) {
         this.eventName = eventName;
-        this.category = new Interest(category);
+        //debug
+        this.category = new Interest(category, AddInterestFragment1.basketballAva);
         this.host = host;
-        this.profilePic = profilePic;
         this.description = description;
         this.isRecurring = isRecurring;
-        this.dateCreated = dateCreated;
         this.venueId = venueId;
         this.minCapacity = minCapacity;
         this.maxCapacity = maxCapacity;
-        this.userRegistered = new RealmList<>();
-        this.userRegistered.addAll(userRegistered);
-        this.participants.addAll(participants);
-        this.chat.addAll(chat);
-        this.venueStatus = venueStatus;
         this.startTime = startTime;
         this.duration = duration;
     }
@@ -80,10 +74,6 @@ public class Event extends RealmObject {
 
     public String getHost() {
         return this.host;
-    }
-
-    public String getProfilePic() {
-        return this.profilePic;
     }
 
     public String getDescription() {
@@ -160,10 +150,6 @@ public class Event extends RealmObject {
 
     public void setHost(String host) {
         this.host = host;
-    }
-
-    public void setProfilePic(String profilePic) {
-        this.profilePic = profilePic;
     }
 
     public void setDescription(String description) {

@@ -11,15 +11,21 @@ public class Interest extends RealmObject implements Flattenable {
 
     @PrimaryKey
     private String subject;
+    private String icon;
 
     public Interest() {}
 
-    public Interest(String subject) {
+    public Interest(String subject, String icon) {
         this.subject = subject;
+        this.icon = icon;
     }
 
     public String getSubject() {
         return this.subject;
+    }
+
+    public String getIcon() {
+        return this.icon;
     }
 
     @Override

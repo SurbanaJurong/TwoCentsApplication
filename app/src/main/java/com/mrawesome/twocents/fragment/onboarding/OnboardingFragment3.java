@@ -1,4 +1,4 @@
-package com.mrawesome.twocents.fragment;
+package com.mrawesome.twocents.fragment.onboarding;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;

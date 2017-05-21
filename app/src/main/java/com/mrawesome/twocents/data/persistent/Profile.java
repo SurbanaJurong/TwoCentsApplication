@@ -1,6 +1,7 @@
 package com.mrawesome.twocents.data.persistent;
 
 import com.google.gson.annotations.Expose;
+import com.mrawesome.twocents.fragment.addInterest.AddInterestFragment1;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -102,7 +103,8 @@ public class Profile extends RealmObject {
     public Map<Interest, Integer> getAttendances() {
         Map<Interest, Integer> attendances = new HashMap<>();
         for (Attendance document : this.attendances) {
-            attendances.put(new Interest(document.key), document.value);
+            //debug
+            attendances.put(new Interest(document.key, AddInterestFragment1.basketballAva), document.value);
         }
         return attendances;
     }

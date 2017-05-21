@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 import com.mrawesome.twocents.Configuration;
 import com.mrawesome.twocents.R;
 import com.mrawesome.twocents.communication.ApiEndpointInterface;
@@ -69,14 +70,17 @@ public class ProfileTestActivity extends AppCompatActivity {
     }
 
     public void testInterestEdit(View view) {
-        apiEndpointInterface.setUserInterests("u123123", new HashSet<Interest>()).enqueue(new Callback<Set<Interest>>() {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("userId", "u123123");
+        jsonObject.addProperty("interestId", "i123123");
+        apiEndpointInterface.registerInterest(jsonObject).enqueue(new Callback<JsonObject>() {
             @Override
-            public void onResponse(Call<Set<Interest>> call, Response<Set<Interest>> response) {
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
 
             }
 
             @Override
-            public void onFailure(Call<Set<Interest>> call, Throwable t) {
+            public void onFailure(Call<JsonObject> call, Throwable t) {
 
             }
         });

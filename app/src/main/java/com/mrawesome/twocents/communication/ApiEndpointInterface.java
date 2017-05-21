@@ -1,5 +1,7 @@
 package com.mrawesome.twocents.communication;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.mrawesome.twocents.data.persistent.Comment;
 import com.mrawesome.twocents.data.persistent.Event;
 import com.mrawesome.twocents.data.persistent.Interest;
@@ -22,15 +24,17 @@ import retrofit2.http.Query;
 
 public interface ApiEndpointInterface {
 
+    // Interest API
     @GET("interest")
     Call<Set<Interest>> getAllInterests();
 
     @GET("interest/{username}")
     Call<Set<Interest>> getInterestByUser(@Path("username") String username);
 
-    @POST("interest/{username}")
-    Call<Set<Interest>> setUserInterests(@Path("username") String username, @Body Set<Interest> interests);
+    @POST("interest/")
+    Call<Set<Interest>> addToInterest(@Body Set<Interest> interests);
 
+    // Event API
     @GET("event")
     Call<Set<Event>> getAllEvents();
 
@@ -40,6 +44,7 @@ public interface ApiEndpointInterface {
     @POST("event")
     Call<Event> insertEvent(@Body Event event);
 
+    // User API
     @GET("user")
     Call<Set<User>> getAllUsers();
 
@@ -52,6 +57,7 @@ public interface ApiEndpointInterface {
     @POST("user")
     Call<Profile> insertUserProfile(@Body Profile profile);
 
+    // Venue API
     @GET("venue")
     Call<Set<Venue>> getAllVenues();
 
@@ -61,15 +67,37 @@ public interface ApiEndpointInterface {
     @POST("venue")
     Call<Venue> addNewVenue(@Body Venue venue);
 
+    // Participation API
+    @POST("participation")
+    Call<Event> getAllParticipations();
+
+    @GET("participation")
+    Call<Event> getParticipationsByQuery(@Query("userId") String userId, @Query("eventId") String eventId);
+
+    @POST("participation")
+    Call<Event> markParticipation(@Body JsonObject jsonObject);
+
+    // User Interest API
+    @GET("userinterest")
+    Call<JsonArray> getAllUserInterests();
+
+    @GET("userinterest")
+    Call<JsonArray> getUserInterestsByQuery(@Query("userId") String userId, @Query("interestId") String interestId);
+
+    @POST("userinterest")
+    Call<JsonObject> registerInterest(JsonObject jsonObject);
+
+    // pending API
+    @POST("postComment")
+    Call<Set<Comment>> postComment(@Body Comment comment);
+
+    @POST("bookmarkUser")
+    Call<JsonObject> bookmarkUser(@Body JsonObject jsonObject);
+
+    @POST("bookmarkEvent")
+    Call<JsonObject> bookmarkEvent(@Body JsonObject jsonObject);
+
+    //debug
     @GET("http://graph.facebook.com/me/photos")
     Call<String> testGetApi();
-
-    @POST("event/attend/{username}")
-    Call<Event> markAttendance(@Path("username") String username, @Body Event event);
-
-    @POST("event/{eventId}")
-    Call<Event> postComment(@Path("eventId") String eventId, @Body Comment comment);
-
-    @POST("event/join/{username}")
-    Call<Event> registerEvent(@Path("username") String username, @Body Event event);
 }

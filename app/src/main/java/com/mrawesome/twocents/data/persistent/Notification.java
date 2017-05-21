@@ -3,6 +3,7 @@ package com.mrawesome.twocents.data.persistent;
 import com.mrawesome.twocents.data.enumerate.NotificationType;
 
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by mrawesome on 14/5/17.
@@ -10,7 +11,8 @@ import io.realm.RealmObject;
 
 public class Notification extends RealmObject {
 
-    private int seqNum;
+    @PrimaryKey
+    private int notificationId;
     private int notificationType;
     private String sender;
     private String eventId;

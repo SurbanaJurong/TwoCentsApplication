@@ -1,6 +1,7 @@
 package com.mrawesome.twocents.data.persistent;
 
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by mrawesome on 14/5/17.
@@ -8,7 +9,8 @@ import io.realm.RealmObject;
 
 public class Comment extends RealmObject implements Flattenable {
 
-    private int seqNum;
+    @PrimaryKey
+    private int commentId;
     private String sender;
     private String comment;
 

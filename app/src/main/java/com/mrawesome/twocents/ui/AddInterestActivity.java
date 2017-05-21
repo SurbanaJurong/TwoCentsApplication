@@ -1,22 +1,21 @@
 package com.mrawesome.twocents.ui;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
 import com.gc.materialdesign.views.ButtonFlat;
 import com.mrawesome.twocents.R;
-import com.mrawesome.twocents.fragment.onboarding.OnboardingFragment1;
-import com.mrawesome.twocents.fragment.onboarding.OnboardingFragment2;
-import com.mrawesome.twocents.fragment.onboarding.OnboardingFragment3;
+import com.mrawesome.twocents.fragment.addInterest.AddInterestFragment1;
+import com.mrawesome.twocents.fragment.addInterest.AddInterestFragment2;
+import com.mrawesome.twocents.fragment.addInterest.AddInterestFragment3;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
-public class OnboardingActivity extends FragmentActivity {
+public class AddInterestActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private SmartTabLayout smartTabLayout;
@@ -26,22 +25,22 @@ public class OnboardingActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_onboarding);
-        viewPager = (ViewPager) findViewById(R.id.onboarding_view_pager);
-        smartTabLayout = (SmartTabLayout) findViewById(R.id.onboarding_tab_view);
-        back = (ButtonFlat) findViewById(R.id.onboarding_back);
+        setContentView(R.layout.activity_add_interest);
+        viewPager = (ViewPager) findViewById(R.id.add_interest_view_pager);
+        smartTabLayout = (SmartTabLayout) findViewById(R.id.add_interest_tab_view);
+        back = (ButtonFlat) findViewById(R.id.add_interest_back);
         back.setVisibility(View.GONE);
-        next = (ButtonFlat) findViewById(R.id.onboarding_next);
+        next = (ButtonFlat) findViewById(R.id.add_interest_next);
         FragmentStatePagerAdapter adapter = new FragmentStatePagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
                 switch (position) {
                     case 0:
-                        return new OnboardingFragment1();
+                        return new AddInterestFragment1();
                     case 1:
-                        return new OnboardingFragment2();
+                        return new AddInterestFragment2();
                     case 2:
-                        return new OnboardingFragment3();
+                        return new AddInterestFragment3();
                     default:
                         return null;
                 }
@@ -57,24 +56,18 @@ public class OnboardingActivity extends FragmentActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(viewPager.getCurrentItem() > 0) { // The last screen
-                    viewPager.setCurrentItem(
-                            viewPager.getCurrentItem() - 1,
-                            true
-                    );
+                if (viewPager.getCurrentItem() > 0) {
+                    viewPager.setCurrentItem(viewPager.getCurrentItem() - 1, true);
                 }
             }
         });
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(viewPager.getCurrentItem() == 2) { // The last screen
-                    finishOnboarding();
+                if (viewPager.getCurrentItem() == 2) {
+                    finishAddInterest();
                 } else {
-                    viewPager.setCurrentItem(
-                            viewPager.getCurrentItem() + 1,
-                            true
-                    );
+                    viewPager.setCurrentItem(viewPager.getCurrentItem() + 1, true);
                 }
             }
         });
@@ -94,9 +87,7 @@ public class OnboardingActivity extends FragmentActivity {
         });
     }
 
-    private void finishOnboarding() {
-        SharedPreferences preferences = getSharedPreferences("my_preferences", MODE_PRIVATE);
-        preferences.edit().putBoolean("onboarding_complete", true).apply();
+    private void finishAddInterest() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
