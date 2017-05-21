@@ -25,6 +25,9 @@ import java.util.Calendar;
 
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHolder> {
 
+    private static final int ITEM = 0;
+    private static final int SEPARATOR = 1;
+
     private ArrayList<Event> events;
 
     public EventAdapter(ArrayList<Event> events) {

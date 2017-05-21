@@ -25,8 +25,13 @@ import java.util.Calendar;
 
 public class AddInterestFragment2 extends Fragment {
 
+    private Calendar start1 = Calendar.getInstance();
+    private Calendar start2 = (Calendar) start1.clone();
+    {
+        start2.add(Calendar.DAY_OF_WEEK, 1);
+    }
     private ArrayList<Event> events = new ArrayList<>(Arrays.asList(new Event[] {
-            new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, Calendar.getInstance().getTimeInMillis(), 2), new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, Calendar.getInstance().getTimeInMillis(), 2), new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, Calendar.getInstance().getTimeInMillis(), 2), new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, Calendar.getInstance().getTimeInMillis(), 2), new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, Calendar.getInstance().getTimeInMillis(), 2)
+            new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, start1.getTimeInMillis(), 2), new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, start1.getTimeInMillis(), 2), new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, start1.getTimeInMillis(), 2), new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, start2.getTimeInMillis(), 2), new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, start2.getTimeInMillis(), 2)
     }));
 
     @Nullable

@@ -14,20 +14,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".ui.MainActivity"
-            android:windowSoftInputMode="stateVisible|adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".ui.ProfileTestActivity" />
         <activity android:name=".ui.EventTestActivity" />
         <activity android:name=".ui.OnboardingActivity" />
         <activity android:name=".ui.ApiTestActivity" />
-        <activity android:name=".ui.AddInterestActivity"></activity>
+        <activity android:name=".ui.AddInterestActivity" />
+        <activity
+            android:name=".ui.MainActivity"
+            android:label="@string/title_activity_main">
+
+            <intent-filter>
+
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

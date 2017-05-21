@@ -7,7 +7,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:src="@drawable/ic_launcher"
+        android:src="@mipmap/ic_launcher"
         android:id="@+id/interest_avatar"
         android:layout_margin="5dp"/>
 
