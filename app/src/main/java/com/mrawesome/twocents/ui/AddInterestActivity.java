@@ -17,6 +17,8 @@ import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 public class AddInterestActivity extends AppCompatActivity {
 
+    private static final String TAG = AddInterestActivity.class.getSimpleName();
+
     private ViewPager viewPager;
     private SmartTabLayout smartTabLayout;
     private ButtonFlat back;

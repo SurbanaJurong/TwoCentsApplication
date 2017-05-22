@@ -28,6 +28,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class EventTestActivity extends AppCompatActivity {
 
+    private static final String TAG = EventTestActivity.class.getSimpleName();
+
     private TextView responseView;
     private Gson gson = new GsonBuilder().create();
     private OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();

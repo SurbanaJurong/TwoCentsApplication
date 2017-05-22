@@ -1,6 +1,5 @@
 package com.mrawesome.twocents.ui.adapter;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
@@ -8,7 +7,6 @@ import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,9 +22,6 @@ import java.util.Calendar;
  */
 
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHolder> {
-
-    private static final int ITEM = 0;
-    private static final int SEPARATOR = 1;
 
     private ArrayList<Event> events;
 
@@ -83,7 +78,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
         public EventViewHolder(View itemView) {
             super(itemView);
-            imageView = (ImageView) itemView.findViewById(R.id.event_item_type);
+            imageView = (ImageView) itemView.findViewById(R.id.notification_type);
             eventName = (TextView) itemView.findViewById(R.id.event_item_event_name);
             host = (TextView) itemView.findViewById(R.id.event_item_host);
             venue = (TextView) itemView.findViewById(R.id.event_item_venueId);

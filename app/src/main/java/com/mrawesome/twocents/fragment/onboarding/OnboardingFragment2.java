@@ -15,6 +15,8 @@ import com.mrawesome.twocents.R;
 
 public class OnboardingFragment2 extends Fragment {
 
+    private static final String TAG = OnboardingFragment2.class.getSimpleName();
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle s) {

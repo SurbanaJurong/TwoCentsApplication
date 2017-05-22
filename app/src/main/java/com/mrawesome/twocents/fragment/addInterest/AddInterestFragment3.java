@@ -16,6 +16,8 @@ import com.mrawesome.twocents.R;
 
 public class AddInterestFragment3 extends Fragment {
 
+    private static final String TAG = AddInterestFragment3.class.getSimpleName();
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {

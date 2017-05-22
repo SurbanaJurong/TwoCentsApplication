@@ -25,6 +25,8 @@ import java.util.Calendar;
 
 public class AddInterestFragment2 extends Fragment {
 
+    private static final String TAG = AddInterestFragment2.class.getSimpleName();
+
     private Calendar start1 = Calendar.getInstance();
     private Calendar start2 = (Calendar) start1.clone();
     {

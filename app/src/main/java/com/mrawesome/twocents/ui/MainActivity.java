@@ -1,17 +1,25 @@
 package com.mrawesome.twocents.ui;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.mrawesome.twocents.R;
+import com.mrawesome.twocents.fragment.main.EventFragment;
+import com.mrawesome.twocents.fragment.main.NotificationFragment;
+import com.mrawesome.twocents.fragment.main.TodayFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements TodayFragment.OnListFragmentInteractionListener, EventFragment.OnListFragmentInteractionListener, NotificationFragment.OnListFragmentInteractionListener {
 
-    private TextView mTextMessage;
+    private static final String TAG = MainActivity.class.getSimpleName();
+
+    private Fragment fragment;
+    private android.support.v4.app.FragmentManager fragmentManager;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -20,19 +28,21 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_today_view:
-                    mTextMessage.setText(R.string.title_today_view);
-                    return true;
+                    fragment = TodayFragment.newInstance();
+                    break;
                 case R.id.navigation_event_view:
-                    mTextMessage.setText(R.string.title_event_view);
-                    return true;
+                    fragment = EventFragment.newInstance();
+                    break;
                 case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
-                    return true;
+                    fragment = NotificationFragment.newInstance();
+                    break;
                 case R.id.navigation_profile_view:
-                    mTextMessage.setText(R.string.title_profile_view);
-                    return true;
+                    fragment = TodayFragment.newInstance();
+                    break;
             }
-            return false;
+            final FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.replace(R.id.content, fragment).commit();
+            return true;
         }
 
     };
@@ -41,9 +51,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        fragmentManager = getSupportFragmentManager();
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
 //        SharedPreferences preferences =  getSharedPreferences("my_preferences", MODE_PRIVATE);
@@ -61,4 +70,18 @@ public class MainActivity extends AppCompatActivity {
 //        return;
     }
 
+    @Override
+    public void onEventListFragmentInteraction() {
+
+    }
+
+    @Override
+    public void onNotificationListFragmentInteraction() {
+
+    }
+
+    @Override
+    public void onTodayListFragmentInteraction() {
+
+    }
 }

@@ -18,6 +18,8 @@ import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 public class OnboardingActivity extends FragmentActivity {
 
+    private static final String TAG = OnboardingActivity.class.getSimpleName();
+
     private ViewPager viewPager;
     private SmartTabLayout smartTabLayout;
     private ButtonFlat back;

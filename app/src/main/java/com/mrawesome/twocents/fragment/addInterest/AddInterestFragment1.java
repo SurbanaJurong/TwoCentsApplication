@@ -22,6 +22,8 @@ import java.util.Arrays;
 
 public class AddInterestFragment1 extends Fragment {
 
+    private static final String TAG = AddInterestFragment1.class.getSimpleName();
+
     public static final String footballAva = "iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAA3NCSVQICAjb4U/gAAAACXBIWXMA\n" +
             "AAOSAAADkgHKEu2wAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAvFQTFRF\n" +
             "////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n" +

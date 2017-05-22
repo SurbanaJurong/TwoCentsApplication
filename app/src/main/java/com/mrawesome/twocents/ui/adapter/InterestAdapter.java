@@ -22,6 +22,8 @@ import java.util.ArrayList;
 
 public class InterestAdapter extends BaseAdapter {
 
+    private static final String TAG = InterestAdapter.class.getSimpleName();
+
     private Context context;
     private ArrayList<Interest> interests;
 
