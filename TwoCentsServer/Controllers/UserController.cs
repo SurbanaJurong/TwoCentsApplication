@@ -28,7 +28,7 @@ namespace TwoCentsServer.Controllers
                 .Contains(e.Id)
             ).ToList();
             res.UserBookmarked = db.Users.Where(u =>
-                db.Bookmarks
+                db.BookmarkUsers
                     .Where(b => b.UserId == entry.Id)
                     .Select(b => b.TargetId)
                 .Contains(u.Id)

@@ -33,12 +33,9 @@ namespace TwoCentsServer.Models
     partial void InsertAttendance(Attendance instance);
     partial void UpdateAttendance(Attendance instance);
     partial void DeleteAttendance(Attendance instance);
-    partial void InsertVenue(Venue instance);
-    partial void UpdateVenue(Venue instance);
-    partial void DeleteVenue(Venue instance);
-    partial void InsertBookmark(Bookmark instance);
-    partial void UpdateBookmark(Bookmark instance);
-    partial void DeleteBookmark(Bookmark instance);
+    partial void InsertBookmarkUser(BookmarkUser instance);
+    partial void UpdateBookmarkUser(BookmarkUser instance);
+    partial void DeleteBookmarkUser(BookmarkUser instance);
     partial void InsertComment(Comment instance);
     partial void UpdateComment(Comment instance);
     partial void DeleteComment(Comment instance);
@@ -66,6 +63,9 @@ namespace TwoCentsServer.Models
     partial void InsertUserInterest(UserInterest instance);
     partial void UpdateUserInterest(UserInterest instance);
     partial void DeleteUserInterest(UserInterest instance);
+    partial void InsertVenue(Venue instance);
+    partial void UpdateVenue(Venue instance);
+    partial void DeleteVenue(Venue instance);
     #endregion
 		
 		public LocalDBDataContext() : 
@@ -106,19 +106,11 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<Venue> Venues
+		public System.Data.Linq.Table<BookmarkUser> BookmarkUsers
 		{
 			get
 			{
-				return this.GetTable<Venue>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Bookmark> Bookmarks
-		{
-			get
-			{
-				return this.GetTable<Bookmark>();
+				return this.GetTable<BookmarkUser>();
 			}
 		}
 		
@@ -193,6 +185,14 @@ namespace TwoCentsServer.Models
 				return this.GetTable<UserInterest>();
 			}
 		}
+		
+		public System.Data.Linq.Table<Venue> Venues
+		{
+			get
+			{
+				return this.GetTable<Venue>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Attendance")]
@@ -203,7 +203,7 @@ namespace TwoCentsServer.Models
 		
 		private int _Id;
 		
-		private System.Nullable<int> _Interest;
+		private System.Nullable<int> _InterestId;
 		
 		private System.Nullable<int> _Count;
 		
@@ -215,8 +215,8 @@ namespace TwoCentsServer.Models
     partial void OnCreated();
     partial void OnIdChanging(int value);
     partial void OnIdChanged();
-    partial void OnInterestChanging(System.Nullable<int> value);
-    partial void OnInterestChanged();
+    partial void OnInterestIdChanging(System.Nullable<int> value);
+    partial void OnInterestIdChanged();
     partial void OnCountChanging(System.Nullable<int> value);
     partial void OnCountChanged();
     partial void OnUserIdChanging(System.Nullable<int> value);
@@ -248,22 +248,22 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Interest", DbType="Int")]
-		public System.Nullable<int> Interest
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InterestId", DbType="Int")]
+		public System.Nullable<int> InterestId
 		{
 			get
 			{
-				return this._Interest;
+				return this._InterestId;
 			}
 			set
 			{
-				if ((this._Interest != value))
+				if ((this._InterestId != value))
 				{
-					this.OnInterestChanging(value);
+					this.OnInterestIdChanging(value);
 					this.SendPropertyChanging();
-					this._Interest = value;
-					this.SendPropertyChanged("Interest");
-					this.OnInterestChanged();
+					this._InterestId = value;
+					this.SendPropertyChanged("InterestId");
+					this.OnInterestIdChanged();
 				}
 			}
 		}
@@ -329,142 +329,8 @@ namespace TwoCentsServer.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Venue")]
-	public partial class Venue : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _Name;
-		
-		private System.Nullable<int> _InterestId;
-		
-		private string _Location;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnInterestIdChanging(System.Nullable<int> value);
-    partial void OnInterestIdChanged();
-    partial void OnLocationChanging(string value);
-    partial void OnLocationChanged();
-    #endregion
-		
-		public Venue()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50)")]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InterestId", DbType="Int")]
-		public System.Nullable<int> InterestId
-		{
-			get
-			{
-				return this._InterestId;
-			}
-			set
-			{
-				if ((this._InterestId != value))
-				{
-					this.OnInterestIdChanging(value);
-					this.SendPropertyChanging();
-					this._InterestId = value;
-					this.SendPropertyChanged("InterestId");
-					this.OnInterestIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Location", DbType="VarChar(MAX)")]
-		public string Location
-		{
-			get
-			{
-				return this._Location;
-			}
-			set
-			{
-				if ((this._Location != value))
-				{
-					this.OnLocationChanging(value);
-					this.SendPropertyChanging();
-					this._Location = value;
-					this.SendPropertyChanged("Location");
-					this.OnLocationChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Bookmark")]
-	public partial class Bookmark : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BookmarkUser")]
+	public partial class BookmarkUser : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -487,7 +353,7 @@ namespace TwoCentsServer.Models
     partial void OnTargetIdChanged();
     #endregion
 		
-		public Bookmark()
+		public BookmarkUser()
 		{
 			OnCreated();
 		}
@@ -741,13 +607,11 @@ namespace TwoCentsServer.Models
 		
 		private System.Nullable<int> _Host;
 		
-		private string _ProfilePic;
-		
 		private string _Description;
 		
 		private System.Nullable<bool> _IsRecurring;
 		
-		private System.Nullable<System.DateTime> _CreateDate;
+		private System.Nullable<System.DateTime> _Timestamp;
 		
 		private System.Nullable<int> _Venue;
 		
@@ -773,14 +637,12 @@ namespace TwoCentsServer.Models
     partial void OnIdChanged();
     partial void OnHostChanging(System.Nullable<int> value);
     partial void OnHostChanged();
-    partial void OnProfilePicChanging(string value);
-    partial void OnProfilePicChanged();
     partial void OnDescriptionChanging(string value);
     partial void OnDescriptionChanged();
     partial void OnIsRecurringChanging(System.Nullable<bool> value);
     partial void OnIsRecurringChanged();
-    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreateDateChanged();
+    partial void OnTimestampChanging(System.Nullable<System.DateTime> value);
+    partial void OnTimestampChanged();
     partial void OnVenueChanging(System.Nullable<int> value);
     partial void OnVenueChanged();
     partial void OnMinCapacityChanging(System.Nullable<int> value);
@@ -844,26 +706,6 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProfilePic", DbType="VarChar(MAX)")]
-		public string ProfilePic
-		{
-			get
-			{
-				return this._ProfilePic;
-			}
-			set
-			{
-				if ((this._ProfilePic != value))
-				{
-					this.OnProfilePicChanging(value);
-					this.SendPropertyChanging();
-					this._ProfilePic = value;
-					this.SendPropertyChanged("ProfilePic");
-					this.OnProfilePicChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(MAX)")]
 		public string Description
 		{
@@ -904,22 +746,22 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreateDate
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Timestamp", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Timestamp
 		{
 			get
 			{
-				return this._CreateDate;
+				return this._Timestamp;
 			}
 			set
 			{
-				if ((this._CreateDate != value))
+				if ((this._Timestamp != value))
 				{
-					this.OnCreateDateChanging(value);
+					this.OnTimestampChanging(value);
 					this.SendPropertyChanging();
-					this._CreateDate = value;
-					this.SendPropertyChanged("CreateDate");
-					this.OnCreateDateChanged();
+					this._Timestamp = value;
+					this.SendPropertyChanged("Timestamp");
+					this.OnTimestampChanged();
 				}
 			}
 		}
@@ -1115,6 +957,8 @@ namespace TwoCentsServer.Models
 		
 		private string _Name;
 		
+		private string _Icon;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1123,6 +967,8 @@ namespace TwoCentsServer.Models
     partial void OnIdChanged();
     partial void OnNameChanging(string value);
     partial void OnNameChanged();
+    partial void OnIconChanging(string value);
+    partial void OnIconChanged();
     #endregion
 		
 		public Interest()
@@ -1150,7 +996,7 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(20)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
 		public string Name
 		{
 			get
@@ -1166,6 +1012,26 @@ namespace TwoCentsServer.Models
 					this._Name = value;
 					this.SendPropertyChanged("Name");
 					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Icon", DbType="VarChar(MAX)")]
+		public string Icon
+		{
+			get
+			{
+				return this._Icon;
+			}
+			set
+			{
+				if ((this._Icon != value))
+				{
+					this.OnIconChanging(value);
+					this.SendPropertyChanging();
+					this._Icon = value;
+					this.SendPropertyChanged("Icon");
+					this.OnIconChanged();
 				}
 			}
 		}
@@ -1723,9 +1589,7 @@ namespace TwoCentsServer.Models
 		
 		private System.Nullable<int> _Year;
 		
-		private System.Nullable<System.DateTime> _CreateDate;
-		
-		private System.Data.Linq.Binary _PasswordHash;
+		private System.Nullable<System.DateTime> _Timestamp;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1745,10 +1609,8 @@ namespace TwoCentsServer.Models
     partial void OnLocationChanged();
     partial void OnYearChanging(System.Nullable<int> value);
     partial void OnYearChanged();
-    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreateDateChanged();
-    partial void OnPasswordHashChanging(System.Data.Linq.Binary value);
-    partial void OnPasswordHashChanged();
+    partial void OnTimestampChanging(System.Nullable<System.DateTime> value);
+    partial void OnTimestampChanged();
     #endregion
 		
 		public User()
@@ -1896,42 +1758,22 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreateDate
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Timestamp", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Timestamp
 		{
 			get
 			{
-				return this._CreateDate;
+				return this._Timestamp;
 			}
 			set
 			{
-				if ((this._CreateDate != value))
+				if ((this._Timestamp != value))
 				{
-					this.OnCreateDateChanging(value);
+					this.OnTimestampChanging(value);
 					this.SendPropertyChanging();
-					this._CreateDate = value;
-					this.SendPropertyChanged("CreateDate");
-					this.OnCreateDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PasswordHash", DbType="Binary(64) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary PasswordHash
-		{
-			get
-			{
-				return this._PasswordHash;
-			}
-			set
-			{
-				if ((this._PasswordHash != value))
-				{
-					this.OnPasswordHashChanging(value);
-					this.SendPropertyChanging();
-					this._PasswordHash = value;
-					this.SendPropertyChanged("PasswordHash");
-					this.OnPasswordHashChanged();
+					this._Timestamp = value;
+					this.SendPropertyChanged("Timestamp");
+					this.OnTimestampChanged();
 				}
 			}
 		}
@@ -2042,6 +1884,140 @@ namespace TwoCentsServer.Models
 					this._InterestId = value;
 					this.SendPropertyChanged("InterestId");
 					this.OnInterestIdChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Venue")]
+	public partial class Venue : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Name;
+		
+		private System.Nullable<int> _InterestId;
+		
+		private string _Location;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnInterestIdChanging(System.Nullable<int> value);
+    partial void OnInterestIdChanged();
+    partial void OnLocationChanging(string value);
+    partial void OnLocationChanged();
+    #endregion
+		
+		public Venue()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InterestId", DbType="Int")]
+		public System.Nullable<int> InterestId
+		{
+			get
+			{
+				return this._InterestId;
+			}
+			set
+			{
+				if ((this._InterestId != value))
+				{
+					this.OnInterestIdChanging(value);
+					this.SendPropertyChanging();
+					this._InterestId = value;
+					this.SendPropertyChanged("InterestId");
+					this.OnInterestIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Location", DbType="VarChar(MAX)")]
+		public string Location
+		{
+			get
+			{
+				return this._Location;
+			}
+			set
+			{
+				if ((this._Location != value))
+				{
+					this.OnLocationChanging(value);
+					this.SendPropertyChanging();
+					this._Location = value;
+					this.SendPropertyChanged("Location");
+					this.OnLocationChanged();
 				}
 			}
 		}

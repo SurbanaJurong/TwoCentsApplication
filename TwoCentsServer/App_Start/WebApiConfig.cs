@@ -22,14 +22,24 @@ namespace TwoCentsServer
             //);
 
             config.Routes.MapHttpRoute(
-                name: "DefaultApiWithAction",
+                name: "DefaultApi",
                 routeTemplate: "api/{controller}"
             );
             config.Routes.MapHttpRoute(
-                name: "DefaultApiWithActionAndId",
+                name: "DefaultApiWithId",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            //config.Routes.MapHttpRoute(
+            //    name: "CustomApi",
+            //    routeTemplate: "api/Custom/{action}/{id}",
+            //    defaults: new {
+            //        controller = "Custom",
+            //        id = RouteParameter.Optional
+            //    }
+            //);
+
             config.Routes.MapHttpRoute(
                 name: "Home",
                 routeTemplate: "",
