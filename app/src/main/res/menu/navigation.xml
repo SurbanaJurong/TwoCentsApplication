@@ -17,7 +17,7 @@
         android:title="@string/title_notifications" />
 
     <item
-        android:id="@+id/navigation_profile_view"
+        android:id="@+id/navigation_your_event"
         android:icon="@mipmap/ic_launcher"
         android:title="@string/title_profile_view" />
 

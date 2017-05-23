@@ -1,5 +1,6 @@
 package com.mrawesome.twocents.ui;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,8 +14,9 @@ import com.mrawesome.twocents.R;
 import com.mrawesome.twocents.fragment.main.EventFragment;
 import com.mrawesome.twocents.fragment.main.NotificationFragment;
 import com.mrawesome.twocents.fragment.main.TodayFragment;
+import com.mrawesome.twocents.fragment.main.YourEventFragment;
 
-public class MainActivity extends AppCompatActivity implements TodayFragment.OnListFragmentInteractionListener, EventFragment.OnListFragmentInteractionListener, NotificationFragment.OnListFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements YourEventFragment.OnListFragmentInteractionListener, EventFragment.OnListFragmentInteractionListener, NotificationFragment.OnListFragmentInteractionListener, TodayFragment.OnFragmentInteractionListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -28,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements TodayFragment.OnL
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_today_view:
-                    fragment = TodayFragment.newInstance();
+                    fragment = TodayFragment.newInstance(null, null);
                     break;
                 case R.id.navigation_event_view:
                     fragment = EventFragment.newInstance();
@@ -36,8 +38,8 @@ public class MainActivity extends AppCompatActivity implements TodayFragment.OnL
                 case R.id.navigation_notifications:
                     fragment = NotificationFragment.newInstance();
                     break;
-                case R.id.navigation_profile_view:
-                    fragment = TodayFragment.newInstance();
+                case R.id.navigation_your_event:
+                    fragment = YourEventFragment.newInstance();
                     break;
             }
             final FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements TodayFragment.OnL
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         fragmentManager = getSupportFragmentManager();
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setSelectedItemId(R.id.navigation_today_view);
 
 //        SharedPreferences preferences =  getSharedPreferences("my_preferences", MODE_PRIVATE);
 //
@@ -82,6 +85,11 @@ public class MainActivity extends AppCompatActivity implements TodayFragment.OnL
 
     @Override
     public void onTodayListFragmentInteraction() {
+
+    }
+
+    @Override
+    public void onTodayFragmentInteraction(Uri uri) {
 
     }
 }

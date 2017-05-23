@@ -1,54 +1,66 @@
 package com.mrawesome.twocents.fragment.main;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.AppCompatImageButton;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.mindorks.placeholderview.SwipeDecor;
+import com.mindorks.placeholderview.SwipePlaceHolderView;
 import com.mrawesome.twocents.R;
-import com.mrawesome.twocents.data.persistent.Event;
-import com.mrawesome.twocents.ui.adapter.EventAdapter;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
+import com.mrawesome.twocents.data.Dummy;
+import com.mrawesome.twocents.data.TinderCard;
+import com.mrawesome.twocents.util.Utils;
 
 /**
- * A fragment representing a list of Items.
- * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
- * interface.
+ * A simple {@link Fragment} subclass.
+ * Activities that contain this fragment must implement the
+ * {@link TodayFragment.OnFragmentInteractionListener} interface
+ * to handle interaction events.
+ * Use the {@link TodayFragment#newInstance} factory method to
+ * create an instance of this fragment.
  */
 public class TodayFragment extends Fragment {
 
-    private Calendar start1 = Calendar.getInstance();
-    private Calendar start2 = (Calendar) start1.clone();
-    {
-        start2.add(Calendar.DAY_OF_WEEK, 1);
-    }
-    private ArrayList<Event> events = new ArrayList<>(Arrays.asList(new Event[] {
-            new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, start1.getTimeInMillis(), 2), new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, start1.getTimeInMillis(), 2), new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, start2.getTimeInMillis(), 2), new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, start2.getTimeInMillis(), 2)
-    }));
+    private static final String TAG = TodayFragment.class.getSimpleName();
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Customize parameters
-    private OnListFragmentInteractionListener mListener;
+    private SwipePlaceHolderView swipePlaceHolderView;
+    private Context context;
+
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
+
+    private OnFragmentInteractionListener mListener;
+
+    public TodayFragment() {
+        // Required empty public constructor
+    }
 
     /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment TodayFragment.
      */
-    public TodayFragment() {
-    }
-
-    // TODO: Customize parameter initialization
-    @SuppressWarnings("unused")
-    public static TodayFragment newInstance() {
+    // TODO: Rename and change types and number of parameters
+    public static TodayFragment newInstance(String param1, String param2) {
         TodayFragment fragment = new TodayFragment();
         Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -56,29 +68,56 @@ public class TodayFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+        context = getActivity().getApplicationContext();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_today, container, false);
-        RecyclerView recyclerView = (RecyclerView) view;
-        recyclerView.setAdapter(new EventAdapter(events));
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-
+        swipePlaceHolderView = (SwipePlaceHolderView) view.findViewById(R.id.swipeView);
+        swipePlaceHolderView.getBuilder().setDisplayViewCount(3).setSwipeDecor(new SwipeDecor().setPaddingTop(20).setRelativeScale(0.01f).setSwipeInMsgLayoutId(R.layout.event_swipe_in).setSwipeOutMsgLayoutId(R.layout.event_swipe_out));
+        for (Dummy dummy : Utils.loadDummys(context)) {
+            Log.d(TAG, dummy.getName() + "/" + dummy.getAge() + "/" + dummy.getLocation());
+            swipePlaceHolderView.addView(new TinderCard(context, dummy, swipePlaceHolderView));
+        }
+        AppCompatImageButton rejectBtn = (AppCompatImageButton) view.findViewById(R.id.rejectBtn);
+        rejectBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                swipePlaceHolderView.doSwipe(false);
+            }
+        });
+        AppCompatImageButton acceptBtn = (AppCompatImageButton) view.findViewById(R.id.acceptBtn);
+        acceptBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                swipePlaceHolderView.doSwipe(true);
+            }
+        });
         return view;
     }
 
+    // TODO: Rename method, update argument and hook method into UI event
+    public void onButtonPressed(Uri uri) {
+        if (mListener != null) {
+            mListener.onTodayFragmentInteraction(uri);
+        }
+    }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnListFragmentInteractionListener");
+                    + " must implement OnFragmentInteractionListener");
         }
     }
 
@@ -93,13 +132,13 @@ public class TodayFragment extends Fragment {
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     * <p/>
+     * <p>
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnListFragmentInteractionListener {
+    public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onTodayListFragmentInteraction();
+        void onTodayFragmentInteraction(Uri uri);
     }
 }
