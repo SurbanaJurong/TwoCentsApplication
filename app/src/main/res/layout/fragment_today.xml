@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#777"
+    android:background="@color/cardview_light_background"
     tools:context="com.mrawesome.twocents.fragment.main.TodayFragment">
 
     <!-- TODO: Update blank fragment layout -->

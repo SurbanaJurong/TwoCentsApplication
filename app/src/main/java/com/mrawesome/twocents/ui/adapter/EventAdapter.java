@@ -23,6 +23,8 @@ import java.util.Calendar;
 
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHolder> {
 
+    private static final String TAG = EventAdapter.class.getSimpleName();
+
     private ArrayList<Event> events;
 
     public EventAdapter(ArrayList<Event> events) {

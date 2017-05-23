@@ -13,9 +13,10 @@ import com.mrawesome.twocents.R;
 import com.mrawesome.twocents.fragment.addInterest.AddInterestFragment1;
 import com.mrawesome.twocents.fragment.addInterest.AddInterestFragment2;
 import com.mrawesome.twocents.fragment.addInterest.AddInterestFragment3;
+import com.mrawesome.twocents.fragment.main.TodayFragment;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
-public class AddInterestActivity extends AppCompatActivity {
+public class AddInterestActivity extends AppCompatActivity implements AddInterestFragment1.OnListFragmentInteractionListener {
 
     private static final String TAG = AddInterestActivity.class.getSimpleName();
 
@@ -93,5 +94,10 @@ public class AddInterestActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void onInterestListFragmentInteraction() {
+
     }
 }

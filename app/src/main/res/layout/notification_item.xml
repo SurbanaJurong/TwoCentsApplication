@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -9,12 +9,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/notification_wrapper"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="200dp">
+        android:layout_margin="5dp"
+        app:cardCornerRadius="7dp"
+        app:cardElevation="4dp"
+        android:background="@color/cardview_light_background">
 
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             >
 
             <ImageView
@@ -37,4 +39,4 @@
 
     </android.support.v7.widget.CardView>
 
-</LinearLayout>
+</FrameLayout>

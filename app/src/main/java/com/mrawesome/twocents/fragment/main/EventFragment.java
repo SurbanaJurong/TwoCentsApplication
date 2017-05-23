@@ -27,6 +27,8 @@ import java.util.List;
  */
 public class EventFragment extends Fragment {
 
+    private static final String TAG = EventFragment.class.getSimpleName();
+
     private Calendar start1 = Calendar.getInstance();
     private Calendar start2 = (Calendar) start1.clone();
     {
@@ -61,8 +63,7 @@ public class EventFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_event_list, container, false);
         RecyclerView recyclerView = (RecyclerView) view;
         recyclerView.setAdapter(new EventAdapter(events));

@@ -3,6 +3,7 @@ package com.mrawesome.twocents.ui.adapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,25 +21,30 @@ import java.util.ArrayList;
  * Created by mrawesome on 21/5/17.
  */
 
-public class InterestAdapter extends BaseAdapter {
+public class InterestAdapter extends RecyclerView.Adapter<InterestAdapter.InterestViewHolder> {
 
     private static final String TAG = InterestAdapter.class.getSimpleName();
 
-    private Context context;
     private ArrayList<Interest> interests;
 
-    public InterestAdapter(Context context, ArrayList<Interest> interests) {
-        this.context = context;
+    public InterestAdapter(ArrayList<Interest> interests) {
         this.interests = interests;
-    }
-    @Override
-    public int getCount() {
-        return interests.size();
     }
 
     @Override
-    public Object getItem(int position) {
-        return interests.get(position);
+    public InterestViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.interest_item, parent, false);
+        return new InterestViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(InterestViewHolder holder, int position) {
+        Interest interest = interests.get(position);
+        byte[] avatarBase64 = Base64.decode(interest.getIcon(), Base64.DEFAULT);
+        Bitmap image = BitmapFactory.decodeByteArray(avatarBase64, 0, avatarBase64.length);
+        holder.imageView.setImageBitmap(image);
+        holder.textView.setText(interest.getSubject());
+
     }
 
     @Override
@@ -47,20 +53,19 @@ public class InterestAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.interest_item, parent, false);
+    public int getItemCount() {
+        return interests.size();
+    }
+
+    public static class InterestViewHolder extends RecyclerView.ViewHolder {
+
+        protected ImageView imageView;
+        protected TextView textView;
+
+        public InterestViewHolder(View itemView) {
+            super(itemView);
+            imageView = (ImageView) itemView.findViewById(R.id.interest_avatar);
+            textView = (TextView) itemView.findViewById(R.id.interest_subject);
         }
-
-        Interest interest = (Interest) getItem(position);
-        ImageView imageView = (ImageView) convertView.findViewById(R.id.interest_avatar);
-        TextView textView = (TextView) convertView.findViewById(R.id.interest_subject);
-
-        byte[] avatarBase64 = Base64.decode(interest.getIcon(), Base64.DEFAULT);
-        Bitmap image = BitmapFactory.decodeByteArray(avatarBase64, 0, avatarBase64.length);
-        imageView.setImageBitmap(image);
-        textView.setText(interest.getSubject());
-
-        return convertView;
     }
 }
