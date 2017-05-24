@@ -38,6 +38,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:id="@+id/event_item_event_name"
+                    android:drawableStart="@drawable/ic_tag_text_outline_black_18dp"
+                    android:drawablePadding="5dp"
                     android:text="event name"/>
 
                 <TextView
@@ -45,6 +47,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:id="@+id/event_item_host"
+                    android:drawableStart="@drawable/ic_account_black_18dp"
+                    android:drawablePadding="5dp"
                     android:text="host"/>
 
                 <TextView
@@ -52,6 +56,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:id="@+id/event_item_venueId"
+                    android:drawableStart="@drawable/ic_map_marker_black_18dp"
+                    android:drawablePadding="5dp"
                     android:text="venue"/>
 
             </LinearLayout>
@@ -69,6 +75,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:id="@+id/event_item_time"
+                    android:drawableStart="@drawable/ic_clock_black_18dp"
+                    android:drawablePadding="5dp"
                     android:text="11 am - 12 am"/>
 
                 <TextView
@@ -76,6 +84,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:id="@+id/event_item_is_recurring"
+                    android:drawableStart="@drawable/ic_calendar_black_18dp"
+                    android:drawablePadding="5dp"
                     android:text="every week"/>
 
                 <TextView
@@ -83,6 +93,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:id="@+id/event_item_participant"
+                    android:drawableStart="@drawable/ic_account_multiple_black_18dp"
+                    android:drawablePadding="5dp"
                     android:text="16/20"/>
 
             </LinearLayout>
