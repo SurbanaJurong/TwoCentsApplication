@@ -12,13 +12,10 @@ import android.widget.TextView;
 
 import com.mrawesome.twocents.R;
 import com.mrawesome.twocents.data.persistent.Notification;
-import com.mrawesome.twocents.data.persistent.Notification;
 import com.mrawesome.twocents.data.persistent.User;
 import com.mrawesome.twocents.fragment.addInterest.AddInterestFragment1;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by mrawesome on 21/5/17.
@@ -26,9 +23,9 @@ import java.util.Calendar;
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.NotificationViewHolder> {
 
-    private ArrayList<Notification> notifications;
+    private List<Notification> notifications;
 
-    public NotificationAdapter(ArrayList<Notification> notifications) {
+    public NotificationAdapter(List<Notification> notifications) {
         this.notifications = notifications;
     }
 
@@ -65,8 +62,8 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
         public NotificationViewHolder(View itemView) {
             super(itemView);
-            imageView = (ImageView) itemView.findViewById(R.id.notification_type);
-            textView = (TextView) itemView.findViewById(R.id.notification_details);
+            imageView = (ImageView) itemView.findViewById(R.id.user_avatar);
+            textView = (TextView) itemView.findViewById(R.id.user_name);
         }
     }
 

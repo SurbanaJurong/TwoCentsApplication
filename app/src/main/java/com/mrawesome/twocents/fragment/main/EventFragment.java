@@ -3,7 +3,6 @@ package com.mrawesome.twocents.fragment.main;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -34,9 +33,7 @@ public class EventFragment extends Fragment {
     {
         start2.add(Calendar.DAY_OF_WEEK, 1);
     }
-    private ArrayList<Event> events = new ArrayList<>(Arrays.asList(new Event[] {
-            new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, start1.getTimeInMillis(), 2), new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, start1.getTimeInMillis(), 2), new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, start1.getTimeInMillis(), 2), new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, start2.getTimeInMillis(), 2), new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, start2.getTimeInMillis(), 2)
-    }));
+    private List<Event> events = Arrays.asList(new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, start1.getTimeInMillis(), 2), new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, start1.getTimeInMillis(), 2), new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, start1.getTimeInMillis(), 2), new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, start2.getTimeInMillis(), 2), new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, start2.getTimeInMillis(), 2), new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, start2.getTimeInMillis(), 2), new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, start2.getTimeInMillis(), 2), new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, start2.getTimeInMillis(), 2), new Event("event 1", "football", "u123123", "Some description", 1, "v123123", 10, 20, start2.getTimeInMillis(), 2));
 
     // TODO: Customize parameters
     private OnListFragmentInteractionListener mListener;
@@ -65,10 +62,14 @@ public class EventFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_event_list, container, false);
-        RecyclerView recyclerView = (RecyclerView) view;
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fragment_event_list);
         recyclerView.setAdapter(new EventAdapter(events));
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+//        FloatingActionButton button = (FloatingActionButton) view.findViewById(R.id.event_floating_btn);
+//        CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) button.getLayoutParams();
+//        params.setBehavior(new ScrollAwareFABBehavior());
+//        button.requestLayout();
 
         return view;
     }

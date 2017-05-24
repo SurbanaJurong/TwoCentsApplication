@@ -62,10 +62,14 @@ public class YourEventFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_your_event, container, false);
-        RecyclerView recyclerView = (RecyclerView) view;
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fragment_your_event);
         recyclerView.setAdapter(new EventAdapter(events));
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+//        FloatingActionButton button = (FloatingActionButton) view.findViewById(R.id.your_event_floating_btn);
+//        CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) button.getLayoutParams();
+//        params.setBehavior(new ScrollAwareFABBehavior());
+//        button.requestLayout();
 
         return view;
     }

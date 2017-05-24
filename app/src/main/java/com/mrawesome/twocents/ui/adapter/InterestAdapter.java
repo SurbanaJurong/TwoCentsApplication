@@ -16,6 +16,7 @@ import com.mrawesome.twocents.R;
 import com.mrawesome.twocents.data.persistent.Interest;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by mrawesome on 21/5/17.
@@ -25,9 +26,9 @@ public class InterestAdapter extends RecyclerView.Adapter<InterestAdapter.Intere
 
     private static final String TAG = InterestAdapter.class.getSimpleName();
 
-    private ArrayList<Interest> interests;
+    private List<Interest> interests;
 
-    public InterestAdapter(ArrayList<Interest> interests) {
+    public InterestAdapter(List<Interest> interests) {
         this.interests = interests;
     }
 

@@ -16,6 +16,7 @@ import com.mrawesome.twocents.data.persistent.Event;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by mrawesome on 21/5/17.
@@ -25,9 +26,9 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
     private static final String TAG = EventAdapter.class.getSimpleName();
 
-    private ArrayList<Event> events;
+    private List<Event> events;
 
-    public EventAdapter(ArrayList<Event> events) {
+    public EventAdapter(List<Event> events) {
         this.events = events;
     }
 
@@ -80,7 +81,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
         public EventViewHolder(View itemView) {
             super(itemView);
-            imageView = (ImageView) itemView.findViewById(R.id.notification_type);
+            imageView = (ImageView) itemView.findViewById(R.id.user_avatar);
             eventName = (TextView) itemView.findViewById(R.id.event_item_event_name);
             host = (TextView) itemView.findViewById(R.id.event_item_host);
             venue = (TextView) itemView.findViewById(R.id.event_item_venueId);

@@ -2,6 +2,7 @@ package com.mrawesome.twocents.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -59,18 +60,23 @@ public class MainActivity extends AppCompatActivity implements YourEventFragment
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_today_view);
 
-//        SharedPreferences preferences =  getSharedPreferences("my_preferences", MODE_PRIVATE);
+        SharedPreferences preferences =  getSharedPreferences("my_preferences", MODE_PRIVATE);
 //
-        if (false) {
-//        if (!preferences.getBoolean("onboarding_complete",false)) {
+//        if (true) {
+        if (!preferences.getBoolean("onboarding_complete",false)) {
             Intent onboarding = new Intent(this, OnboardingActivity.class);
             startActivity(onboarding);
             finish();
             return;
         }
-        Intent addInterest = new Intent(this, AddInterestActivity.class);
-        startActivity(addInterest);
+
+        Intent addEvent = new Intent(this, NewEventActivity.class);
+        startActivity(addEvent);
         finish();
+
+//        Intent addInterest = new Intent(this, AddInterestActivity.class);
+//        startActivity(addInterest);
+//        finish();
         return;
     }
 

@@ -18,6 +18,7 @@ import com.mrawesome.twocents.ui.adapter.InterestAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by mrawesome on 21/5/17.
@@ -524,9 +525,7 @@ public class AddInterestFragment1 extends Fragment {
             "MjAxMy0wNC0xOVQwMDowMjozNi0wNTowMJui0P4AAAAldEVYdG1vZGlmeS1kYXRlADIwMTMtMDEt\n" +
             "MjJUMTI6MTc6MDctMDY6MDATYbhJAAAAAElFTkSuQmCC\n";
 
-    private ArrayList<Interest> interests = new ArrayList<>(Arrays.asList(new Interest[] {
-            new Interest("football", footballAva), new Interest("basketball", basketballAva),new Interest("football", footballAva), new Interest("basketball", basketballAva),new Interest("football", footballAva), new Interest("basketball", basketballAva),new Interest("football", footballAva), new Interest("basketball", basketballAva),
-    }));
+    private List<Interest> interests = Arrays.asList(new Interest("football", footballAva), new Interest("basketball", basketballAva),new Interest("football", footballAva), new Interest("basketball", basketballAva),new Interest("football", footballAva), new Interest("basketball", basketballAva),new Interest("football", footballAva), new Interest("basketball", basketballAva));
 
     private OnListFragmentInteractionListener mListener;
 

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -38,14 +37,14 @@
         android:layout_width="344dp"
         android:layout_height="wrap_content"
         app:layout_editor_absoluteY="200dp"
-        android:id="@+id/username_wrapper"
+        android:id="@+id/review_username_wrapper"
         app:layout_constraintTop_toBottomOf="@+id/get_started"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/phoneNumber_wrapper">
+        app:layout_constraintBottom_toTopOf="@+id/review_phoneNumber_wrapper">
 
         <TextView
-            android:id="@+id/username_label"
+            android:id="@+id/review_username_label"
             android:layout_width="120dp"
             android:layout_height="25dp"
             android:text="Username"
@@ -53,7 +52,7 @@
             android:layout_marginStart="30dp"/>
 
         <EditText
-            android:id="@+id/username_field"
+            android:id="@+id/review_username_field"
             android:layout_width="160dp"
             android:layout_height="25dp"
             android:textSize="25dp"
@@ -66,27 +65,27 @@
             android:layout_marginEnd="30dp"/>
 
         <TextView
-            android:id="@+id/username_message"
+            android:id="@+id/review_username_message"
             android:layout_width="160dp"
             android:layout_height="15dp"
-            android:layout_below="@id/username_label"
+            android:layout_below="@id/review_username_label"
             android:layout_marginTop="5dp"
             android:text=""
-            android:layout_alignStart="@id/username_field"/>
+            android:layout_alignStart="@id/review_username_field"/>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="344dp"
         android:layout_height="wrap_content"
         app:layout_editor_absoluteY="500dp"
-        android:id="@+id/nric_wrapper"
+        android:id="@+id/review_nric_wrapper"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/postalCode_wrapper">
+        app:layout_constraintTop_toBottomOf="@+id/review_postalCode_wrapper">
 
         <TextView
-            android:id="@+id/nric_label"
+            android:id="@+id/review_nric_label"
             android:layout_width="120dp"
             android:layout_height="25dp"
             android:text="NRIC"
@@ -94,7 +93,7 @@
             android:layout_marginStart="30dp"/>
 
         <EditText
-            android:id="@+id/nric_field"
+            android:id="@+id/review_nric_field"
             android:layout_width="160dp"
             android:layout_height="25dp"
             android:ems="10"
@@ -107,28 +106,28 @@
             android:layout_marginEnd="30dp"/>
 
         <TextView
-            android:id="@+id/nric_message"
+            android:id="@+id/review_nric_message"
             android:layout_width="160dp"
             android:layout_height="15dp"
             android:text=""
-            android:layout_alignStart="@id/nric_field"
+            android:layout_alignStart="@id/review_nric_field"
             android:layout_marginTop="5dp"
-            android:layout_below="@id/nric_label"/>
+            android:layout_below="@id/review_nric_label"/>
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/phoneNumber_wrapper"
+        android:id="@+id/review_phoneNumber_wrapper"
         android:layout_width="344dp"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_editor_absoluteY="300dp"
-        app:layout_constraintBottom_toTopOf="@+id/year_wrapper"
-        app:layout_constraintTop_toBottomOf="@+id/username_wrapper">
+        app:layout_constraintBottom_toTopOf="@+id/review_year_wrapper"
+        app:layout_constraintTop_toBottomOf="@+id/review_username_wrapper">
 
         <TextView
-            android:id="@+id/phoneNumber_label"
+            android:id="@+id/review_phoneNumber_label"
             android:layout_width="120dp"
             android:layout_height="25dp"
             android:layout_alignParentStart="true"
@@ -136,7 +135,7 @@
             android:text="Phone Number" />
 
         <EditText
-            android:id="@+id/phoneNumber_field"
+            android:id="@+id/review_phoneNumber_field"
             android:layout_width="160dp"
             android:layout_height="25dp"
             android:layout_alignParentEnd="true"
@@ -148,28 +147,28 @@
             android:textColor="@color/colorPrimary" />
 
         <TextView
-            android:id="@+id/phoneNumber_message"
+            android:id="@+id/review_phoneNumber_message"
             android:layout_width="160dp"
             android:layout_height="15dp"
-            android:layout_alignStart="@id/phoneNumber_field"
-            android:layout_below="@id/phoneNumber_label"
+            android:layout_alignStart="@id/review_phoneNumber_field"
+            android:layout_below="@id/review_phoneNumber_label"
             android:layout_marginTop="5dp"
             android:text="" />
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/year_wrapper"
+        android:id="@+id/review_year_wrapper"
         android:layout_width="344dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/postalCode_wrapper"
+        app:layout_constraintBottom_toTopOf="@+id/review_postalCode_wrapper"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_editor_absoluteY="400dp"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNumber_wrapper">
+        app:layout_constraintTop_toBottomOf="@+id/review_phoneNumber_wrapper">
 
         <TextView
-            android:id="@+id/year_label"
+            android:id="@+id/review_year_label"
             android:layout_width="120dp"
             android:layout_height="25dp"
             android:layout_alignParentStart="true"
@@ -177,7 +176,7 @@
             android:text="Year of Birth" />
 
         <EditText
-            android:id="@+id/year_field"
+            android:id="@+id/review_year_field"
             android:layout_width="160dp"
             android:layout_height="25dp"
             android:layout_alignParentEnd="true"
@@ -190,28 +189,28 @@
             android:textColor="@color/colorPrimary" />
 
         <TextView
-            android:id="@+id/year_message"
+            android:id="@+id/review_year_message"
             android:layout_width="160dp"
             android:layout_height="15dp"
-            android:layout_alignStart="@id/year_field"
-            android:layout_below="@id/year_label"
+            android:layout_alignStart="@id/review_year_field"
+            android:layout_below="@id/review_year_label"
             android:layout_marginTop="5dp"
             android:text="" />
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/postalCode_wrapper"
+        android:id="@+id/review_postalCode_wrapper"
         android:layout_width="344dp"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_editor_absoluteY="400dp"
-        app:layout_constraintBottom_toTopOf="@+id/nric_wrapper"
-        app:layout_constraintTop_toBottomOf="@+id/year_wrapper">
+        app:layout_constraintBottom_toTopOf="@+id/review_nric_wrapper"
+        app:layout_constraintTop_toBottomOf="@+id/review_year_wrapper">
 
         <TextView
-            android:id="@+id/postalCode_label"
+            android:id="@+id/review_postalCode_label"
             android:layout_width="120dp"
             android:layout_height="25dp"
             android:layout_alignParentStart="true"
@@ -219,7 +218,7 @@
             android:text="Postal Code" />
 
         <EditText
-            android:id="@+id/postalCode_field"
+            android:id="@+id/review_postalCode_field"
             android:layout_width="160dp"
             android:layout_height="25dp"
             android:layout_alignParentEnd="true"
@@ -232,11 +231,11 @@
             android:textColor="@color/colorPrimary" />
 
         <TextView
-            android:id="@+id/postalCode_message"
+            android:id="@+id/review_postalCode_message"
             android:layout_width="160dp"
             android:layout_height="15dp"
-            android:layout_alignStart="@id/postalCode_field"
-            android:layout_below="@id/postalCode_label"
+            android:layout_alignStart="@id/review_postalCode_field"
+            android:layout_below="@id/review_postalCode_label"
             android:layout_marginTop="5dp"
             android:text="" />
 

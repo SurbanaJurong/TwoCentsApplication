@@ -2,6 +2,7 @@ package com.mrawesome.twocents.ui;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -14,9 +15,10 @@ import com.mrawesome.twocents.R;
 import com.mrawesome.twocents.fragment.onboarding.OnboardingFragment1;
 import com.mrawesome.twocents.fragment.onboarding.OnboardingFragment2;
 import com.mrawesome.twocents.fragment.onboarding.OnboardingFragment3;
+import com.mrawesome.twocents.fragment.onboarding.OnboardingFragment4;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
-public class OnboardingActivity extends FragmentActivity {
+public class OnboardingActivity extends FragmentActivity implements OnboardingFragment2.OnFragmentInteractionListener {
 
     private static final String TAG = OnboardingActivity.class.getSimpleName();
 
@@ -44,6 +46,8 @@ public class OnboardingActivity extends FragmentActivity {
                         return new OnboardingFragment2();
                     case 2:
                         return new OnboardingFragment3();
+                    case 3:
+                        return new OnboardingFragment4();
                     default:
                         return null;
                 }
@@ -51,7 +55,7 @@ public class OnboardingActivity extends FragmentActivity {
 
             @Override
             public int getCount() {
-                return 3;
+                return 4;
             }
         };
         viewPager.setAdapter(adapter);
@@ -70,7 +74,7 @@ public class OnboardingActivity extends FragmentActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(viewPager.getCurrentItem() == 2) { // The last screen
+                if(viewPager.getCurrentItem() == 3) { // The last screen
                     finishOnboarding();
                 } else {
                     viewPager.setCurrentItem(
@@ -85,7 +89,7 @@ public class OnboardingActivity extends FragmentActivity {
             public void onPageSelected(int position) {
                 if (position == 0) {
                     back.setVisibility(View.GONE);
-                } else if (position == 2) {
+                } else if (position == 3) {
                     back.setVisibility(View.GONE);
                     next.setText("Done");
                 } else {
@@ -102,5 +106,10 @@ public class OnboardingActivity extends FragmentActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void onOnboarding2FragmentInteraction(Uri uri) {
+
     }
 }
