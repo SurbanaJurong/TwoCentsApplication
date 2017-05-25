@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Results;
 using TwoCentsServer.Models;
+using TwoCentsServer.Repositories;
 
 namespace TwoCentsServer.Controllers
 {
@@ -13,7 +14,7 @@ namespace TwoCentsServer.Controllers
     {
         public IHttpActionResult Get()
         {
-            using (var db = new LocalDBDataContext())
+            using (var db = LinqRepository.DataCtx())
             {
                 var body = db.Comments.ToList();
                 return Json(body);
@@ -22,7 +23,7 @@ namespace TwoCentsServer.Controllers
 
         public IHttpActionResult Get(string userId, string eventId)
         {
-            using (var db = new LocalDBDataContext())
+            using (var db = LinqRepository.DataCtx())
             {
                 int parsedUserId, parsedEventId;
                 int.TryParse(userId, out parsedUserId);
@@ -39,7 +40,7 @@ namespace TwoCentsServer.Controllers
 
         public IHttpActionResult Post([FromBody] Comment data)
         {
-            using (var db = new LocalDBDataContext())
+            using (var db = LinqRepository.DataCtx())
             {
                 db.Comments.InsertOnSubmit(data);
                 db.SubmitChanges();
@@ -49,7 +50,7 @@ namespace TwoCentsServer.Controllers
 
         public IHttpActionResult Delete([FromBody] Comment data)
         {
-            using (var db = new LocalDBDataContext())
+            using (var db = LinqRepository.DataCtx())
             {
                 db.Comments.DeleteOnSubmit(db.Comments.FirstOrDefault(r => r.Id == data.Id));
                 db.SubmitChanges();

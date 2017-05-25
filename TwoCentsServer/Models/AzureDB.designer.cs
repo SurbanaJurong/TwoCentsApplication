@@ -22,8 +22,8 @@ namespace TwoCentsServer.Models
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="TwoCentsDB")]
-	public partial class LocalDBDataContext : System.Data.Linq.DataContext
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="TwoCents")]
+	public partial class AzureDBDataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
@@ -68,31 +68,31 @@ namespace TwoCentsServer.Models
     partial void DeleteVenue(Venue instance);
     #endregion
 		
-		public LocalDBDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["TwoCentsDBConnectionString1"].ConnectionString, mappingSource)
+		public AzureDBDataContext() : 
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["TwoCentsConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public LocalDBDataContext(string connection) : 
+		public AzureDBDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public LocalDBDataContext(System.Data.IDbConnection connection) : 
+		public AzureDBDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public LocalDBDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public AzureDBDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public LocalDBDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public AzureDBDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();

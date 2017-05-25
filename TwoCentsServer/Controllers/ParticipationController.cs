@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using TwoCentsServer.Models;
+using TwoCentsServer.Repositories;
 
 namespace TwoCentsServer.Controllers
 {
@@ -13,7 +14,7 @@ namespace TwoCentsServer.Controllers
         [HttpGet]
         public IHttpActionResult Get()
         {
-            using (var db = new LocalDBDataContext())
+            using (var db = LinqRepository.DataCtx())
             {
                 var body = db.Participations.ToList();
                 return Json(body);
@@ -22,7 +23,7 @@ namespace TwoCentsServer.Controllers
 
         public IHttpActionResult Get(string userId, string eventId)
         {
-            using (var db = new LocalDBDataContext())
+            using (var db = LinqRepository.DataCtx())
             {
                 int parsedUserId, parsedEventId;
                 int.TryParse(userId, out parsedUserId);
@@ -39,7 +40,7 @@ namespace TwoCentsServer.Controllers
 
         public IHttpActionResult Post([FromBody] Participation data)
         {
-            using (var db = new LocalDBDataContext())
+            using (var db = LinqRepository.DataCtx())
             {
                 db.Participations.InsertOnSubmit(data);
                 
