@@ -13,8 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
-        app:cardCornerRadius="7dp"
-        app:cardElevation="4dp">
+        app:cardCornerRadius="@dimen/cardview_corner_radius"
+        app:cardElevation="@dimen/cardview_elevation">
         <ImageView
             android:id="@+id/profileImageView"
             android:scaleType="centerCrop"
@@ -27,7 +27,7 @@
             android:orientation="vertical"
             android:layout_gravity="bottom"
             android:gravity="center|start"
-            android:paddingLeft="20dp">
+            android:paddingStart="20dp">
             <TextView
                 android:id="@+id/nameAgeTxt"
                 android:layout_width="wrap_content"

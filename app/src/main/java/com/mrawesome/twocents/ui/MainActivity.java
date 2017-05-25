@@ -70,9 +70,13 @@ public class MainActivity extends AppCompatActivity implements YourEventFragment
             return;
         }
 
-        Intent addEvent = new Intent(this, NewEventActivity.class);
-        startActivity(addEvent);
+        Intent chat = new Intent(this, ViewEventDetailsActivity.class);
+        startActivity(chat);
         finish();
+
+//        Intent addEvent = new Intent(this, NewEventActivity.class);
+//        startActivity(addEvent);
+//        finish();
 
 //        Intent addInterest = new Intent(this, AddInterestActivity.class);
 //        startActivity(addInterest);

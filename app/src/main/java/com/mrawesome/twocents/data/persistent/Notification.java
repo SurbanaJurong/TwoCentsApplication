@@ -15,11 +15,11 @@ public class Notification extends RealmObject {
     private int notificationId;
     private int notificationType;
     private String sender;
-    private String eventId;
+    private int eventId;
 
     public Notification() {}
 
-    public Notification(NotificationType notificationType, String sender, String eventId) {
+    public Notification(NotificationType notificationType, String sender, int eventId) {
         this.notificationType = notificationType.getCode();
         this.sender = sender;
         this.eventId = eventId;
@@ -33,7 +33,27 @@ public class Notification extends RealmObject {
         return this.sender;
     }
 
-    public String getEventId() {
+    public int getEventId() {
         return this.eventId;
+    }
+
+    public int getNotificationId() {
+        return notificationId;
+    }
+
+    public void setNotificationId(int notificationId) {
+        this.notificationId = notificationId;
+    }
+
+    public void setNotificationType(int notificationType) {
+        this.notificationType = notificationType;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public void setEventId(int eventId) {
+        this.eventId = eventId;
     }
 }

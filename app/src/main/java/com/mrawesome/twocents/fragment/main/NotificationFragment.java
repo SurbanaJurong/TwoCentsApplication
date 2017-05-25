@@ -29,10 +29,10 @@ import java.util.Calendar;
 public class NotificationFragment extends Fragment {
 
     private ArrayList<Notification> notifications = new ArrayList<>(Arrays.asList(new Notification[] {
-            new Notification(NotificationType.valueOf(1), "u123123", "e123123"),
-            new Notification(NotificationType.valueOf(1), "u123123", "e123123"),
-            new Notification(NotificationType.valueOf(1), "u234234", "e234234"),
-            new Notification(NotificationType.valueOf(1), "u234234", "e234234"),
+            new Notification(NotificationType.valueOf(1), "u123123", 123123),
+            new Notification(NotificationType.valueOf(1), "u123123", 123123),
+            new Notification(NotificationType.valueOf(1), "u123123", 234234),
+            new Notification(NotificationType.valueOf(1), "u123123", 234234),
     }));
 
     // TODO: Customize parameters

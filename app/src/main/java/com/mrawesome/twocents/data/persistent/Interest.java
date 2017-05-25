@@ -28,6 +28,14 @@ public class Interest extends RealmObject implements Flattenable {
         return this.icon;
     }
 
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
     @Override
     public StringBuilder flatten() {
         return new StringBuilder().append(subject);

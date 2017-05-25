@@ -10,8 +10,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/user_wrapper"
         android:layout_margin="5dp"
-        app:cardCornerRadius="7dp"
-        app:cardElevation="4dp"
+        app:cardCornerRadius="@dimen/cardview_corner_radius"
+        app:cardElevation="@dimen/cardview_elevation"
         android:background="@color/cardview_light_background">
 
         <RelativeLayout

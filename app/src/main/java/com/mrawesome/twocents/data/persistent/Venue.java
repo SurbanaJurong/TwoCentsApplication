@@ -10,17 +10,49 @@ import io.realm.annotations.PrimaryKey;
 public class Venue extends RealmObject {
 
     @PrimaryKey
-    private String venueId;
+    private int venueId;
     private String venueName;
     private Interest category;
     private String postalCode;
 
     public Venue() {}
 
-    public Venue(String venueId, String venueName, Interest category, String postalCode) {
+    public Venue(int venueId, String venueName, Interest category, String postalCode) {
         this.venueId = venueId;
         this.venueName = venueName;
         this.category = category;
+        this.postalCode = postalCode;
+    }
+
+    public int getVenueId() {
+        return venueId;
+    }
+
+    public void setVenueId(int venueId) {
+        this.venueId = venueId;
+    }
+
+    public String getVenueName() {
+        return venueName;
+    }
+
+    public void setVenueName(String venueName) {
+        this.venueName = venueName;
+    }
+
+    public Interest getCategory() {
+        return category;
+    }
+
+    public void setCategory(Interest category) {
+        this.category = category;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
 }

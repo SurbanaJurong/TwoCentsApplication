@@ -1,4 +1,5 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,9 +7,391 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Create New Event" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_create_new_event"
+        android:layout_marginRight="8dp"
+        android:textSize="@dimen/app_label_size"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="45dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="0.0"
+        android:id="@+id/textView4" />
+
+    <RelativeLayout
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        app:layout_editor_absoluteY="100dp"
+        android:id="@+id/event_name_wrapper"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/category_wrapper"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/event_name_label"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/title_event_name"
+            android:layout_alignParentStart="true"
+            android:drawableStart="@drawable/ic_account_black_18dp"
+            android:drawablePadding="5dp"
+            android:layout_marginStart="30dp"/>
+
+        <EditText
+            android:id="@+id/event_name_field"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/field_text_size"
+            android:text="@string/dummy_text"
+            android:inputType="text"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
+            android:textColor="@color/colorPrimary"
+            android:textAlignment="center"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="30dp"/>
+
+        <TextView
+            android:id="@+id/event_name_message"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/event_name_label"
+            android:layout_marginTop="5dp"
+            android:text="@string/dummy_text"
+            android:textColor="@color/colorRed"
+            android:textSize="@dimen/message_text_size"
+            android:layout_alignStart="@id/event_name_label"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        app:layout_editor_absoluteY="200dp"
+        android:id="@+id/category_wrapper"
+        app:layout_constraintTop_toBottomOf="@+id/event_name_wrapper"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/description_wrapper">
+
+        <TextView
+            android:id="@+id/category_label"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/title_category"
+            android:layout_alignParentStart="true"
+            android:drawableStart="@drawable/ic_account_black_18dp"
+            android:drawablePadding="5dp"
+            android:layout_marginStart="30dp"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/category_field"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/field_text_size"
+            android:inputType="text"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
+            android:textColor="@color/colorPrimary"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="30dp"/>
+
+        <TextView
+            android:id="@+id/category_message"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/category_label"
+            android:layout_marginTop="5dp"
+            android:text="@string/dummy_text"
+            android:textColor="@color/colorRed"
+            android:textSize="@dimen/message_text_size"
+            android:layout_alignStart="@id/category_label"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        app:layout_editor_absoluteY="200dp"
+        android:id="@+id/description_wrapper"
+        app:layout_constraintTop_toBottomOf="@+id/category_wrapper"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/venue_wrapper">
+
+        <TextView
+            android:id="@+id/description_label"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/title_description"
+            android:layout_alignParentStart="true"
+            android:drawableStart="@drawable/ic_account_black_18dp"
+            android:drawablePadding="5dp"
+            android:layout_marginStart="30dp"/>
+
+        <EditText
+            android:id="@+id/description_field"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/field_text_size"
+            android:text="@string/dummy_text"
+            android:inputType="text"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
+            android:textColor="@color/colorPrimary"
+            android:textAlignment="center"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="30dp"/>
+
+        <TextView
+            android:id="@+id/description_message"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/description_label"
+            android:layout_marginTop="5dp"
+            android:text="@string/dummy_text"
+            android:textColor="@color/colorRed"
+            android:textSize="@dimen/message_text_size"
+            android:layout_alignStart="@id/description_label"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        app:layout_editor_absoluteY="200dp"
+        android:id="@+id/venue_wrapper"
+        app:layout_constraintTop_toBottomOf="@+id/description_wrapper"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/capacity_wrapper">
+
+        <TextView
+            android:id="@+id/venue_label"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/title_venue"
+            android:layout_alignParentStart="true"
+            android:drawableStart="@drawable/ic_account_black_18dp"
+            android:drawablePadding="5dp"
+            android:layout_marginStart="30dp"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/venue_field"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/field_text_size"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
+            android:textColor="@color/colorPrimary"
+            android:textAlignment="center"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="30dp"/>
+
+        <TextView
+            android:id="@+id/venue_message"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/venue_label"
+            android:layout_marginTop="5dp"
+            android:text="@string/dummy_text"
+            android:textColor="@color/colorRed"
+            android:textSize="@dimen/message_text_size"
+            android:layout_alignStart="@id/venue_label"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        app:layout_editor_absoluteY="200dp"
+        android:id="@+id/capacity_wrapper"
+        app:layout_constraintTop_toBottomOf="@+id/venue_wrapper"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/start_time_wrapper">
+
+        <TextView
+            android:id="@+id/capacity_label"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/title_capacity"
+            android:layout_alignParentStart="true"
+            android:drawableStart="@drawable/ic_account_black_18dp"
+            android:drawablePadding="5dp"
+            android:layout_marginStart="30dp"/>
+
+        <EditText
+            android:id="@+id/max_capacity_field"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/field_text_size"
+            android:inputType="numberDecimal"
+            android:hint="@string/hint_max_capacity"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
+            android:textColor="@color/colorPrimary"
+            android:textAlignment="center"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="30dp"/>
+
+        <EditText
+            android:id="@+id/min_capacity_field"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/field_text_size"
+            android:inputType="numberDecimal"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
+            android:hint="@string/hint_min_capacity"
+            android:textColor="@color/colorPrimary"
+            android:textAlignment="center"
+            android:layout_toStartOf="@id/max_capacity_field"
+            android:layout_marginEnd="10dp"/>
+
+        <TextView
+            android:id="@+id/capacity_message"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/capacity_label"
+            android:layout_marginTop="5dp"
+            android:text="@string/dummy_text"
+            android:textColor="@color/colorRed"
+            android:textSize="@dimen/message_text_size"
+            android:layout_alignStart="@id/capacity_label"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        app:layout_editor_absoluteY="200dp"
+        android:id="@+id/start_time_wrapper"
+        app:layout_constraintTop_toBottomOf="@+id/capacity_wrapper"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/duration_wrapper">
+
+        <TextView
+            android:id="@+id/start_time_label"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/title_start_time"
+            android:layout_alignParentStart="true"
+            android:drawableStart="@drawable/ic_account_black_18dp"
+            android:drawablePadding="5dp"
+            android:layout_marginStart="30dp"/>
+
+        <EditText
+            android:id="@+id/start_time_field"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/field_text_size"
+            android:inputType="datetime"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
+            android:textColor="@color/colorPrimary"
+            android:textAlignment="center"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="30dp"/>
+
+        <TextView
+            android:id="@+id/start_time_message"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/start_time_label"
+            android:layout_marginTop="5dp"
+            android:text="@string/dummy_text"
+            android:textColor="@color/colorRed"
+            android:textSize="@dimen/message_text_size"
+            android:layout_alignStart="@id/start_time_label"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        app:layout_editor_absoluteY="200dp"
+        android:id="@+id/duration_wrapper"
+        app:layout_constraintTop_toBottomOf="@+id/start_time_wrapper"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/is_recurring_wrapper">
+
+        <TextView
+            android:id="@+id/duration_label"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/title_duration"
+            android:layout_alignParentStart="true"
+            android:drawableStart="@drawable/ic_account_black_18dp"
+            android:drawablePadding="5dp"
+            android:layout_marginStart="30dp"/>
+
+        <EditText
+            android:id="@+id/duration_field"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/field_text_size"
+            android:inputType="numberDecimal"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
+            android:textColor="@color/colorPrimary"
+            android:textAlignment="center"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="30dp"/>
+
+        <TextView
+            android:id="@+id/duration_message"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/duration_label"
+            android:layout_marginTop="5dp"
+            android:text="@string/dummy_text"
+            android:textColor="@color/colorRed"
+            android:textSize="@dimen/message_text_size"
+            android:layout_alignStart="@id/duration_label"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        app:layout_editor_absoluteY="200dp"
+        android:id="@+id/is_recurring_wrapper"
+        app:layout_constraintTop_toBottomOf="@+id/duration_wrapper"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/is_recurring_label"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/title_recurring"
+            android:layout_alignParentStart="true"
+            android:drawableStart="@drawable/ic_account_black_18dp"
+            android:drawablePadding="5dp"
+            android:layout_marginStart="30dp"/>
+
+        <Switch
+            android:id="@+id/is_recurring_field"
+            android:gravity="center_horizontal"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="30dp"/>
+
+        <TextView
+            android:id="@+id/is_recurring_message"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/is_recurring_label"
+            android:layout_marginTop="5dp"
+            android:text="@string/dummy_text"
+            android:textColor="@color/colorRed"
+            android:textSize="@dimen/message_text_size"
+            android:layout_alignStart="@id/is_recurring_label"/>
+    </RelativeLayout>
 
 
 

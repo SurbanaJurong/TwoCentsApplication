@@ -23,7 +23,7 @@ import io.realm.annotations.Required;
 public class Profile extends RealmObject {
 
     @PrimaryKey
-    @Required
+    private int userId;
     @Expose
     private String username;
     private String profilePic;
@@ -185,6 +185,38 @@ public class Profile extends RealmObject {
                 this.users.add(user);
             }
         }
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setInterests(RealmList<Interest> interests) {
+        this.interests = interests;
+    }
+
+    public void setNotifications(RealmList<Notification> notifications) {
+        this.notifications = notifications;
+    }
+
+    public void setAttendances(RealmList<Attendance> attendances) {
+        this.attendances = attendances;
+    }
+
+    public void setEvents(RealmList<Event> events) {
+        this.events = events;
+    }
+
+    public void setUsers(RealmList<User> users) {
+        this.users = users;
     }
 
     public static void setInstance(Profile instance) {

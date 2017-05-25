@@ -3,11 +3,47 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_get_started">Let\'s get you started</string>
     <string name="title_today_view">Today</string>
     <string name="title_event_view">Event</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_profile_view">You</string>
+    <string name="title_back_btn">Back</string>
+    <string name="title_next_btn">Next</string>
+    <string name="title_choose_interest">Choose your interest</string>
+    <string name="title_suggest_event">These are the events suggested for you</string>
+    <string name="title_event_interest">Interested</string>
+    <string name="tltle_event_not_interest">Not Interested</string>
+    <string name="title_suggest_invite">Event has been created! Want to invite someone?</string>
+    <string name="username_label">Username</string>
+    <string name="nric_label">NRIC</string>
+    <string name="phone_number_label">Phone Number</string>
+    <string name="year_of_birth_label">Year of Birth</string>
+    <string name="postal_code_label">Postal Code</string>
+    <string name="dummy_text">dummy text</string>
+    <string name="title_review_info">Let\'s review your info</string>
+    <string name="title_almost_there">Almost there…</string>
+    <string name="otp_prompt_message">Please enter the code sent to your phone number</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="otp_label">Code</string>
+    <string name="title_welcome_user">Welcome user! You\'re all set!</string>
+    <string name="title_create_new_event">Create New Event</string>
+    <string name="title_event_name">Event Name</string>
+    <string name="title_category">Category</string>
+    <string name="title_description">Description</string>
+    <string name="title_venue">Venue</string>
+    <string name="title_capacity">Capacity</string>
+    <string name="title_start_time">Start Time</string>
+    <string name="title_duration">Duration</string>
+    <string name="title_recurring">Recurring</string>
+    <string name="hint_max_capacity">max</string>
+    <string name="hint_min_capacity">min</string>
+    <string name="title_review_event_info">REVIEW DETAILS</string>
+    <string name="title_event_confirmation">Your event has been created!</string>
+    <string name="title_attend_btn">Attend</string>
+    <string name="title_cancel_btn">Cancel</string>
+    <string name="event_details_description_label">DESCRIPTION</string>
+    <string name="event_details_enter_chatroom">Enter Chatroom</string>
 </resources>

@@ -23,8 +23,7 @@ public class Event extends RealmObject {
      */
 
     @PrimaryKey
-    @Required
-    private String eventId;
+    private int eventId;
     @Expose
     private String eventName;
     @Expose
@@ -68,7 +67,7 @@ public class Event extends RealmObject {
         this.duration = duration;
     }
 
-    public String getEventId() {
+    public int getEventId() {
         return this.eventId;
     }
 
@@ -136,7 +135,7 @@ public class Event extends RealmObject {
         return category;
     }
 
-    public void setEventId(String eventId) {
+    public void setEventId(int eventId) {
         this.eventId = eventId;
     }
 
@@ -212,5 +211,17 @@ public class Event extends RealmObject {
 
     public void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    public void setUserRegistered(RealmList<User> userRegistered) {
+        this.userRegistered = userRegistered;
+    }
+
+    public void setParticipants(RealmList<User> participants) {
+        this.participants = participants;
+    }
+
+    public void setChat(RealmList<Comment> chat) {
+        this.chat = chat;
     }
 }
