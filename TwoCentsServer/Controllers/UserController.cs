@@ -6,12 +6,21 @@ using System.Net.Http;
 using System.Web.Http;
 using TwoCentsServer.Models;
 using TwoCentsServer.Repositories;
+using TwoCentsServer.Services;
 
 namespace TwoCentsServer.Controllers
 {
-    public class UserController : BaseController<User, UserResponse>
+    public class UserController : ApiController
     {
-        public override IHttpActionResult Get()
+        private TwilioServiceHandler _smsHdlr;
+        private static List<User> _pendingUsers = new List<User>();
+
+        public UserController()
+        {
+            _smsHdlr = new TwilioServiceHandler();
+        }
+
+        public IHttpActionResult Get()
         {
             using (var db = LinqRepository.DataCtx())
             {
@@ -21,7 +30,7 @@ namespace TwoCentsServer.Controllers
         }
 
         [HttpGet]
-        public override IHttpActionResult Get(int id)
+        public IHttpActionResult Get(int id)
         {
             using (var db = LinqRepository.DataCtx())
             {
@@ -38,15 +47,41 @@ namespace TwoCentsServer.Controllers
                 return Json(body);
             }
         }
-
-        public override IHttpActionResult Post([FromBody] UserResponse data)
+        [HttpPost]
+        public IHttpActionResult Post([FromBody] User data)
         {
-            using (var db = LinqRepository.DataCtx())
+            bool result = _smsHdlr.AddRequest(data.UserName, data.Phone);
+            if (result)
             {
-                db.Users.InsertOnSubmit(data);
-                db.SubmitChanges();
-                return Json(data);
+                _pendingUsers.Add(data);
+                return Json(new { message = "Request queued & OTP sent. Awaiting confirmation." });
+            }
+            else
+            {
+                return Json(new { message = "An error has occured while processing request." });
+            }
+
+        }
+        [HttpPut]
+        public IHttpActionResult Put([FromBody] OTPInfo data)
+        {
+            bool result = _smsHdlr.Validate(data);
+            if (result)
+            {
+                using (var db = LinqRepository.DataCtx())
+                {
+                    User target = _pendingUsers.First(u => u.UserName == data.username);
+                    _pendingUsers.Remove(target);
+                    db.Users.InsertOnSubmit(target);
+                    db.SubmitChanges();
+                    return Json(target);
+                }
+            }
+            else
+            {
+                return Json(new { message = "An error has occured while validating OTP." });
             }
         }
+
     }
 }

@@ -9,9 +9,9 @@ using TwoCentsServer.Repositories;
 
 namespace TwoCentsServer.Controllers
 {
-    public class VenueController : BaseController<Venue, VenueResponse>
+    public class VenueController : ApiController
     {
-        public override IHttpActionResult Get()
+        public IHttpActionResult Get()
         {
             using (var db = LinqRepository.DataCtx())
             {
@@ -20,7 +20,7 @@ namespace TwoCentsServer.Controllers
             }
         }
 
-        public override IHttpActionResult Get(int id)
+        public IHttpActionResult Get(int id)
         {
             using (var db = LinqRepository.DataCtx())
             {
@@ -29,7 +29,7 @@ namespace TwoCentsServer.Controllers
             }
         }
 
-        public override IHttpActionResult Post([FromBody] VenueResponse data)
+        public IHttpActionResult Post([FromBody] Venue data)
         {
             using (var db = LinqRepository.DataCtx())
             {

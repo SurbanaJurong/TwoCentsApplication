@@ -15,7 +15,7 @@ namespace TwoCentsServer.Repositories
 
         public static EventResponse ToEventResponse(Event entry, AzureDBDataContext db)
         {
-            EventResponse res = (EventResponse)entry;
+            EventResponse res = EventResponse.FromModel(entry);
             res.UserRegistered = db.Users.Where(u =>
                 db.Registrations
                     .Where(p => p.EventId == entry.Id)
@@ -34,7 +34,7 @@ namespace TwoCentsServer.Repositories
         }
         public static UserResponse ToUserResponse(User entry, AzureDBDataContext db)
         {
-            UserResponse res = (UserResponse)entry;
+            UserResponse res = UserResponse.FromModel(entry);
             res.Interests = db.Interests.Where(i =>
                 db.UserInterests
                     .Where(ui => ui.UserId == entry.Id)
@@ -59,7 +59,7 @@ namespace TwoCentsServer.Repositories
         }
         public static VenueResponse ToVenueResponse(Venue entry, AzureDBDataContext db)
         {
-            VenueResponse res = (VenueResponse)entry;
+            VenueResponse res = VenueResponse.FromModel(entry);
             res.Slots = db.Slots.Where(s => s.VenueId == entry.Id).ToList();
             return res;
         }
