@@ -18,10 +18,10 @@
   <Table Name="dbo.Comment" Member="Comments">
     <Type Name="Comment">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Timestamp" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Content" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="EventId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Timestamp" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Content" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="EventId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.Event" Member="Events">

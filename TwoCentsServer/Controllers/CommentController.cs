@@ -16,7 +16,7 @@ namespace TwoCentsServer.Controllers
         {
             using (var db = LinqRepository.DataCtx())
             {
-                var body = db.Comments.ToList();
+                var body = db.Comments.Select(r => CommentResponse.FromModel(r)).ToList();
                 return Ok(body);
             }
         }
@@ -32,6 +32,7 @@ namespace TwoCentsServer.Controllers
                 var body = db.Comments.AsEnumerable()
                     .Where(r => parsedUserId != 0 ? r.UserId == parsedUserId : true)
                     .Where(r => parsedEventId != 0 ? r.EventId == parsedEventId : true)
+                    .Select(r => CommentResponse.FromModel(r))
                     .ToList();
 
                 return Ok(body);
@@ -42,6 +43,7 @@ namespace TwoCentsServer.Controllers
         {
             using (var db = LinqRepository.DataCtx())
             {
+                data.Timestamp = DateTime.UtcNow;
                 db.Comments.InsertOnSubmit(data);
                 db.SubmitChanges();
                 return Ok(data);

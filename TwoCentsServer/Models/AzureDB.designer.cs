@@ -447,13 +447,13 @@ namespace TwoCentsServer.Models
 		
 		private int _Id;
 		
-		private System.Nullable<System.DateTime> _Timestamp;
+		private System.DateTime _Timestamp;
 		
-		private System.Nullable<int> _UserId;
+		private int _UserId;
 		
 		private string _Content;
 		
-		private System.Nullable<int> _EventId;
+		private int _EventId;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -461,13 +461,13 @@ namespace TwoCentsServer.Models
     partial void OnCreated();
     partial void OnIdChanging(int value);
     partial void OnIdChanged();
-    partial void OnTimestampChanging(System.Nullable<System.DateTime> value);
+    partial void OnTimestampChanging(System.DateTime value);
     partial void OnTimestampChanged();
-    partial void OnUserIdChanging(System.Nullable<int> value);
+    partial void OnUserIdChanging(int value);
     partial void OnUserIdChanged();
     partial void OnContentChanging(string value);
     partial void OnContentChanged();
-    partial void OnEventIdChanging(System.Nullable<int> value);
+    partial void OnEventIdChanging(int value);
     partial void OnEventIdChanged();
     #endregion
 		
@@ -496,8 +496,8 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Timestamp", DbType="DateTime")]
-		public System.Nullable<System.DateTime> Timestamp
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Timestamp", DbType="DateTime NOT NULL")]
+		public System.DateTime Timestamp
 		{
 			get
 			{
@@ -516,8 +516,8 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int")]
-		public System.Nullable<int> UserId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL")]
+		public int UserId
 		{
 			get
 			{
@@ -536,7 +536,7 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Content", DbType="VarChar(MAX)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Content", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
 		public string Content
 		{
 			get
@@ -556,8 +556,8 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EventId", DbType="Int")]
-		public System.Nullable<int> EventId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EventId", DbType="Int NOT NULL")]
+		public int EventId
 		{
 			get
 			{

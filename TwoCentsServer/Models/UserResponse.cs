@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 
@@ -12,6 +13,7 @@ namespace TwoCentsServer.Models
         public List<Attendance> Attendances { get; set; }
         public List<Event> EventRegistered { get; set; }
         public List<User> UserBookmarked { get; set; }
+        public new string Timestamp { get; set; }
 
         public static UserResponse FromModel(User user)
         {
@@ -24,7 +26,22 @@ namespace TwoCentsServer.Models
                 NRIC = user.NRIC,
                 Location = user.Location,
                 Year = user.Year,
-                Timestamp = user.Timestamp
+                Timestamp = user.Timestamp.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture),
+            };
+        }
+
+        public User ToModel()
+        {
+            return new User
+            {
+                Id = Id,
+                UserName = UserName,
+                ProfilePic = ProfilePic,
+                Phone = Phone,
+                NRIC = NRIC,
+                Location = Location,
+                Year = Year,
+                Timestamp = DateTime.ParseExact(Timestamp, "yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture),
             };
         }
     }

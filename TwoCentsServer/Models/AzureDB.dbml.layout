@@ -2,76 +2,76 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12, 11.625" name="AzureDB">
   <DataContextMoniker Name="/AzureDBDataContext" />
   <nestedChildShapes>
-    <classShape Id="2392616c-c105-4329-828a-3ff3c4484e3f" absoluteBounds="0.75, 0.75, 2, 1.5785953776041666">
+    <classShape Id="b299d6a3-c017-4426-b63c-9f15a944b3f0" absoluteBounds="0.75, 0.75, 2, 1.5785953776041666">
       <DataClassMoniker Name="/AzureDBDataContext/Attendance" />
       <nestedChildShapes>
-        <elementListCompartment Id="c7156dcf-2d64-44cc-8f2a-9fe4fe3c7120" absoluteBounds="0.765, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="b9436bd3-4b96-4be3-a2c8-426303f8c8e6" absoluteBounds="0.765, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="758684b4-1aa1-473b-bab8-c6e5e0352706" absoluteBounds="3.75, 0.75, 2, 1.3862939453125">
+    <classShape Id="8d350bbd-345f-4cd6-aa35-08f6c1cf1457" absoluteBounds="3.75, 0.75, 2, 1.3862939453125">
       <DataClassMoniker Name="/AzureDBDataContext/BookmarkUser" />
       <nestedChildShapes>
-        <elementListCompartment Id="9262933b-8838-4455-851b-ef056f7b2e9a" absoluteBounds="3.765, 1.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="fee27a7d-d7a3-437c-94e6-869310650c79" absoluteBounds="3.765, 1.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="4c731745-3d72-46b6-9671-82100ee5647c" absoluteBounds="0.75, 3.75, 2, 1.7708968098958327">
+    <classShape Id="c3f23ed1-7974-4275-8433-7edfa8bc6978" absoluteBounds="0.75, 3.75, 2, 1.7708968098958327">
       <DataClassMoniker Name="/AzureDBDataContext/Comment" />
       <nestedChildShapes>
-        <elementListCompartment Id="a27faa02-7d28-4792-9747-4c3ce53bc266" absoluteBounds="0.765, 4.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="f68497cb-3680-4952-921f-7b052215f442" absoluteBounds="0.765, 4.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="575b82d5-3b33-40ef-a976-2cd3ef33e564" absoluteBounds="3.75, 3.75, 2, 3.3093082682291666">
+    <classShape Id="01a9c443-980a-4711-b2ca-6f25e59ec6d9" absoluteBounds="3.75, 3.75, 2, 3.3093082682291666">
       <DataClassMoniker Name="/AzureDBDataContext/Event" />
       <nestedChildShapes>
-        <elementListCompartment Id="71acb250-bf9d-4c67-9ce8-ef106e4801dd" absoluteBounds="3.765, 4.21, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="43ea6203-5e6b-4454-a155-59f95033d729" absoluteBounds="3.765, 4.21, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="375c0db6-7647-48ef-8b09-1800936d2a20" absoluteBounds="6.75, 0.75, 2, 1.3862939453125003">
+    <classShape Id="6e7edb3b-0e07-4152-9d6a-441123983682" absoluteBounds="6.75, 0.75, 2, 1.3862939453125003">
       <DataClassMoniker Name="/AzureDBDataContext/Interest" />
       <nestedChildShapes>
-        <elementListCompartment Id="0f78f416-26b6-40cc-8b3f-d6cf5a5e2e58" absoluteBounds="6.765, 1.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="9495d597-1ecb-4eee-85d3-547bab3f7f90" absoluteBounds="6.765, 1.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="0f669ed1-888e-4946-a05c-3f6d8ac0b410" absoluteBounds="6.75, 3.75, 2, 1.7708968098958327">
+    <classShape Id="fc0891b9-0c93-4592-82ba-831f0c2ff4e4" absoluteBounds="6.75, 3.75, 2, 1.7708968098958327">
       <DataClassMoniker Name="/AzureDBDataContext/Notification" />
       <nestedChildShapes>
-        <elementListCompartment Id="752bb705-e638-4704-b2b7-9b85aa22ca7b" absoluteBounds="6.765, 4.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="4948282e-b5cb-4b9c-ac6c-b489de5569c4" absoluteBounds="6.765, 4.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="5770a20c-2b9a-4e08-a373-8af5144fc5e3" absoluteBounds="6.75, 6.75, 2, 1.3862939453125005">
+    <classShape Id="0c136a92-cfb8-48c3-951a-a8c14cd21661" absoluteBounds="6.75, 6.75, 2, 1.3862939453125005">
       <DataClassMoniker Name="/AzureDBDataContext/Participation" />
       <nestedChildShapes>
-        <elementListCompartment Id="3ba9bd58-78a5-4a17-8765-c31d65cae2d6" absoluteBounds="6.765, 7.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="ac27bf3b-e1e7-4377-a2ec-1906016d1f97" absoluteBounds="6.765, 7.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="fea065b6-213a-483d-82a7-5f96dbb6795c" absoluteBounds="0.75, 8.75, 2, 1.3862939453124987">
+    <classShape Id="79fa5340-c304-44de-9a05-ab9a2f197918" absoluteBounds="0.75, 8.75, 2, 1.3862939453124987">
       <DataClassMoniker Name="/AzureDBDataContext/Registration" />
       <nestedChildShapes>
-        <elementListCompartment Id="71ffdff5-c456-46cb-a460-19d2d1f7934b" absoluteBounds="0.765, 9.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="1bc2577f-2d72-4258-a90c-56348f5663b8" absoluteBounds="0.765, 9.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="e2f2f87f-2b8e-4314-af26-c6bc3833de7c" absoluteBounds="9.75, 0.75, 2, 1.5785953776041666">
+    <classShape Id="8ed0f868-1547-448c-ba42-5e95fa0163f0" absoluteBounds="9.75, 0.75, 2, 1.5785953776041666">
       <DataClassMoniker Name="/AzureDBDataContext/Slot" />
       <nestedChildShapes>
-        <elementListCompartment Id="01407d5c-2478-4acf-9873-59ee464e2ed1" absoluteBounds="9.765, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="8fed4517-c154-43cd-99e6-c783464cfbd2" absoluteBounds="9.765, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="8e92f25b-cc79-4249-8792-83b0bec8b1a0" absoluteBounds="9.75, 3.75, 2, 2.347801106770834">
+    <classShape Id="5240a058-aeed-4c5c-b9a8-8798340b7234" absoluteBounds="9.75, 3.75, 2, 2.347801106770834">
       <DataClassMoniker Name="/AzureDBDataContext/User" />
       <nestedChildShapes>
-        <elementListCompartment Id="a26212cc-81bc-4468-b762-2d4e44808187" absoluteBounds="9.765, 4.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="84264ccf-3690-4994-8289-6b3f3e20c350" absoluteBounds="9.765, 4.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="016680ef-8bd8-4aeb-9777-5c2d91a82df7" absoluteBounds="3.75, 9.75, 2, 1.3862939453124987">
+    <classShape Id="50b7c61d-bce2-484c-91d4-9f0acc384731" absoluteBounds="3.75, 9.75, 2, 1.3862939453124987">
       <DataClassMoniker Name="/AzureDBDataContext/UserInterest" />
       <nestedChildShapes>
-        <elementListCompartment Id="69d90047-d949-4bc3-8bd2-a3c98954a4f2" absoluteBounds="3.765, 10.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="b0540c56-b021-46cb-88da-0f54b5428a9b" absoluteBounds="3.765, 10.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="94c8b0f7-fd69-406a-9a52-b423e6284837" absoluteBounds="6.75, 9.75, 2, 1.5785953776041666">
+    <classShape Id="1abd43b3-7224-4694-9800-63255879db99" absoluteBounds="6.75, 9.75, 2, 1.5785953776041666">
       <DataClassMoniker Name="/AzureDBDataContext/Venue" />
       <nestedChildShapes>
-        <elementListCompartment Id="319438d4-f0d4-4730-ad9d-35fb17ece3c0" absoluteBounds="6.765, 10.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="f2b91050-5049-429f-9cdf-f52b922612dd" absoluteBounds="6.765, 10.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

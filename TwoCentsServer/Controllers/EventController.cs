@@ -19,7 +19,7 @@ namespace TwoCentsServer.Controllers
                 return Ok(body);
             }
         }
-
+        
         public IHttpActionResult Get(int id)
         {
             using (var db = LinqRepository.DataCtx())
@@ -29,10 +29,23 @@ namespace TwoCentsServer.Controllers
             }
         }
 
+        [HttpGet]
+        public IHttpActionResult GetByInterest(int interestId)
+        {
+            using (var db = LinqRepository.DataCtx())
+            {
+                var body = db.Events
+                    .Where(r => r.Category == interestId)
+                    .Select(r => LinqRepository.ToEventResponse(r, db)).ToList();
+                return Ok(body);
+            }
+        }
+
         public IHttpActionResult Post([FromBody] Event data)
         {
             using (var db = LinqRepository.DataCtx())
             {
+                data.Timestamp = DateTime.UtcNow;
                 db.Events.InsertOnSubmit(data);
                 db.SubmitChanges();
                 return Ok(data);

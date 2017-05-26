@@ -164,6 +164,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AzureDB.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\CommentResponse.cs" />
     <Compile Include="Models\EventResponse.cs" />
     <Compile Include="Models\UserResponse.cs" />
     <Compile Include="Models\VenueResponse.cs" />

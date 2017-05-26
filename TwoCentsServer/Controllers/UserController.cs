@@ -69,6 +69,7 @@ namespace TwoCentsServer.Controllers
             {
                 using (var db = LinqRepository.DataCtx())
                 {
+
                     User target = _pendingUsers.First(u => u.UserName == data.username);
                     _pendingUsers.Remove(target);
                     db.Users.InsertOnSubmit(target);
