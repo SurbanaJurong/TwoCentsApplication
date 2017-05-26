@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Routing;
+using TwoCentsServer.App_Start;
 
 namespace TwoCentsServer
 {
@@ -45,6 +46,8 @@ namespace TwoCentsServer
                 routeTemplate: "",
                 defaults: new { controller = "Home" }
             );
+
+            config.Formatters.Add(new BrowserJsonFormatter());
         }
     }
 }

@@ -17,7 +17,7 @@ namespace TwoCentsServer.Services
         {
             try
             {
-                int otp = Hotp.GetCode(
+                int otpNum = Hotp.GetCode(
                     HashAlgorithm.Sha256,
                     username + DateTime.UtcNow.ToString(),
                     username.Length,
@@ -32,10 +32,10 @@ namespace TwoCentsServer.Services
                 var message = MessageResource.Create(
                     to: new Twilio.Types.PhoneNumber(phone),
                     from: new Twilio.Types.PhoneNumber(apiPhoneNumber),
-                    body: "Your OTP is " + otp
+                    body: "Your OTP is " + string.Format("{0:0000}", otpNum)
                 );
 
-                _pendingUsers.Add(new OTPInfo { username = username, otp = otp });
+                _pendingUsers.Add(new OTPInfo { username = username, otp = otpNum });
 
                 return true;
             }

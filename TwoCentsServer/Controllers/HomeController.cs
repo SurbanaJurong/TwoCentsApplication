@@ -11,10 +11,7 @@ namespace TwoCentsServer.Controllers
     {
         public IHttpActionResult Get()
         {
-            return Json(new
-            {
-                status = "online"
-            });
+            return Ok(new { status = "online" });
         }
     }
 }

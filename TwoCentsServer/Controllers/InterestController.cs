@@ -17,7 +17,7 @@ namespace TwoCentsServer.Controllers
             using (var db = LinqRepository.DataCtx())
             {
                 var body = db.Interests.ToList();
-                return Json(body);
+                return Ok(body);
             }
         }
 
@@ -27,7 +27,7 @@ namespace TwoCentsServer.Controllers
             using (var db = LinqRepository.DataCtx())
             {
                 var body = db.Interests.FirstOrDefault(r => r.Id == id);
-                return Json(body);
+                return Ok(body);
             }
         }
 
@@ -37,7 +37,7 @@ namespace TwoCentsServer.Controllers
             {
                 db.Interests.InsertOnSubmit(data);
                 db.SubmitChanges();
-                return Json(data);
+                return Ok(data);
             }
         }
     }

@@ -6,7 +6,6 @@ using System.Net.Http;
 using System.Web.Http;
 using TwoCentsServer.Models;
 using TwoCentsServer.Services;
-using TwoCentsServer.Services;
 
 namespace TwoCentsServer.Controllers
 {
@@ -25,7 +24,7 @@ namespace TwoCentsServer.Controllers
             using (var db = LinqRepository.DataCtx())
             {
                 var body = db.Users.AsEnumerable().Select(r => LinqRepository.ToUserResponse(r, db)).ToList();
-                return Json(body);
+                return Ok(body);
             }
         }
 
@@ -35,7 +34,7 @@ namespace TwoCentsServer.Controllers
             using (var db = LinqRepository.DataCtx())
             {
                 var body = LinqRepository.ToUserResponse(db.Users.FirstOrDefault(r => r.Id == id), db);
-                return Json(body);
+                return Ok(body);
             }
         }
         [HttpGet]
@@ -44,7 +43,7 @@ namespace TwoCentsServer.Controllers
             using (var db = LinqRepository.DataCtx())
             {
                 var body = db.Users.Where(r => r.UserName.Contains(query)).ToList();
-                return Json(body);
+                return Ok(body);
             }
         }
         [HttpPost]
@@ -54,11 +53,11 @@ namespace TwoCentsServer.Controllers
             if (result)
             {
                 _pendingUsers.Add(data);
-                return Json(new { message = "Request queued & OTP sent. Awaiting confirmation." });
+                return Ok(new { message = "Request queued & OTP sent. Awaiting confirmation." });
             }
             else
             {
-                return Json(new { message = "An error has occured while processing request." });
+                return BadRequest("An error has occured while processing request.");
             }
 
         }
@@ -74,12 +73,12 @@ namespace TwoCentsServer.Controllers
                     _pendingUsers.Remove(target);
                     db.Users.InsertOnSubmit(target);
                     db.SubmitChanges();
-                    return Json(target);
+                    return Ok(target);
                 }
             }
             else
             {
-                return Json(new { message = "An error has occured while validating OTP." });
+                return BadRequest("An error has occured while validating OTP.");
             }
         }
 

@@ -16,7 +16,7 @@ namespace TwoCentsServer.Controllers
             using (var db = LinqRepository.DataCtx())
             {
                 var body = db.UserInterests.ToList();
-                return Json(body);
+                return Ok(body);
             }
         }
 
@@ -33,7 +33,7 @@ namespace TwoCentsServer.Controllers
                     .Where(r => parsedInterestId != 0 ? r.InterestId == parsedInterestId : true)
                     .ToList();
 
-                return Json(body);
+                return Ok(body);
             }
         }
 
@@ -43,7 +43,7 @@ namespace TwoCentsServer.Controllers
         //    {
         //        db.UserInterests.InsertOnSubmit(data);
         //        db.SubmitChanges();
-        //        return Json(data);
+        //        return Ok(data);
         //    }
         //}
 
@@ -53,7 +53,7 @@ namespace TwoCentsServer.Controllers
             {
                 db.UserInterests.InsertAllOnSubmit(data);
                 db.SubmitChanges();
-                return Json(data);
+                return Ok(data);
             }
         }
 
@@ -63,7 +63,7 @@ namespace TwoCentsServer.Controllers
             {
                 db.UserInterests.DeleteAllOnSubmit(data);
                 db.SubmitChanges();
-                return Json(data);
+                return Ok(data);
             }
         }
     }

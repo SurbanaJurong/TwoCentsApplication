@@ -605,29 +605,29 @@ namespace TwoCentsServer.Models
 		
 		private int _Id;
 		
-		private System.Nullable<int> _Host;
+		private int _Host;
 		
 		private string _Description;
 		
-		private System.Nullable<bool> _IsRecurring;
+		private bool _IsRecurring;
 		
-		private System.Nullable<System.DateTime> _Timestamp;
+		private System.DateTime _Timestamp;
 		
-		private System.Nullable<int> _Venue;
+		private int _VenueId;
 		
-		private System.Nullable<int> _MinCapacity;
+		private int _MinCapacity;
 		
-		private System.Nullable<int> _MaxCapacity;
+		private int _MaxCapacity;
 		
 		private System.Nullable<bool> _IsCancelled;
 		
-		private System.Nullable<System.DateTime> _StartTime;
+		private System.DateTime _StartTime;
 		
-		private System.Nullable<System.TimeSpan> _Duration;
+		private System.TimeSpan _Duration;
 		
 		private string _Name;
 		
-		private System.Nullable<int> _Category;
+		private int _Category;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -635,29 +635,29 @@ namespace TwoCentsServer.Models
     partial void OnCreated();
     partial void OnIdChanging(int value);
     partial void OnIdChanged();
-    partial void OnHostChanging(System.Nullable<int> value);
+    partial void OnHostChanging(int value);
     partial void OnHostChanged();
     partial void OnDescriptionChanging(string value);
     partial void OnDescriptionChanged();
-    partial void OnIsRecurringChanging(System.Nullable<bool> value);
+    partial void OnIsRecurringChanging(bool value);
     partial void OnIsRecurringChanged();
-    partial void OnTimestampChanging(System.Nullable<System.DateTime> value);
+    partial void OnTimestampChanging(System.DateTime value);
     partial void OnTimestampChanged();
-    partial void OnVenueChanging(System.Nullable<int> value);
-    partial void OnVenueChanged();
-    partial void OnMinCapacityChanging(System.Nullable<int> value);
+    partial void OnVenueIdChanging(int value);
+    partial void OnVenueIdChanged();
+    partial void OnMinCapacityChanging(int value);
     partial void OnMinCapacityChanged();
-    partial void OnMaxCapacityChanging(System.Nullable<int> value);
+    partial void OnMaxCapacityChanging(int value);
     partial void OnMaxCapacityChanged();
     partial void OnIsCancelledChanging(System.Nullable<bool> value);
     partial void OnIsCancelledChanged();
-    partial void OnStartTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnStartTimeChanging(System.DateTime value);
     partial void OnStartTimeChanged();
-    partial void OnDurationChanging(System.Nullable<System.TimeSpan> value);
+    partial void OnDurationChanging(System.TimeSpan value);
     partial void OnDurationChanged();
     partial void OnNameChanging(string value);
     partial void OnNameChanged();
-    partial void OnCategoryChanging(System.Nullable<int> value);
+    partial void OnCategoryChanging(int value);
     partial void OnCategoryChanged();
     #endregion
 		
@@ -686,8 +686,8 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Host", DbType="Int")]
-		public System.Nullable<int> Host
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Host", DbType="Int NOT NULL")]
+		public int Host
 		{
 			get
 			{
@@ -706,7 +706,7 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(MAX)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
 		public string Description
 		{
 			get
@@ -726,8 +726,8 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsRecurring", DbType="Bit")]
-		public System.Nullable<bool> IsRecurring
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsRecurring", DbType="Bit NOT NULL")]
+		public bool IsRecurring
 		{
 			get
 			{
@@ -746,8 +746,8 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Timestamp", DbType="DateTime")]
-		public System.Nullable<System.DateTime> Timestamp
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Timestamp", DbType="DateTime NOT NULL")]
+		public System.DateTime Timestamp
 		{
 			get
 			{
@@ -766,28 +766,28 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Venue", DbType="Int")]
-		public System.Nullable<int> Venue
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VenueId", DbType="Int NOT NULL")]
+		public int VenueId
 		{
 			get
 			{
-				return this._Venue;
+				return this._VenueId;
 			}
 			set
 			{
-				if ((this._Venue != value))
+				if ((this._VenueId != value))
 				{
-					this.OnVenueChanging(value);
+					this.OnVenueIdChanging(value);
 					this.SendPropertyChanging();
-					this._Venue = value;
-					this.SendPropertyChanged("Venue");
-					this.OnVenueChanged();
+					this._VenueId = value;
+					this.SendPropertyChanged("VenueId");
+					this.OnVenueIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MinCapacity", DbType="Int")]
-		public System.Nullable<int> MinCapacity
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MinCapacity", DbType="Int NOT NULL")]
+		public int MinCapacity
 		{
 			get
 			{
@@ -806,8 +806,8 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaxCapacity", DbType="Int")]
-		public System.Nullable<int> MaxCapacity
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaxCapacity", DbType="Int NOT NULL")]
+		public int MaxCapacity
 		{
 			get
 			{
@@ -846,8 +846,8 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartTime", DbType="DateTime")]
-		public System.Nullable<System.DateTime> StartTime
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartTime", DbType="DateTime NOT NULL")]
+		public System.DateTime StartTime
 		{
 			get
 			{
@@ -866,8 +866,8 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Duration", DbType="Time")]
-		public System.Nullable<System.TimeSpan> Duration
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Duration", DbType="Time NOT NULL")]
+		public System.TimeSpan Duration
 		{
 			get
 			{
@@ -886,7 +886,7 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(MAX)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
 		public string Name
 		{
 			get
@@ -906,8 +906,8 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Category", DbType="Int")]
-		public System.Nullable<int> Category
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Category", DbType="Int NOT NULL")]
+		public int Category
 		{
 			get
 			{
@@ -1071,7 +1071,7 @@ namespace TwoCentsServer.Models
 		
 		private int _ReceiverId;
 		
-		private System.Nullable<int> _Event;
+		private System.Nullable<int> _EventId;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1085,8 +1085,8 @@ namespace TwoCentsServer.Models
     partial void OnSenderIdChanged();
     partial void OnReceiverIdChanging(int value);
     partial void OnReceiverIdChanged();
-    partial void OnEventChanging(System.Nullable<int> value);
-    partial void OnEventChanged();
+    partial void OnEventIdChanging(System.Nullable<int> value);
+    partial void OnEventIdChanged();
     #endregion
 		
 		public Notification()
@@ -1174,22 +1174,22 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Event", DbType="Int")]
-		public System.Nullable<int> Event
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EventId", DbType="Int")]
+		public System.Nullable<int> EventId
 		{
 			get
 			{
-				return this._Event;
+				return this._EventId;
 			}
 			set
 			{
-				if ((this._Event != value))
+				if ((this._EventId != value))
 				{
-					this.OnEventChanging(value);
+					this.OnEventIdChanging(value);
 					this.SendPropertyChanging();
-					this._Event = value;
-					this.SendPropertyChanged("Event");
-					this.OnEventChanged();
+					this._EventId = value;
+					this.SendPropertyChanged("EventId");
+					this.OnEventIdChanged();
 				}
 			}
 		}
@@ -1587,9 +1587,9 @@ namespace TwoCentsServer.Models
 		
 		private string _Location;
 		
-		private System.Nullable<int> _Year;
+		private int _Year;
 		
-		private System.Nullable<System.DateTime> _Timestamp;
+		private System.DateTime _Timestamp;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1607,9 +1607,9 @@ namespace TwoCentsServer.Models
     partial void OnNRICChanged();
     partial void OnLocationChanging(string value);
     partial void OnLocationChanged();
-    partial void OnYearChanging(System.Nullable<int> value);
+    partial void OnYearChanging(int value);
     partial void OnYearChanged();
-    partial void OnTimestampChanging(System.Nullable<System.DateTime> value);
+    partial void OnTimestampChanging(System.DateTime value);
     partial void OnTimestampChanged();
     #endregion
 		
@@ -1678,7 +1678,7 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="VarChar(20)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
 		public string Phone
 		{
 			get
@@ -1698,7 +1698,7 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NRIC", DbType="VarChar(20)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NRIC", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
 		public string NRIC
 		{
 			get
@@ -1718,7 +1718,7 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Location", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Location", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 		public string Location
 		{
 			get
@@ -1738,8 +1738,8 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Year", DbType="Int")]
-		public System.Nullable<int> Year
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Year", DbType="Int NOT NULL")]
+		public int Year
 		{
 			get
 			{
@@ -1758,8 +1758,8 @@ namespace TwoCentsServer.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Timestamp", DbType="DateTime")]
-		public System.Nullable<System.DateTime> Timestamp
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Timestamp", DbType="DateTime NOT NULL")]
+		public System.DateTime Timestamp
 		{
 			get
 			{

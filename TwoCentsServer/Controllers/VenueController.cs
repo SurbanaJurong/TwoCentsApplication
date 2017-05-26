@@ -16,7 +16,7 @@ namespace TwoCentsServer.Controllers
             using (var db = LinqRepository.DataCtx())
             {
                 var body = db.Venues.Select(r => LinqRepository.ToVenueResponse(r, db)).ToList();
-                return Json(body);
+                return Ok(body);
             }
         }
 
@@ -25,7 +25,7 @@ namespace TwoCentsServer.Controllers
             using (var db = LinqRepository.DataCtx())
             {
                 var body = LinqRepository.ToVenueResponse(db.Venues.FirstOrDefault(r => r.Id == id), db);
-                return Json(body);
+                return Ok(body);
             }
         }
 
@@ -35,7 +35,7 @@ namespace TwoCentsServer.Controllers
             {
                 db.Venues.InsertOnSubmit(data);
                 db.SubmitChanges();
-                return Json(data);
+                return Ok(data);
             }
         }
     }

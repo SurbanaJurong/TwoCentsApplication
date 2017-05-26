@@ -17,7 +17,7 @@ namespace TwoCentsServer.Controllers
             using (var db = LinqRepository.DataCtx())
             {
                 var body = db.Comments.ToList();
-                return Json(body);
+                return Ok(body);
             }
         }
 
@@ -34,7 +34,7 @@ namespace TwoCentsServer.Controllers
                     .Where(r => parsedEventId != 0 ? r.EventId == parsedEventId : true)
                     .ToList();
 
-                return Json(body);
+                return Ok(body);
             }
         }
 
@@ -44,7 +44,7 @@ namespace TwoCentsServer.Controllers
             {
                 db.Comments.InsertOnSubmit(data);
                 db.SubmitChanges();
-                return Json(data);
+                return Ok(data);
             }
         }
 
@@ -54,7 +54,7 @@ namespace TwoCentsServer.Controllers
             {
                 db.Comments.DeleteOnSubmit(db.Comments.FirstOrDefault(r => r.Id == data.Id));
                 db.SubmitChanges();
-                return Json(data);
+                return Ok(data);
             }
         }
     }

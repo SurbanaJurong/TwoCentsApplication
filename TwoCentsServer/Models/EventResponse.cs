@@ -20,7 +20,7 @@ namespace TwoCentsServer.Models
                 Description = e.Description,
                 IsRecurring = e.IsRecurring,
                 Timestamp = e.Timestamp,
-                Venue = e.Venue,
+                VenueId = e.VenueId,
                 MinCapacity = e.MinCapacity,
                 MaxCapacity = e.MaxCapacity,
                 IsCancelled = e.IsCancelled,

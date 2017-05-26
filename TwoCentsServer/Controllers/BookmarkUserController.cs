@@ -17,7 +17,7 @@ namespace TwoCentsServer.Controllers
             using (var db = LinqRepository.DataCtx())
             {
                 var body = db.BookmarkUsers.ToList();
-                return Json(body);
+                return Ok(body);
             }
         }
 
@@ -34,7 +34,7 @@ namespace TwoCentsServer.Controllers
                     .Where(r => parsedTargetId != 0 ? r.TargetId == parsedTargetId : true)
                     .ToList();
 
-                return Json(body);
+                return Ok(body);
             }
         }
 
@@ -44,7 +44,7 @@ namespace TwoCentsServer.Controllers
             {
                 db.BookmarkUsers.InsertAllOnSubmit(data);
                 db.SubmitChanges();
-                return Json(data);
+                return Ok(data);
             }
         }
 
@@ -54,7 +54,7 @@ namespace TwoCentsServer.Controllers
             {
                 db.BookmarkUsers.DeleteAllOnSubmit(data);
                 db.SubmitChanges();
-                return Json(data);
+                return Ok(data);
             }
         }
     }
