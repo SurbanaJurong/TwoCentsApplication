@@ -38,14 +38,14 @@
         android:layout_width="344dp"
         android:layout_height="wrap_content"
         app:layout_editor_absoluteY="200dp"
-        android:id="@+id/review_username_wrapper"
+        android:id="@+id/username_wrapper"
         app:layout_constraintTop_toBottomOf="@+id/get_started"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/review_phoneNumber_wrapper">
+        app:layout_constraintBottom_toTopOf="@+id/phoneNumber_wrapper">
 
         <TextView
-            android:id="@+id/review_username_label"
+            android:id="@+id/username_label"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:text="@string/username_label"
@@ -55,90 +55,42 @@
             android:layout_marginStart="30dp"/>
 
         <EditText
-            android:id="@+id/review_username_field"
+            android:id="@+id/username_field"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:textSize="@dimen/field_text_size"
-            android:text="@string/dummy_text"
             android:inputType="text"
             android:imeOptions="actionNext"
             android:maxLines="1"
+            android:text="User"
             android:textColor="@color/colorPrimary"
             android:textAlignment="center"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="30dp"/>
 
         <TextView
-            android:id="@+id/review_username_message"
+            android:id="@+id/username_message"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/review_username_label"
+            android:layout_below="@id/username_label"
             android:layout_marginTop="5dp"
-            android:text="@string/dummy_text"
             android:textColor="@color/colorRed"
             android:textSize="@dimen/message_text_size"
-            android:layout_alignStart="@id/review_username_label"/>
+            android:layout_alignStart="@id/username_label"/>
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="344dp"
-        android:layout_height="wrap_content"
-        app:layout_editor_absoluteY="500dp"
-        android:id="@+id/review_nric_wrapper"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/review_postalCode_wrapper">
-
-        <TextView
-            android:id="@+id/review_nric_label"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="@string/nric_label"
-            android:drawableStart="@drawable/ic_account_card_details_black_18dp"
-            android:drawablePadding="5dp"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="30dp"/>
-
-        <EditText
-            android:id="@+id/review_nric_field"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:textColor="@color/colorPrimary"
-            android:inputType="text"
-            android:imeOptions="actionDone"
-            android:textSize="@dimen/field_text_size"
-            android:text="@string/dummy_text"
-            android:textAlignment="center"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="30dp"/>
-
-        <TextView
-            android:id="@+id/review_nric_message"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="@string/dummy_text"
-            android:textSize="@dimen/message_text_size"
-            android:textColor="@color/colorRed"
-            android:layout_alignStart="@id/review_nric_label"
-            android:layout_marginTop="5dp"
-            android:layout_below="@id/review_nric_label"/>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/review_phoneNumber_wrapper"
+        android:id="@+id/phoneNumber_wrapper"
         android:layout_width="344dp"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_editor_absoluteY="300dp"
-        app:layout_constraintBottom_toTopOf="@+id/review_year_wrapper"
-        app:layout_constraintTop_toBottomOf="@+id/review_username_wrapper">
+        app:layout_constraintBottom_toTopOf="@+id/year_wrapper"
+        app:layout_constraintTop_toBottomOf="@+id/username_wrapper">
 
         <TextView
-            android:id="@+id/review_phoneNumber_label"
+            android:id="@+id/phoneNumber_label"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -148,44 +100,45 @@
             android:text="@string/phone_number_label" />
 
         <EditText
-            android:id="@+id/review_phoneNumber_field"
+            android:id="@+id/phoneNumber_field"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="30dp"
             android:ems="10"
+            android:text="83567597"
             android:textSize="@dimen/field_text_size"
-            android:text="@string/dummy_text"
+           
             android:imeOptions="actionNext"
             android:inputType="phone"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary" />
 
         <TextView
-            android:id="@+id/review_phoneNumber_message"
+            android:id="@+id/phoneNumber_message"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:textColor="@color/colorRed"
             android:textSize="@dimen/message_text_size"
-            android:text="@string/dummy_text"
-            android:layout_alignStart="@id/review_phoneNumber_label"
-            android:layout_below="@id/review_phoneNumber_label"
+           
+            android:layout_alignStart="@id/phoneNumber_label"
+            android:layout_below="@id/phoneNumber_label"
             android:layout_marginTop="5dp" />
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/review_year_wrapper"
+        android:id="@+id/year_wrapper"
         android:layout_width="344dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/review_postalCode_wrapper"
+        app:layout_constraintBottom_toTopOf="@+id/postalCode_wrapper"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_editor_absoluteY="400dp"
-        app:layout_constraintTop_toBottomOf="@+id/review_phoneNumber_wrapper">
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumber_wrapper">
 
         <TextView
-            android:id="@+id/review_year_label"
+            android:id="@+id/year_label"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -195,44 +148,45 @@
             android:text="@string/year_of_birth_label" />
 
         <EditText
-            android:id="@+id/review_year_field"
+            android:id="@+id/year_field"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="30dp"
+            android:text="1996"
             android:ems="10"
             android:textSize="@dimen/field_text_size"
-            android:text="@string/dummy_text"
-            android:imeOptions="actionDone"
+           
+            android:imeOptions="actionNext"
             android:inputType="numberDecimal"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary" />
 
         <TextView
-            android:id="@+id/review_year_message"
+            android:id="@+id/year_message"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@id/review_year_label"
-            android:layout_below="@id/review_year_label"
+            android:layout_alignStart="@id/year_label"
+            android:layout_below="@id/year_label"
             android:textSize="@dimen/message_text_size"
             android:textColor="@color/colorRed"
-            android:text="@string/dummy_text"
+           
             android:layout_marginTop="5dp" />
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/review_postalCode_wrapper"
+        android:id="@+id/postalCode_wrapper"
         android:layout_width="344dp"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_editor_absoluteY="400dp"
-        app:layout_constraintBottom_toTopOf="@+id/review_nric_wrapper"
-        app:layout_constraintTop_toBottomOf="@+id/review_year_wrapper">
+        app:layout_constraintBottom_toTopOf="@+id/nric_wrapper"
+        app:layout_constraintTop_toBottomOf="@+id/year_wrapper">
 
         <TextView
-            android:id="@+id/review_postalCode_label"
+            android:id="@+id/postalCode_label"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -242,29 +196,77 @@
             android:text="@string/postal_code_label" />
 
         <EditText
-            android:id="@+id/review_postalCode_field"
+            android:id="@+id/postalCode_field"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="30dp"
             android:ems="10"
             android:textSize="@dimen/field_text_size"
-            android:text="@string/dummy_text"
-            android:imeOptions="actionDone"
+            android:text="400018"
+            android:imeOptions="actionNext"
             android:inputType="numberDecimal"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary" />
 
         <TextView
-            android:id="@+id/review_postalCode_message"
+            android:id="@+id/postalCode_message"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:textSize="@dimen/message_text_size"
-            android:text="@string/dummy_text"
+           
             android:textColor="@color/colorRed"
-            android:layout_alignStart="@id/review_postalCode_label"
-            android:layout_below="@id/review_postalCode_label"
+            android:layout_alignStart="@id/postalCode_label"
+            android:layout_below="@id/postalCode_label"
             android:layout_marginTop="5dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        app:layout_editor_absoluteY="500dp"
+        android:id="@+id/nric_wrapper"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/postalCode_wrapper">
+
+        <TextView
+            android:id="@+id/nric_label"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/nric_label"
+            android:drawableStart="@drawable/ic_account_card_details_black_18dp"
+            android:drawablePadding="5dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="30dp"/>
+
+        <EditText
+            android:id="@+id/nric_field"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:text="G1414"
+            android:textColor="@color/colorPrimary"
+            android:inputType="text"
+            android:imeOptions="actionNext"
+            android:textSize="@dimen/field_text_size"
+           
+            android:textAlignment="center"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="30dp"/>
+
+        <TextView
+            android:id="@+id/nric_message"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+           
+            android:textSize="@dimen/message_text_size"
+            android:textColor="@color/colorRed"
+            android:layout_alignStart="@id/nric_label"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/nric_label"/>
 
     </RelativeLayout>
 

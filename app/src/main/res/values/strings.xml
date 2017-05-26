@@ -41,9 +41,13 @@
     <string name="hint_max_capacity">max</string>
     <string name="hint_min_capacity">min</string>
     <string name="title_review_event_info">REVIEW DETAILS</string>
-    <string name="title_event_confirmation">Your event has been created!</string>
+    <string name="title_event_confirmation">Your eventId has been created!</string>
     <string name="title_attend_btn">Attend</string>
     <string name="title_cancel_btn">Cancel</string>
     <string name="event_details_description_label">DESCRIPTION</string>
     <string name="event_details_enter_chatroom">Enter Chatroom</string>
+    <string name="toast_request_success">Request sent to server successful</string>
+    <string name="toast_request_unsuccess">Request sent to server unsuccessful</string>
+    <string name="toast_request_fail">Request sent to server failed</string>
+    <string name="toast_empty_otp">Please enter your OTP before proceeding</string>
 </resources>

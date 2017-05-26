@@ -9,5 +9,5 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="com.mrawesome.twocents.fragment.main.NotificationFragment"
+    tools:context=".ui.fragment.main.NotificationFragment"
     tools:listitem="@layout/notification_item" />

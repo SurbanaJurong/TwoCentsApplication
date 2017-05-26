@@ -1,56 +1,87 @@
 package com.mrawesome.twocents.data.persistent;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.Calendar;
+
+import io.realm.Realm;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
+import io.realm.internal.Table;
 
 /**
  * Created by mrawesome on 14/5/17.
  */
 
-public class Comment extends RealmObject implements Flattenable {
+public class Comment extends RealmObject {
 
     @PrimaryKey
-    private int commentId;
-    private int sender;
-    private String comment;
+    @SerializedName("Id")
+    private int id;
+    @SerializedName("UserId")
+    private int userId;
+    @SerializedName("Timestamp")
+    private String timeStamp;
+    @SerializedName("Content")
+    private String content;
+    @SerializedName("EventId")
+    private int eventId;
+
+    @Override
+    public String toString() {
+        return id + "|" + userId + "|" + timeStamp + "|" + content;
+    }
 
     public Comment() {}
 
     public Comment(int sender, String comment) {
-        this.sender = sender;
-        this.comment = comment;
+        this.userId = sender;
+        this.content = comment;
     }
 
-    @Override
-    public StringBuilder flatten() {
-        return new StringBuilder().append(sender).append(DELIM).append(comment);
+    public int getId() {
+        return id;
     }
 
-    public int getCommentId() {
-        return commentId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setCommentId(int commentId) {
-        this.commentId = commentId;
+    public int getUserId() {
+        return userId;
     }
 
-    public int getSender() {
-        return sender;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public void setSender(int sender) {
-        this.sender = sender;
+    public String getContent() {
+        return content;
     }
 
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public boolean isOwnComment() {
-        return sender == Profile.getInstance().getUserId();
+        Realm realm = Realm.getDefaultInstance();
+        Profile profile = realm.where(Profile.class).findFirst();
+        return userId == profile.getUserId();
+    }
+
+    public String getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(String timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
+    public int getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(int eventId) {
+        this.eventId = eventId;
     }
 }

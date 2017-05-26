@@ -14,7 +14,6 @@ import com.mrawesome.twocents.R;
 import com.mrawesome.twocents.data.persistent.Event;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -44,7 +43,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         byte[] avatarBase64 = Base64.decode(event.getCategory().getIcon(), Base64.DEFAULT);
         Bitmap image = BitmapFactory.decodeByteArray(avatarBase64, 0, avatarBase64.length);
         holder.imageView.setImageBitmap(image);
-        holder.eventName.setText(event.getEventName());
+        holder.eventName.setText(event.getName());
         holder.host.setText(event.getHost());
         holder.venue.setText(event.getVenueId());
         SimpleDateFormat timeOfDay = new SimpleDateFormat("HH:mm");

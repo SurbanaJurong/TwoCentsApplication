@@ -1,9 +1,11 @@
 package com.mrawesome.twocents.data.persistent;
 
+import com.google.gson.annotations.SerializedName;
 import com.mrawesome.twocents.data.enumerate.NotificationType;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
+import io.realm.internal.Table;
 
 /**
  * Created by mrawesome on 14/5/17.
@@ -12,45 +14,49 @@ import io.realm.annotations.PrimaryKey;
 public class Notification extends RealmObject {
 
     @PrimaryKey
-    private int notificationId;
-    private int notificationType;
-    private String sender;
+    @SerializedName("Id")
+    private int id;
+    @SerializedName("Type")
+    private int type;
+    @SerializedName("SenderId")
+    private String senderId;
+    @SerializedName("EventId")
     private int eventId;
 
     public Notification() {}
 
     public Notification(NotificationType notificationType, String sender, int eventId) {
-        this.notificationType = notificationType.getCode();
-        this.sender = sender;
+        this.type = notificationType.getCode();
+        this.senderId = sender;
         this.eventId = eventId;
     }
 
-    public int getNotificationType() {
-        return this.notificationType;
+    public int getType() {
+        return this.type;
     }
 
-    public String getSender() {
-        return this.sender;
+    public String getSenderId() {
+        return this.senderId;
     }
 
     public int getEventId() {
         return this.eventId;
     }
 
-    public int getNotificationId() {
-        return notificationId;
+    public int getId() {
+        return id;
     }
 
-    public void setNotificationId(int notificationId) {
-        this.notificationId = notificationId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setNotificationType(int notificationType) {
-        this.notificationType = notificationType;
+    public void setType(int type) {
+        this.type = type;
     }
 
-    public void setSender(String sender) {
-        this.sender = sender;
+    public void setSenderId(String senderId) {
+        this.senderId = senderId;
     }
 
     public void setEventId(int eventId) {

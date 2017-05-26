@@ -51,7 +51,7 @@ public class ChatArrayAdapter extends ArrayAdapter<Comment> {
             convertView = inflater.inflate(R.layout.left_chat_bubble, parent, false);
         }
         chatText = (TextView) convertView.findViewById(R.id.msgr);
-        chatText.setText(comment.getComment());
+        chatText.setText(comment.getContent());
         return convertView;
     }
 }

@@ -1,5 +1,7 @@
 package com.mrawesome.twocents.data.persistent;
 
+import com.google.gson.annotations.SerializedName;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -7,37 +9,50 @@ import io.realm.annotations.PrimaryKey;
  * Created by mrawesome on 14/5/17.
  */
 
-public class Interest extends RealmObject implements Flattenable {
+public class Interest extends RealmObject {
 
     @PrimaryKey
-    private String subject;
+    @SerializedName("Id")
+    private int id;
+    @SerializedName("Name")
+    private String name;
+    @SerializedName("Icon")
     private String icon;
 
     public Interest() {}
 
+    @Override
+    public String toString() {
+        return id + "|" + name + "|" + icon;
+    }
+
     public Interest(String subject, String icon) {
-        this.subject = subject;
+        this.name = subject;
         this.icon = icon;
     }
 
-    public String getSubject() {
-        return this.subject;
+    public String getName() {
+        return this.name;
     }
 
     public String getIcon() {
         return this.icon;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setIcon(String icon) {
         this.icon = icon;
     }
 
-    @Override
-    public StringBuilder flatten() {
-        return new StringBuilder().append(subject);
+    public int getId() {
+        return id;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 }

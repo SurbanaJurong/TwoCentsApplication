@@ -1,5 +1,7 @@
 package com.mrawesome.twocents.data.persistent;
 
+import com.google.gson.annotations.SerializedName;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -10,49 +12,53 @@ import io.realm.annotations.PrimaryKey;
 public class Venue extends RealmObject {
 
     @PrimaryKey
-    private int venueId;
-    private String venueName;
-    private Interest category;
-    private String postalCode;
+    @SerializedName("Id")
+    private int id;
+    @SerializedName("Name")
+    private String name;
+    @SerializedName("InterestId")
+    private Interest interestId;
+    @SerializedName("Location")
+    private String location;
 
     public Venue() {}
 
     public Venue(int venueId, String venueName, Interest category, String postalCode) {
-        this.venueId = venueId;
-        this.venueName = venueName;
-        this.category = category;
-        this.postalCode = postalCode;
+        this.id = venueId;
+        this.name = venueName;
+        this.interestId = category;
+        this.location = postalCode;
     }
 
-    public int getVenueId() {
-        return venueId;
+    public int getId() {
+        return id;
     }
 
-    public void setVenueId(int venueId) {
-        this.venueId = venueId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getVenueName() {
-        return venueName;
+    public String getName() {
+        return name;
     }
 
-    public void setVenueName(String venueName) {
-        this.venueName = venueName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Interest getCategory() {
-        return category;
+    public Interest getInterestId() {
+        return interestId;
     }
 
-    public void setCategory(Interest category) {
-        this.category = category;
+    public void setInterestId(Interest interestId) {
+        this.interestId = interestId;
     }
 
-    public String getPostalCode() {
-        return postalCode;
+    public String getLocation() {
+        return location;
     }
 
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

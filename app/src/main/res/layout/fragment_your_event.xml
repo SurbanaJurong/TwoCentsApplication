@@ -17,7 +17,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
-        tools:context="com.mrawesome.twocents.fragment.main.YourEventFragment"
+        tools:context=".ui.fragment.main.YourEventFragment"
         tools:listitem="@layout/event_item" />
 
     <android.support.design.widget.FloatingActionButton

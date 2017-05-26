@@ -8,5 +8,5 @@ public class Configuration {
     // Constants
 
     // Configurations
-    public static final String SERVER_DOMAIN = "http://http://twocentsapi.azurewebsites.net/api/";
+    public static final String SERVER_DOMAIN = "http://twocentsapi.azurewebsites.net/api/";
 }

@@ -1,26 +1,20 @@
 package com.mrawesome.twocents.ui;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
 import com.gc.materialdesign.views.ButtonFlat;
 import com.mrawesome.twocents.R;
-import com.mrawesome.twocents.fragment.addevent.NewEventFragment1;
-import com.mrawesome.twocents.fragment.addevent.NewEventFragment2;
-import com.mrawesome.twocents.fragment.addevent.NewEventFragment3;
-import com.mrawesome.twocents.fragment.addevent.NewEventFragment4;
-import com.mrawesome.twocents.fragment.onboarding.OnboardingFragment1;
-import com.mrawesome.twocents.fragment.onboarding.OnboardingFragment2;
-import com.mrawesome.twocents.fragment.onboarding.OnboardingFragment3;
-import com.mrawesome.twocents.fragment.onboarding.OnboardingFragment4;
+import com.mrawesome.twocents.ui.fragment.addevent.NewEventFragment1;
+import com.mrawesome.twocents.ui.fragment.addevent.NewEventFragment2;
+import com.mrawesome.twocents.ui.fragment.addevent.NewEventFragment3;
+import com.mrawesome.twocents.ui.fragment.addevent.NewEventFragment4;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 public class NewEventActivity extends FragmentActivity implements NewEventFragment1.OnFragmentInteractionListener, NewEventFragment2.OnFragmentInteractionListener, NewEventFragment3.OnListFragmentInteractionListener, NewEventFragment4.OnFragmentInteractionListener {

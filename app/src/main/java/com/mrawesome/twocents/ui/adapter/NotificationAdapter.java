@@ -13,9 +13,13 @@ import android.widget.TextView;
 import com.mrawesome.twocents.R;
 import com.mrawesome.twocents.data.persistent.Notification;
 import com.mrawesome.twocents.data.persistent.User;
-import com.mrawesome.twocents.fragment.addInterest.AddInterestFragment1;
+import com.mrawesome.twocents.ui.fragment.addInterest.AddInterestFragment1;
 
 import java.util.List;
+
+import io.realm.Realm;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
 
 /**
  * Created by mrawesome on 21/5/17.
@@ -24,6 +28,7 @@ import java.util.List;
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.NotificationViewHolder> {
 
     private List<Notification> notifications;
+    private Realm realm = Realm.getDefaultInstance();
 
     public NotificationAdapter(List<Notification> notifications) {
         this.notifications = notifications;
@@ -38,11 +43,12 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     @Override
     public void onBindViewHolder(NotificationViewHolder holder, int position) {
         Notification notification = notifications.get(position);
-        User user = new User(notification.getSender(), AddInterestFragment1.basketballAva, "83567597");
+        RealmQuery<User> query = realm.where(User.class).equalTo("id", notification.getSenderId());
+        User user = query.findFirst();
         byte[] avatarBase64 = Base64.decode(user.getProfilePic(), Base64.DEFAULT);
         Bitmap image = BitmapFactory.decodeByteArray(avatarBase64, 0, avatarBase64.length);
         holder.imageView.setImageBitmap(image);
-        holder.textView.setText(notification.getSender() + " has modified event " + notification.getEventId());
+        holder.textView.setText(notification.getSenderId() + " has modified event " + notification.getEventId());
     }
 
     @Override

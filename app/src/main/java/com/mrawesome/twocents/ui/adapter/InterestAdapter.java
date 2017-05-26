@@ -8,14 +8,12 @@ import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mrawesome.twocents.R;
 import com.mrawesome.twocents.data.persistent.Interest;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,8 +25,12 @@ public class InterestAdapter extends RecyclerView.Adapter<InterestAdapter.Intere
     private static final String TAG = InterestAdapter.class.getSimpleName();
 
     private List<Interest> interests;
+    private Context context;
+    private static RecyclerViewOnClickListener onClickListener;
 
-    public InterestAdapter(List<Interest> interests) {
+    public InterestAdapter(Context context, RecyclerViewOnClickListener onClickListener, List<Interest> interests) {
+        this.context = context;
+        this.onClickListener = onClickListener;
         this.interests = interests;
     }
 
@@ -41,10 +43,13 @@ public class InterestAdapter extends RecyclerView.Adapter<InterestAdapter.Intere
     @Override
     public void onBindViewHolder(InterestViewHolder holder, int position) {
         Interest interest = interests.get(position);
-        byte[] avatarBase64 = Base64.decode(interest.getIcon(), Base64.DEFAULT);
-        Bitmap image = BitmapFactory.decodeByteArray(avatarBase64, 0, avatarBase64.length);
-        holder.imageView.setImageBitmap(image);
-        holder.textView.setText(interest.getSubject());
+        String icon = interest.getIcon();
+        if (icon != null) {
+            byte[] avatarBase64 = Base64.decode(icon, Base64.DEFAULT);
+            Bitmap image = BitmapFactory.decodeByteArray(avatarBase64, 0, avatarBase64.length);
+            holder.imageView.setImageBitmap(image);
+        }
+        holder.textView.setText(interest.getName());
 
     }
 
@@ -58,15 +63,25 @@ public class InterestAdapter extends RecyclerView.Adapter<InterestAdapter.Intere
         return interests.size();
     }
 
-    public static class InterestViewHolder extends RecyclerView.ViewHolder {
+    public Interest getItem(int position) {
+        return interests.get(position);
+    }
+
+    public static class InterestViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         protected ImageView imageView;
         protected TextView textView;
 
         public InterestViewHolder(View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
             imageView = (ImageView) itemView.findViewById(R.id.interest_avatar);
             textView = (TextView) itemView.findViewById(R.id.interest_subject);
+        }
+
+        @Override
+        public void onClick(View view) {
+            onClickListener.onRecyclerViewListClicked(view, this.getLayoutPosition());
         }
     }
 }

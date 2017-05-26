@@ -1,12 +1,10 @@
 package com.mrawesome.twocents.data.persistent;
 
 import com.google.gson.annotations.Expose;
-import com.mrawesome.twocents.fragment.addInterest.AddInterestFragment1;
+import com.google.gson.annotations.SerializedName;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import io.realm.Realm;
@@ -14,50 +12,55 @@ import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.RealmQuery;
 import io.realm.annotations.PrimaryKey;
-import io.realm.annotations.Required;
 
 /**
- * Created by mrawesome on 14/5/17.
+ * Created by mrawesome on 27/5/17.
  */
 
 public class Profile extends RealmObject {
-
-    @PrimaryKey
-    private int userId;
-    @Expose
-    private String username;
-    private String profilePic;
-    @Expose
-    private String phoneNumber;
-    @Expose
-    private String nric;
-    @Expose
-    private String postalCode;
-    @Expose
-    private int year;
-    private long dateCreated;
-    private RealmList<Interest> interests = new RealmList<>();
-    private RealmList<Notification> notifications = new RealmList<>();
-    private RealmList<Attendance> attendances = new RealmList<>();
-    private RealmList<Event> events = new RealmList<>();
-    private RealmList<User> users = new RealmList<>();
-
-    private static volatile Profile instance = null;
+    private static final Profile ourInstance = new Profile();
 
     public static Profile getInstance() {
-        if (instance == null) {
-            synchronized (Profile.class) {
-                if (instance == null) {
-                    instance = new Profile();
-                }
-            }
-        }
-        return instance;
+        return ourInstance;
     }
 
-    public Profile() {
-    }
+    @PrimaryKey
+    @SerializedName("Id")
+    private int userId;
+    @Expose
+    @SerializedName("UserName")
+    private String username;
+    @SerializedName("ProfilePic")
+    private String profilePic;
+    @Expose
+    @SerializedName("Phone")
+    private String phoneNumber;
+    @Expose
+    @SerializedName("NRIC")
+    private String nric;
+    @Expose
+    @SerializedName("Location")
+    private String location;
+    @Expose
+    @SerializedName("Year")
+    private int year;
+    @SerializedName("Timestamp")
+    private String timeStamp;
+    @SerializedName("Interests")
+    private RealmList<Interest> interests = new RealmList<>();
+    @SerializedName("Notifications")
+    private RealmList<Notification> notifications = new RealmList<>();
+    @SerializedName("Attendances")
+    private RealmList<Attendance> attendances = new RealmList<>();
+    @SerializedName("EventRegistered")
+    private RealmList<Event> events = new RealmList<>();
+    @SerializedName("UserBookmarked")
+    private RealmList<User> users = new RealmList<>();
 
+    @Override
+    public String toString() {
+        return userId + "|" + username + "|" + phoneNumber + "|" + year + "|" + location + "|" + nric;
+    }
 
     public String getUsername() {
         return this.username;
@@ -75,8 +78,8 @@ public class Profile extends RealmObject {
         return this.nric;
     }
 
-    public String getPostalCode() {
-        return this.postalCode;
+    public String getLocation() {
+        return this.location;
     }
 
     public int getAge() {
@@ -84,30 +87,10 @@ public class Profile extends RealmObject {
         return currentYear - this.year;
     }
 
-    public long getDateCreated() {
-        return this.dateCreated;
+    public String getTimeStamp() {
+        return this.timeStamp;
     }
 
-    public Set<Interest> getInterests() {
-        Set<Interest> interests = new HashSet<>();
-        interests.addAll(this.interests);
-        return interests;
-    }
-
-    public Set<Notification> getNotifications() {
-        Set<Notification> notifications = new HashSet<>();
-        notifications.addAll(this.notifications);
-        return notifications;
-    }
-
-    public Map<Interest, Integer> getAttendances() {
-        Map<Interest, Integer> attendances = new HashMap<>();
-        for (Attendance document : this.attendances) {
-            //debug
-            attendances.put(new Interest(document.key, AddInterestFragment1.basketballAva), document.value);
-        }
-        return attendances;
-    }
 
     public Set<Event> getEvents() {
         Set<Event> events = new HashSet<>();
@@ -137,16 +120,16 @@ public class Profile extends RealmObject {
         this.nric = nric;
     }
 
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public void setYear(int year) {
         this.year = year;
     }
 
-    public void setDateCreated(long dateCreated) {
-        this.dateCreated = dateCreated;
+    public void setTimeStamp(String timeStamp) {
+        this.timeStamp = timeStamp;
     }
 
     public void addToInterests(Set<Interest> interests) {
@@ -166,9 +149,9 @@ public class Profile extends RealmObject {
     }
 
     public void incrementAttendances(Interest interest) {
-        RealmQuery<Attendance> query = Realm.getDefaultInstance().where(Attendance.class).contains("key", interest.getSubject());
+        RealmQuery<Attendance> query = Realm.getDefaultInstance().where(Attendance.class).equalTo("id", interest.getId());
         Attendance document = query.findFirst();
-        document.value++;
+        document.setCount(document.getCount() + 1);
     }
 
     public void setEvents(Set<Event> events) {
@@ -219,7 +202,15 @@ public class Profile extends RealmObject {
         this.users = users;
     }
 
-    public static void setInstance(Profile instance) {
-        Profile.instance = instance;
+    public RealmList<Interest> getInterests() {
+        return interests;
+    }
+
+    public RealmList<Notification> getNotifications() {
+        return notifications;
+    }
+
+    public RealmList<Attendance> getAttendances() {
+        return attendances;
     }
 }

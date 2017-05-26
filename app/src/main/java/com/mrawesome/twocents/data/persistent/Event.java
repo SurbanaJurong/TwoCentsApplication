@@ -1,8 +1,8 @@
 package com.mrawesome.twocents.data.persistent;
 
 import com.google.gson.annotations.Expose;
-import com.mrawesome.twocents.fragment.addInterest.AddInterestFragment1;
-import com.mrawesome.twocents.ui.AddInterestActivity;
+import com.google.gson.annotations.SerializedName;
+import com.mrawesome.twocents.ui.fragment.addInterest.AddInterestFragment1;
 
 import java.util.HashSet;
 import java.util.List;
@@ -11,7 +11,6 @@ import java.util.Set;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
-import io.realm.annotations.Required;
 
 /**
  * Created by mrawesome on 14/5/17.
@@ -23,40 +22,56 @@ public class Event extends RealmObject {
      */
 
     @PrimaryKey
-    private int eventId;
+    @SerializedName("Id")
+    private int id;
     @Expose
-    private String eventName;
+    @SerializedName("Name")
+    private String name;
     @Expose
+    @SerializedName("Category")
     private Interest category;
     @Expose
+    @SerializedName("Host")
     private String host;
     @Expose
+    @SerializedName("Description")
     private String description;
     @Expose
+    @SerializedName("IsRecurring")
     private int isRecurring;
-    private long dateCreated;
+    @SerializedName("Timestamp")
+    private String timeStamp;
     @Expose
+    @SerializedName("VenueId")
     private String venueId;
     @Expose
+    @SerializedName("MinCapacity")
     private int minCapacity;
     @Expose
+    @SerializedName("MaxCapacity")
     private int maxCapacity;
+    @SerializedName("UserRegistered")
     private RealmList<User> userRegistered = new RealmList<>();
+    @SerializedName("Participants")
     private RealmList<User> participants = new RealmList<>();
+    @SerializedName("Comments")
     private RealmList<Comment> chat = new RealmList<>();
-    private int venueStatus;
+    @SerializedName("IsCancelled")
+    private int isCancelled;
     @Expose
+    @SerializedName("StartTime")
     private long startTime;
     @Expose
+    @SerializedName("Duration")
     private int duration;
 
     public Event() {
     };
 
-    public Event(String eventName, String category, String host, String description, int isRecurring, String venueId, int minCapacity, int maxCapacity, long startTime, int duration) {
-        this.eventName = eventName;
+    public Event(String eventName, Interest category, String host, String description, int isRecurring, String venueId, int minCapacity, int maxCapacity, long startTime, int duration) {
+        this.name = eventName;
         //debug
-        this.category = new Interest(category, AddInterestFragment1.basketballAva);
+        this.category = category;
         this.host = host;
         this.description = description;
         this.isRecurring = isRecurring;
@@ -67,8 +82,8 @@ public class Event extends RealmObject {
         this.duration = duration;
     }
 
-    public int getEventId() {
-        return this.eventId;
+    public int getId() {
+        return this.id;
     }
 
     public String getHost() {
@@ -83,16 +98,16 @@ public class Event extends RealmObject {
         return this.isRecurring;
     }
 
-    public long getDateCreated() {
-        return this.dateCreated;
+    public String getTimeStamp() {
+        return this.timeStamp;
     }
 
     public String getVenueId() {
         return this.venueId;
     }
 
-    public int getVenueStatus() {
-        return this.venueStatus;
+    public int getIsCancelled() {
+        return this.isCancelled;
     }
 
     public long getStartTime() {
@@ -127,20 +142,20 @@ public class Event extends RealmObject {
         return this.chat;
     }
 
-    public String getEventName() {
-        return eventName;
+    public String getName() {
+        return name;
     }
 
     public Interest getCategory() {
         return category;
     }
 
-    public void setEventId(int eventId) {
-        this.eventId = eventId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setEventName(String eventName) {
-        this.eventName = eventName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setCategory(Interest category) {
@@ -159,8 +174,8 @@ public class Event extends RealmObject {
         this.isRecurring = isRecurring;
     }
 
-    public void setDateCreated(long dateCreated) {
-        this.dateCreated = dateCreated;
+    public void setTimeStamp(String timeStamp) {
+        this.timeStamp = timeStamp;
     }
 
     public void setVenueId(String venueId) {
@@ -201,8 +216,8 @@ public class Event extends RealmObject {
         this.chat.addAll(chat);
     }
 
-    public void setVenueStatus(int venueStatus) {
-        this.venueStatus = venueStatus;
+    public void setIsCancelled(int isCancelled) {
+        this.isCancelled = isCancelled;
     }
 
     public void setStartTime(long startTime) {

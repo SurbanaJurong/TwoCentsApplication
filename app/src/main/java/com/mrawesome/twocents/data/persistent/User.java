@@ -1,5 +1,7 @@
 package com.mrawesome.twocents.data.persistent;
 
+import com.google.gson.annotations.SerializedName;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -10,8 +12,13 @@ import io.realm.annotations.PrimaryKey;
 public class User extends RealmObject {
 
     @PrimaryKey
+    @SerializedName("Id")
+    private int id;
+    @SerializedName("UserName")
     private String username;
+    @SerializedName("ProfilePic")
     private String profilePic;
+    @SerializedName("Phone")
     private String phoneNumber;
 
     public User() {}
