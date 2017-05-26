@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using TwoCentsServer.Models;
 
-namespace TwoCentsServer.Repositories
+namespace TwoCentsServer.Services
 {
     public static class LinqRepository
     {

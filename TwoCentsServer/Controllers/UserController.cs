@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using TwoCentsServer.Models;
-using TwoCentsServer.Repositories;
+using TwoCentsServer.Services;
 using TwoCentsServer.Services;
 
 namespace TwoCentsServer.Controllers

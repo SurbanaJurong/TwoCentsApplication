@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Results;
 using TwoCentsServer.Models;
-using TwoCentsServer.Repositories;
+using TwoCentsServer.Services;
 
 namespace TwoCentsServer.Controllers
 {
