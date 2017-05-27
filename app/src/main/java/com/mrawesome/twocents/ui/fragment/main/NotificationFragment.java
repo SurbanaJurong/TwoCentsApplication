@@ -25,12 +25,7 @@ import java.util.Arrays;
  */
 public class NotificationFragment extends Fragment {
 
-    private ArrayList<Notification> notifications = new ArrayList<>(Arrays.asList(new Notification[] {
-            new Notification(NotificationType.valueOf(1), "u123123", 123123),
-            new Notification(NotificationType.valueOf(1), "u123123", 123123),
-            new Notification(NotificationType.valueOf(1), "u123123", 234234),
-            new Notification(NotificationType.valueOf(1), "u123123", 234234),
-    }));
+    private ArrayList<Notification> notifications = new ArrayList<>();
 
     // TODO: Customize parameters
     private OnListFragmentInteractionListener mListener;

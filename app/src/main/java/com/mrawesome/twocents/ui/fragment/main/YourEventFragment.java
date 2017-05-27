@@ -16,6 +16,11 @@ import com.mrawesome.twocents.ui.adapter.EventAdapter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Set;
+
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 /**
  * A fragment representing a list of Items.
@@ -25,12 +30,7 @@ import java.util.Calendar;
  */
 public class YourEventFragment extends Fragment {
 
-    private Calendar start1 = Calendar.getInstance();
-    private Calendar start2 = (Calendar) start1.clone();
-    {
-        start2.add(Calendar.DAY_OF_WEEK, 1);
-    }
-    private ArrayList<Event> events = new ArrayList<>();
+    private Set<Event> events = new HashSet<>();
 
     // TODO: Customize parameters
     private OnListFragmentInteractionListener mListener;
@@ -61,6 +61,8 @@ public class YourEventFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_your_event, container, false);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fragment_your_event);
+        RealmResults<Event> results = Realm.getDefaultInstance().where(Event.class).findAll();
+        events.addAll(results);
         recyclerView.setAdapter(new EventAdapter(events));
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));

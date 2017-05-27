@@ -50,4 +50,5 @@
     <string name="toast_request_unsuccess">Request sent to server unsuccessful</string>
     <string name="toast_request_fail">Request sent to server failed</string>
     <string name="toast_empty_otp">Please enter your OTP before proceeding</string>
+    <string name="title_preference_saved">Your preference has been saved</string>
 </resources>

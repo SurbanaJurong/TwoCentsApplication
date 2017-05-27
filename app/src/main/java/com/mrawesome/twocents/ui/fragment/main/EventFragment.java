@@ -15,7 +15,12 @@ import com.mrawesome.twocents.ui.adapter.EventAdapter;
 
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 /**
  * A fragment representing a list of Items.
@@ -27,12 +32,8 @@ public class EventFragment extends Fragment {
 
     private static final String TAG = EventFragment.class.getSimpleName();
 
-    private Calendar start1 = Calendar.getInstance();
-    private Calendar start2 = (Calendar) start1.clone();
-    {
-        start2.add(Calendar.DAY_OF_WEEK, 1);
-    }
-    private List<Event> events = Arrays.asList();
+    private EventAdapter eventAdapter;
+    private Set<Event> events = new HashSet<>();
 
     // TODO: Customize parameters
     private OnListFragmentInteractionListener mListener;
@@ -62,7 +63,10 @@ public class EventFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_event_list, container, false);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fragment_event_list);
-        recyclerView.setAdapter(new EventAdapter(events));
+        RealmResults<Event> results = Realm.getDefaultInstance().where(Event.class).findAll();
+        events.addAll(results);
+        eventAdapter = new EventAdapter(events);
+        recyclerView.setAdapter(eventAdapter);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 //        FloatingActionButton button = (FloatingActionButton) view.findViewById(R.id.event_floating_btn);
@@ -73,6 +77,9 @@ public class EventFragment extends Fragment {
         return view;
     }
 
+    public void setData(List<Event> events) {
+
+    }
 
     @Override
     public void onAttach(Context context) {

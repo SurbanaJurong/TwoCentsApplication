@@ -12,10 +12,17 @@ import android.widget.TextView;
 
 import com.mrawesome.twocents.R;
 import com.mrawesome.twocents.data.persistent.Event;
+import com.mrawesome.twocents.data.persistent.Interest;
+import com.mrawesome.twocents.data.persistent.User;
+import com.mrawesome.twocents.data.persistent.Venue;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Set;
+
+import io.realm.Realm;
 
 /**
  * Created by mrawesome on 21/5/17.
@@ -25,10 +32,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
     private static final String TAG = EventAdapter.class.getSimpleName();
 
-    private List<Event> events;
+    private List<Event> events = new ArrayList<>();
 
-    public EventAdapter(List<Event> events) {
-        this.events = events;
+    public EventAdapter(Set<Event> events) {
+        this.events.addAll(events);
     }
 
     @Override
@@ -40,21 +47,23 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     @Override
     public void onBindViewHolder(EventViewHolder holder, int position) {
         Event event = events.get(position);
-        byte[] avatarBase64 = Base64.decode(event.getCategory().getIcon(), Base64.DEFAULT);
+        Realm realm = Realm.getDefaultInstance();
+        Interest interest = realm.where(Interest.class).equalTo("id", event.getCategory()).findFirst();
+        byte[] avatarBase64 = Base64.decode(interest.getIcon(), Base64.DEFAULT);
         Bitmap image = BitmapFactory.decodeByteArray(avatarBase64, 0, avatarBase64.length);
         holder.imageView.setImageBitmap(image);
         holder.eventName.setText(event.getName());
-        holder.host.setText(event.getHost());
-        holder.venue.setText(event.getVenueId());
-        SimpleDateFormat timeOfDay = new SimpleDateFormat("HH:mm");
-        Calendar start = Calendar.getInstance();
-        start.setTimeInMillis(event.getStartTime());
-        Calendar end = (Calendar) start.clone();
-        end.add(Calendar.MINUTE, 30 * event.getDuration());
-        holder.time.setText(timeOfDay.format(start.getTime()) + "-" + timeOfDay.format(end.getTime()));
-        SimpleDateFormat dayOfWeek = new SimpleDateFormat("EE");
-        holder.isRecurring.setText("every " + dayOfWeek.format(start.get(Calendar.DAY_OF_WEEK)));
-        holder.participant.setText("10/" + event.getMaxCapacity());
+        User host = Realm.getDefaultInstance().where(User.class).equalTo("id", event.getHost()).findFirst();
+        if (host != null) {
+            holder.host.setText(host.getUsername());
+        }
+        Venue venue = Realm.getDefaultInstance().where(Venue.class).equalTo("id", event.getVenueId()).findFirst();
+        if (venue != null) {
+            holder.venue.setText(venue.getName());
+        }
+        holder.time.setText(event.getStartTime().substring(0, 16));
+        holder.isRecurring.setText(event.getIsRecurring() ? "one time" : "every week");
+        holder.participant.setText(event.getParticipants().size() + "/" + event.getMaxCapacity());
 
     }
 

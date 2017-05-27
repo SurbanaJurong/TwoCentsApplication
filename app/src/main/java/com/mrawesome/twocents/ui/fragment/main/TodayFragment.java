@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatImageButton;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +12,11 @@ import android.view.ViewGroup;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 import com.mrawesome.twocents.R;
-import com.mrawesome.twocents.data.Dummy;
 import com.mrawesome.twocents.data.TinderCard;
-import com.mrawesome.twocents.util.Utils;
+import com.mrawesome.twocents.data.persistent.Event;
+
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -81,9 +82,9 @@ public class TodayFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_today, container, false);
         swipePlaceHolderView = (SwipePlaceHolderView) view.findViewById(R.id.swipeView);
         swipePlaceHolderView.getBuilder().setDisplayViewCount(3).setSwipeDecor(new SwipeDecor().setPaddingTop(20).setRelativeScale(0.01f).setSwipeInMsgLayoutId(R.layout.event_swipe_in).setSwipeOutMsgLayoutId(R.layout.event_swipe_out));
-        for (Dummy dummy : Utils.loadDummys(context)) {
-            Log.d(TAG, dummy.getName() + "/" + dummy.getAge() + "/" + dummy.getLocation());
-            swipePlaceHolderView.addView(new TinderCard(context, dummy, swipePlaceHolderView));
+        RealmResults<Event> events = Realm.getDefaultInstance().where(Event.class).findAll();
+        for (Event event : events) {
+            swipePlaceHolderView.addView(new TinderCard(context, event, swipePlaceHolderView));
         }
         AppCompatImageButton rejectBtn = (AppCompatImageButton) view.findViewById(R.id.rejectBtn);
         rejectBtn.setOnClickListener(new View.OnClickListener() {

@@ -29,21 +29,21 @@ public class Event extends RealmObject {
     private String name;
     @Expose
     @SerializedName("Category")
-    private Interest category;
+    private int category;
     @Expose
     @SerializedName("Host")
-    private String host;
+    private int host;
     @Expose
     @SerializedName("Description")
     private String description;
     @Expose
     @SerializedName("IsRecurring")
-    private int isRecurring;
+    private boolean isRecurring;
     @SerializedName("Timestamp")
     private String timeStamp;
     @Expose
     @SerializedName("VenueId")
-    private String venueId;
+    private int venueId;
     @Expose
     @SerializedName("MinCapacity")
     private int minCapacity;
@@ -57,18 +57,18 @@ public class Event extends RealmObject {
     @SerializedName("Comments")
     private RealmList<Comment> chat = new RealmList<>();
     @SerializedName("IsCancelled")
-    private int isCancelled;
+    private boolean isCancelled;
     @Expose
     @SerializedName("StartTime")
-    private long startTime;
+    private String startTime;
     @Expose
     @SerializedName("Duration")
-    private int duration;
+    private String duration;
 
     public Event() {
     };
 
-    public Event(String eventName, Interest category, String host, String description, int isRecurring, String venueId, int minCapacity, int maxCapacity, long startTime, int duration) {
+    public Event(String eventName, int category, int host, String description, boolean isRecurring, int venueId, int minCapacity, int maxCapacity, String startTime, String duration) {
         this.name = eventName;
         //debug
         this.category = category;
@@ -86,7 +86,7 @@ public class Event extends RealmObject {
         return this.id;
     }
 
-    public String getHost() {
+    public int getHost() {
         return this.host;
     }
 
@@ -94,7 +94,7 @@ public class Event extends RealmObject {
         return this.description;
     }
 
-    public int getIsRecurring() {
+    public boolean getIsRecurring() {
         return this.isRecurring;
     }
 
@@ -102,15 +102,15 @@ public class Event extends RealmObject {
         return this.timeStamp;
     }
 
-    public String getVenueId() {
+    public int getVenueId() {
         return this.venueId;
     }
 
-    public int getIsCancelled() {
+    public boolean getIsCancelled() {
         return this.isCancelled;
     }
 
-    public long getStartTime() {
+    public String getStartTime() {
         return this.startTime;
     }
 
@@ -122,7 +122,7 @@ public class Event extends RealmObject {
         return this.maxCapacity;
     }
 
-    public int getDuration() {
+    public String getDuration() {
         return this.duration;
     }
 
@@ -146,7 +146,7 @@ public class Event extends RealmObject {
         return name;
     }
 
-    public Interest getCategory() {
+    public int getCategory() {
         return category;
     }
 
@@ -158,11 +158,11 @@ public class Event extends RealmObject {
         this.name = name;
     }
 
-    public void setCategory(Interest category) {
+    public void setCategory(int category) {
         this.category = category;
     }
 
-    public void setHost(String host) {
+    public void setHost(int host) {
         this.host = host;
     }
 
@@ -170,7 +170,7 @@ public class Event extends RealmObject {
         this.description = description;
     }
 
-    public void setIsRecurring(int isRecurring) {
+    public void setIsRecurring(boolean isRecurring) {
         this.isRecurring = isRecurring;
     }
 
@@ -178,7 +178,7 @@ public class Event extends RealmObject {
         this.timeStamp = timeStamp;
     }
 
-    public void setVenueId(String venueId) {
+    public void setVenueId(int venueId) {
         this.venueId = venueId;
     }
 
@@ -216,15 +216,15 @@ public class Event extends RealmObject {
         this.chat.addAll(chat);
     }
 
-    public void setIsCancelled(int isCancelled) {
+    public void setIsCancelled(boolean isCancelled) {
         this.isCancelled = isCancelled;
     }
 
-    public void setStartTime(long startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 

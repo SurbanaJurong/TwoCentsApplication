@@ -70,7 +70,7 @@ public interface ApiEndpointInterface {
     Call<List<Venue>> getAllVenues();
 
     @GET("venue/{venueId}")
-    Call<Venue> getVenueById(@Path("venueId") String venueId);
+    Call<Venue> getVenueById(@Path("venueId") int venueId);
 
     @POST("venue")
     Call<Venue> addNewVenue(@Body Venue venue);

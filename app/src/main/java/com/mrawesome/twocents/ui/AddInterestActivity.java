@@ -1,6 +1,7 @@
 package com.mrawesome.twocents.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -47,6 +48,7 @@ public class AddInterestActivity extends AppCompatActivity implements AddInteres
     private SmartTabLayout smartTabLayout;
     private ButtonFlat back;
     private ButtonFlat next;
+    private FragmentStatePagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +59,7 @@ public class AddInterestActivity extends AppCompatActivity implements AddInteres
         back = (ButtonFlat) findViewById(R.id.add_interest_back);
         back.setVisibility(View.GONE);
         next = (ButtonFlat) findViewById(R.id.add_interest_next);
-        final FragmentStatePagerAdapter adapter = new FragmentStatePagerAdapter(getSupportFragmentManager()) {
+        adapter = new FragmentStatePagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
                 switch (position) {
@@ -96,8 +98,6 @@ public class AddInterestActivity extends AppCompatActivity implements AddInteres
                         AddInterestFragment1 fragment1 = (AddInterestFragment1) adapter.getItem(0);
                         Set<Interest> interests = fragment1.getSelectedInterest();
                         List<Event> events = fetchEvent(interests);
-                        AddInterestFragment2 fragment2 = (AddInterestFragment2) adapter.getItem(1);
-                        fragment2.setEvents(events);
                         viewPager.setCurrentItem(viewPager.getCurrentItem() + 1, true);
                         break;
                     case 1:
@@ -135,6 +135,8 @@ public class AddInterestActivity extends AppCompatActivity implements AddInteres
                         synchronized (events) {
                             events.addAll(response.body());
                         }
+                        AddInterestFragment2 fragment2 = (AddInterestFragment2) adapter.getItem(1);
+                        fragment2.setEvents(events);
                         makeToast(R.string.toast_request_success);
                     } else {
                         makeToast(R.string.toast_request_unsuccess);
@@ -161,6 +163,8 @@ public class AddInterestActivity extends AppCompatActivity implements AddInteres
 
 
     private void finishAddInterest() {
+        SharedPreferences preferences = getSharedPreferences("my_preferences", MODE_PRIVATE);
+        preferences.edit().putBoolean("interest_added", true).apply();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();

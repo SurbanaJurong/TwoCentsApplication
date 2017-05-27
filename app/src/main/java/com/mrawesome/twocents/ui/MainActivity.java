@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.mrawesome.twocents.R;
 import com.mrawesome.twocents.communication.ApiEndpointInterface;
 import com.mrawesome.twocents.communication.CommModule;
+import com.mrawesome.twocents.data.persistent.Event;
 import com.mrawesome.twocents.data.persistent.Interest;
 import com.mrawesome.twocents.ui.fragment.main.EventFragment;
 import com.mrawesome.twocents.ui.fragment.main.NotificationFragment;
@@ -73,21 +74,16 @@ public class MainActivity extends AppCompatActivity implements YourEventFragment
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_today_view);
         fetchInterest();
+        fetchEvent();
 
         SharedPreferences preferences =  getSharedPreferences("my_preferences", MODE_PRIVATE);
 
-//        if (true) {
-//        if (!preferences.getBoolean("onboarding_complete",false)) {
-//            Intent intent = new Intent(this, OnboardingActivity.class);
-//            startActivity(intent);
-//            finish();
-//            return;
-//        }
-
-        Intent intent = new Intent(this, AddInterestActivity.class);
-        startActivity(intent);
-        finish();
-        return;
+        if (!preferences.getBoolean("onboarding_complete",false)) {
+            Intent intent = new Intent(this, OnboardingActivity.class);
+            startActivity(intent);
+            finish();
+            return;
+        }
     }
 
     private void fetchInterest() {
@@ -111,23 +107,31 @@ public class MainActivity extends AppCompatActivity implements YourEventFragment
         });
     }
 
-    private void writeToLocal(final List<Interest> interests) {
+    private void fetchEvent() {
+        ApiEndpointInterface apiEndpointInterface = CommModule.getApiEndpointExpose();
+        apiEndpointInterface.getAllEvents().enqueue(new Callback<List<Event>>() {
+            @Override
+            public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
+                if (response.isSuccessful()) {
+                    writeToLocal(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Event>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void writeToLocal(final List list) {
         Realm realm = Realm.getDefaultInstance();
-            Log.d(TAG, interests.toString());
             realm.executeTransaction(new Realm.Transaction() {
                 @Override
                 public void execute(Realm realm) {
-                    realm.insertOrUpdate(interests);
-//                    Interest in = realm.where(Interest.class).equalTo("id", interest.getId()).findFirst();
-//                    if (in == null) {
-//                        realm.copyToRealm(interest);
-//                    } else {
-//                        in.setIcon(interest.getIcon());
-//                        in.setName(interest.getName());
-//                    }
+                    realm.insertOrUpdate(list);
                 }
             });
-//        }
         Log.d(TAG, "Write interests to local successfully");
     }
 

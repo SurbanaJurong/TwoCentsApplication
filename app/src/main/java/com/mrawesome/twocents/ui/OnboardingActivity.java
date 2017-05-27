@@ -109,6 +109,7 @@ public class OnboardingActivity extends FragmentActivity implements OnboardingFr
                             makeToast(R.string.toast_empty_otp);
                         } else {
                             sendOtpConfirmation(Integer.parseInt(otp));
+                            viewPager.setCurrentItem(viewPager.getCurrentItem() + 1, true);
                         }
                         break;
                     case 3:

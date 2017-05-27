@@ -18,13 +18,13 @@
             android:id="@+id/rejectBtn"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@mipmap/ic_launcher_round"/>
+            android:background="@drawable/ic_heart_off_black_48dp"/>
         <ImageButton
             android:id="@+id/acceptBtn"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="30dp"
-            android:background="@mipmap/ic_launcher"/>
+            android:background="@drawable/ic_heart_black_48dp"/>
     </LinearLayout>
 
     <com.mindorks.placeholderview.SwipePlaceHolderView

@@ -19,13 +19,13 @@ public class Notification extends RealmObject {
     @SerializedName("Type")
     private int type;
     @SerializedName("SenderId")
-    private String senderId;
+    private int senderId;
     @SerializedName("EventId")
     private int eventId;
 
     public Notification() {}
 
-    public Notification(NotificationType notificationType, String sender, int eventId) {
+    public Notification(NotificationType notificationType, int sender, int eventId) {
         this.type = notificationType.getCode();
         this.senderId = sender;
         this.eventId = eventId;
@@ -35,7 +35,7 @@ public class Notification extends RealmObject {
         return this.type;
     }
 
-    public String getSenderId() {
+    public int getSenderId() {
         return this.senderId;
     }
 
@@ -55,7 +55,7 @@ public class Notification extends RealmObject {
         this.type = type;
     }
 
-    public void setSenderId(String senderId) {
+    public void setSenderId(int senderId) {
         this.senderId = senderId;
     }
 
