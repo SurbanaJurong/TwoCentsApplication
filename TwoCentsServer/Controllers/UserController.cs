@@ -52,6 +52,7 @@ namespace TwoCentsServer.Controllers
             bool result = _smsHdlr.AddRequest(data.UserName, data.Phone);
             if (result)
             {
+                data.Timestamp = DateTime.UtcNow;
                 _pendingUsers.Add(data);
                 return Ok(new { message = "Request queued & OTP sent. Awaiting confirmation." });
             }
